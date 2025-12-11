@@ -100,16 +100,19 @@ Complete documentation for the P&ID OCR & Graph Extraction project.
 ### Quick Commands
 
 ```bash
+# Install project
+uv pip install -e .
+
 # Visualize existing P&ID data
-~/.venv/bin/python3 src/plot_pnid_graph.py
+uv run src/plot_pnid_graph.py
 
 # Run local OCR (when Ollama upgraded)
-~/.venv/bin/python3 src/run_overlay_demo.py
+uv run src/run_overlay_demo.py
 
 # Run cloud extraction (with API keys)
-~/.venv/bin/python3 src/gemini_agent.py
-~/.venv/bin/python3 src/azure_antropic_agent.py
-~/.venv/bin/python3 src/azure_deepseek_agent.py
+uv run src/gemini_agent.py
+uv run src/azure_antropic_agent.py
+uv run src/azure_deepseek_agent.py
 ```
 
 ---
@@ -130,6 +133,7 @@ Complete documentation for the P&ID OCR & Graph Extraction project.
   - Added executive status summary
   - Organized into docs folder
   - Added this index
+  - Migrated from `requirements.txt` to `pyproject.toml` for modern packaging
 
 ---
 

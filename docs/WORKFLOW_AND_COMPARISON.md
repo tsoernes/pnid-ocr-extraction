@@ -49,22 +49,27 @@ ollama --version
 
 #### 2. Install Python Dependencies
 ```bash
-# Using UV (recommended)
-uv pip install -r requirements.txt
+# Using UV (recommended) - editable install
+uv pip install -e .
 
 # Or using pip
-pip install -r requirements.txt
+pip install -e .
+
+# Verify installation
+python -c "from src.plot_pnid_graph import create_interactive_graph; print('✅ Install successful')"
 ```
 
-**Requirements:**
-```
-Pillow>=9.0.0         # Image processing
-requests>=2.25.0      # HTTP client
-pydantic-ai           # AI agent framework
-python-dotenv         # Environment variables
-pyvis>=0.3.0          # Interactive visualization
-networkx>=3.0         # Graph structures
-anthropic             # Anthropic API client
+**Requirements:** (defined in `pyproject.toml`)
+```toml
+dependencies = [
+    "Pillow>=9.0.0",
+    "requests>=2.25.0",
+    "pydantic-ai",
+    "python-dotenv",
+    "pyvis>=0.3.0",
+    "networkx>=3.0",
+    "anthropic",
+]
 ```
 
 #### 3. Setup Ollama & DeepSeek-OCR
@@ -118,11 +123,11 @@ AZURE_OPENAI_API_KEY=your_azure_openai_key
 
 2. **Run the OCR + Overlay demo:**
    ```bash
-   # From project root
-   ~/.venv/bin/python3 src/run_overlay_demo.py
-   
-   # Or using uv
+   # Using uv (recommended)
    uv run src/run_overlay_demo.py
+   
+   # Or using installed environment
+   python src/run_overlay_demo.py
    ```
 
 3. **Expected Output:**
@@ -150,7 +155,7 @@ by your version of Ollama. You may need to upgrade"
 **Status**: ⚠️ Requires OAuth2 setup (API key not supported)
 
 ```bash
-~/.venv/bin/python3 src/gemini_agent.py
+uv run src/gemini_agent.py
 ```
 
 **Error:**
@@ -169,7 +174,7 @@ Expected OAuth2 access token
 **Status**: ⚠️ Requires API key configuration
 
 ```bash
-~/.venv/bin/python3 src/azure_antropic_agent.py
+uv run src/azure_antropic_agent.py
 ```
 
 **Requirements:**
@@ -184,7 +189,7 @@ Expected OAuth2 access token
 **Status**: ⚠️ Requires API key configuration
 
 ```bash
-~/.venv/bin/python3 src/azure_deepseek_agent.py
+uv run src/azure_deepseek_agent.py
 ```
 
 **Requirements:**
@@ -206,7 +211,7 @@ Expected OAuth2 access token
 
 1. **Run visualization script:**
    ```bash
-   ~/.venv/bin/python3 src/plot_pnid_graph.py
+   uv run src/plot_pnid_graph.py
    ```
 
 2. **Output:**
@@ -489,7 +494,7 @@ curl http://localhost:11434/api/tags
 2. **Run Full Extraction**:
    ```bash
    # Example with Azure Anthropic (once configured)
-   ~/.venv/bin/python3 src/azure_antropic_agent.py
+   uv run src/azure_antropic_agent.py
    ```
 
 3. **Verify Spatial Coordinates**:

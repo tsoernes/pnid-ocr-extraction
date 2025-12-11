@@ -38,9 +38,10 @@
 
 ### 4. Dependency Installation
 - **Status**: ✅ All packages installed
-- **Method**: `uv pip install -r requirements.txt`
+- **Method**: `uv pip install -e .` (editable install from `pyproject.toml`)
 - **Environment**: `~/.venv` (Python 3.12.7)
 - **Packages**: Pillow, requests, pydantic-ai, pyvis, networkx, anthropic
+- **Build System**: hatchling (modern Python packaging)
 
 ### 5. Code Fixes & Improvements
 - **Status**: ✅ Completed
@@ -153,7 +154,7 @@
    
 2. **Test Extraction** (5 minutes)
    ```bash
-   ~/.venv/bin/python3 src/azure_antropic_agent.py
+   uv run src/azure_antropic_agent.py
    ```
 
 3. **Verify x,y Coordinates** (5 minutes)
@@ -203,6 +204,7 @@
 2. **Gemini Complexity**: VertexAI requires OAuth2, not simple API key
 3. **Path Issues Common**: Scripts assume `src/` working directory (fixed)
 4. **Visualization Robust**: PyVis + base64 images work excellently
+5. **Modern Packaging**: Migrated from `requirements.txt` to `pyproject.toml` with hatchling
 
 ### Data Model Observations
 - Old `pnid.json` has 14 components, 33 pipes (no spatial coords)
@@ -223,6 +225,7 @@
 ### Code Changes
 - `src/gemini_agent.py` - Updated data models, removed imports
 - `src/plot_pnid_graph.py` - Fixed paths, improved formatting
+- `pyproject.toml` - Created modern Python package configuration (NEW)
 
 ### Documentation
 - `WORKFLOW_AND_COMPARISON.md` - Comprehensive 627-line guide
@@ -235,6 +238,8 @@
 ### Git Commits
 1. `efce806` - "Add x,y coordinates to Component and Pipe data models"
 2. `c41689f` - "Complete workflow guide, fix plot paths, remove unused imports"
+3. `a46c4e2` - "Organize documentation into docs folder with index"
+4. (latest) - "Migrate from requirements.txt to pyproject.toml"
 
 ---
 

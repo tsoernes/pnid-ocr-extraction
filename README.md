@@ -50,8 +50,11 @@ pnid-ocr-extraction/
 git clone https://github.com/bouvet/pnid-ocr-extraction.git
 cd pnid-ocr-extraction
 
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies (using uv - recommended)
+uv pip install -e .
+
+# Or using pip
+pip install -e .
 
 # Install Ollama (Fedora/RHEL)
 sudo dnf install ollama
@@ -67,18 +70,24 @@ ollama serve &
 
 # Pull DeepSeek-OCR model
 ollama pull deepseek-ocr
+
+# Verify installation
+python -c "from src.plot_pnid_graph import create_interactive_graph; print('✅ Import successful')"
 ```
 
 ### Basic Usage
 
 ```bash
 # Run OCR with bounding box overlay
-python src/run_overlay_demo.py
+uv run src/run_overlay_demo.py
 
 # Extract P&ID graph using Gemini
-python src/gemini_agent.py
+uv run src/gemini_agent.py
 
 # Generate interactive visualization
+uv run src/plot_pnid_graph.py
+
+# Or using installed environment
 python src/plot_pnid_graph.py
 ```
 

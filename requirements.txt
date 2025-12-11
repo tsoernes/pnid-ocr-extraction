@@ -1,7 +1,13 @@
-Pillow>=9.0.0
-requests>=2.25.0
-pydantic-ai
-python-dotenv
-pyvis>=0.3.0
-networkx>=3.0
-anthropic
+# This project now uses pyproject.toml for dependency management
+# Please install using one of the following methods:
+
+# Recommended (using uv):
+#   uv pip install -e .
+
+# Or using pip:
+#   pip install -e .
+
+# For development dependencies:
+#   uv pip install -e ".[dev]"
+
+# See pyproject.toml for the full list of dependencies
