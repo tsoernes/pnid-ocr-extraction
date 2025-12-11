@@ -84,8 +84,19 @@ python src/plot_pnid_graph.py
 
 ## 📚 Documentation
 
-- [OCR Bounding Box Guide](README_OCR_BoundingBox.md) - Detailed OCR overlay documentation
-- [Technical Details](.rules) - Comprehensive project documentation
+Comprehensive documentation is available in the [`docs/`](docs/) folder:
+
+- **[Documentation Index](docs/README.md)** - Complete guide to all documentation
+- **[Status Summary](docs/STATUS_SUMMARY.md)** - Current project status and next steps
+- **[Workflow & Comparison](docs/WORKFLOW_AND_COMPARISON.md)** - Complete workflows and model comparison
+- **[OCR Bounding Box Guide](docs/README_OCR_BoundingBox.md)** - Detailed OCR overlay documentation
+- **[Technical Details](.rules)** - Comprehensive repository summary
+
+### Quick Links
+
+- **New to this project?** Start with [Status Summary](docs/STATUS_SUMMARY.md)
+- **Want complete workflows?** See [Workflow & Comparison](docs/WORKFLOW_AND_COMPARISON.md)
+- **Need technical details?** Check [OCR Bounding Box Guide](docs/README_OCR_BoundingBox.md)
 
 ## 🔧 Configuration
 
