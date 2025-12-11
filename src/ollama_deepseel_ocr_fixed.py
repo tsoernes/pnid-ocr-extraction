@@ -32,10 +32,10 @@ def run_deepseek_ocr_via_ollama(image_data, prompt="Extract text from image", im
 
 
 if __name__ == "__main__":
-    image_path = "/Users/christoph.imler/Documents/pid-legend-small-small.jpg"
-    image_path = "/Users/christoph.imler/Documents/pid-legend-small-small-small.png"
-    image_path = "/Users/christoph.imler/Documents/brewary.jpg"
-    #image_path = "/Users/christoph.imler/Documents/Christoph Imler_5864.JPG"
+    # Example usage - update paths as needed
+    # Example usage - update paths as needed
+    # Example usage - update paths as needed
+    # Example usage - update paths as needed
     with open(image_path, "rb") as f:
         image_data = f.read()
 

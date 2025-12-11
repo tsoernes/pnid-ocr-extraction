@@ -8,7 +8,7 @@ from ocr_bbox_overlay import OCRBoundingBoxOverlay
 from PIL import Image
 
 def main():
-    image_path = "/Users/christoph.imler/Documents/pid-legend-small-small-small.png"
+    image_path = "../data/input/pid-legend-small-small-small.png"
     
     # Get image dimensions
     with Image.open(image_path) as img:

@@ -3,7 +3,7 @@ import pytesseract
 import numpy as np
 import pandas as pd
 # https://www.google.com/search?q=psm+tesseract&sca_esv=3f40fa7dc3b23699&rlz=1C5GCCM_en&sxsrf=AE3TifPe8T2vi4V6PolijFcsxLt6RMlLBw%3A1764277376074&ei=gLwoaayeBJDPxc8P4eXpqQQ&oq=psm+t&gs_lp=Egxnd3Mtd2l6LXNlcnAiBXBzbSB0KgIIADILEAAYgAQYkQIYigUyBRAAGIAEMgoQABiABBgUGIcCMgUQABiABDIFEAAYgAQyChAAGIAEGBQYhwIyBRAAGIAEMgUQABiABDIFEC4YgAQyBRAAGIAESK4nUOMQWOMgcAN4AZABAJgBiAGgAcEDqgEDMS4zuAEDyAEA-AEBmAIHoALxA8ICChAAGLADGNYEGEfCAgQQIxgnwgIKEAAYgAQYQxiKBcICCBAAGIAEGMsBwgIJEC4YgAQYChgLwgIJEAAYgAQYChgLwgIGEAAYFhgewgIIEAAYFhgKGB6YAwCIBgGQBgiSBwM0LjOgB5QhsgcDMS4zuAflA8IHBTAuMi41yAcj&sclient=gws-wiz-serp
-image = cv2.imread("/Users/christoph.imler/Documents/design-pnid-pid-and-pfd-in-autocad-plant-3d.jpg")
+image = cv2.imread("data/input/design-pnid-pid-and-pfd-in-autocad-plant-3d.jpg")
 
 
 testImageNP = np.array(image)
