@@ -6,9 +6,10 @@ as an interactive network graph with the original diagram as background.
 Nodes can be freely moved/dragged by the user.
 """
 
-import json
 import base64
+import json
 from pathlib import Path
+
 from pyvis.network import Network
 
 
@@ -31,13 +32,13 @@ def load_pnid_data(json_path: str) -> dict:
 def get_category_color(category: str) -> str:
     """Return a color based on component category."""
     colors = {
-        "Vessel": "#4CAF50",           # Green
-        "Heat Exchanger": "#FF9800",   # Orange
-        "Separator": "#2196F3",        # Blue
-        "Pump": "#9C27B0",             # Purple
-        "Valve": "#F44336",            # Red
-        "source": "#9E9E9E",           # Gray (for source nodes)
-        "sink": "#607D8B",             # Blue Gray (for sink nodes)
+        "Vessel": "#4CAF50",  # Green
+        "Heat Exchanger": "#FF9800",  # Orange
+        "Separator": "#2196F3",  # Blue
+        "Pump": "#9C27B0",  # Purple
+        "Valve": "#F44336",  # Red
+        "source": "#9E9E9E",  # Gray (for source nodes)
+        "sink": "#607D8B",  # Blue Gray (for sink nodes)
     }
     return colors.get(category, "#795548")  # Brown default
 
@@ -55,13 +56,11 @@ def get_node_shape(category: str) -> str:
 
 
 def create_interactive_graph(
-    json_path: str,
-    image_path: str,
-    output_path: str = "pnid_graph.html"
+    json_path: str, image_path: str, output_path: str = "pnid_graph.html"
 ) -> None:
     """
     Create an interactive graph visualization with background image.
-    
+
     Args:
         json_path: Path to the P&ID JSON file
         image_path: Path to the background image
@@ -71,7 +70,7 @@ def create_interactive_graph(
     data = load_pnid_data(json_path)
     components = {c["id"]: c for c in data["components"]}
     pipes = data["pipes"]
-    
+
     # Create network with physics enabled for draggable nodes
     net = Network(
         height="900px",
@@ -83,7 +82,7 @@ def create_interactive_graph(
         select_menu=False,
         filter_menu=False,
     )
-    
+
     # Configure physics - disabled by default for free node movement
     net.set_options("""
     {
@@ -135,13 +134,13 @@ def create_interactive_graph(
         }
     }
     """)
-    
+
     # Collect all unique node IDs from pipes
     all_node_ids = set()
     for pipe in pipes:
         all_node_ids.add(pipe["source"])
         all_node_ids.add(pipe["target"])
-    
+
     # Add component nodes
     for node_id in all_node_ids:
         if node_id in components:
@@ -150,7 +149,7 @@ def create_interactive_graph(
             color = get_category_color(category)
             shape = get_node_shape(category)
             title = f"<b>{comp['label']}</b><br>Category: {category}<br>{comp.get('description', '')}"
-            
+
             net.add_node(
                 node_id,
                 label=comp["label"],
@@ -176,7 +175,7 @@ def create_interactive_graph(
                 color = "#795548"
                 shape = "dot"
                 title = node_id
-            
+
             net.add_node(
                 node_id,
                 label=label,
@@ -185,7 +184,7 @@ def create_interactive_graph(
                 shape=shape,
                 size=20,
             )
-    
+
     # Add edges (pipes)
     for pipe in pipes:
         edge_title = f"<b>{pipe['label']}</b><br>{pipe.get('description', '')}"
@@ -195,16 +194,16 @@ def create_interactive_graph(
             label=pipe["label"],
             title=edge_title,
         )
-    
+
     # Generate HTML
     net.write_html(output_path)
-    
+
     # Load and modify HTML to add background image
     image_data_uri = load_image_as_base64(image_path)
-    
+
     with open(output_path, "r") as f:
         html_content = f.read()
-    
+
     # Add custom CSS for background image
     background_css = f"""
     <style>
@@ -286,7 +285,7 @@ def create_interactive_graph(
         }}
     </style>
     """
-    
+
     # Add legend and controls HTML
     legend_html = """
     <div class="legend">
@@ -312,7 +311,7 @@ def create_interactive_graph(
             <span>Sink</span>
         </div>
     </div>
-    
+
     <div class="controls">
         <h4>Controls</h4>
         <button onclick="togglePhysics()">Toggle Physics</button>
@@ -320,28 +319,28 @@ def create_interactive_graph(
         <label>Background Opacity:</label>
         <input type="range" min="0" max="100" value="30" onchange="setOpacity(this.value)">
     </div>
-    
+
     <script>
         var physicsEnabled = true;
-        
+
         function togglePhysics() {
             physicsEnabled = !physicsEnabled;
             network.setOptions({ physics: { enabled: physicsEnabled } });
         }
-        
+
         function stabilize() {
             network.stabilize(100);
         }
-        
+
         function setOpacity(value) {
             var opacity = value / 100;
             var networkDiv = document.getElementById('mynetwork');
             // Create a semi-transparent overlay effect
-            networkDiv.style.backgroundImage = 
+            networkDiv.style.backgroundImage =
                 'linear-gradient(rgba(255,255,255,' + (1-opacity) + '), rgba(255,255,255,' + (1-opacity) + ')), ' +
                 networkDiv.style.backgroundImage.split('), ').pop();
         }
-        
+
         // Set initial opacity
         window.onload = function() {
             setTimeout(function() {
@@ -350,17 +349,17 @@ def create_interactive_graph(
         };
     </script>
     """
-    
+
     # Insert CSS after <head>
     html_content = html_content.replace("<head>", "<head>" + background_css)
-    
+
     # Insert legend and controls before </body>
     html_content = html_content.replace("</body>", legend_html + "</body>")
-    
+
     # Write modified HTML
     with open(output_path, "w") as f:
         f.write(html_content)
-    
+
     print(f"Interactive graph saved to: {output_path}")
     print("Open the HTML file in a browser to view and interact with the graph.")
     print("\nFeatures:")
@@ -374,20 +373,16 @@ def create_interactive_graph(
 def main():
     """Main entry point."""
     # Define paths
-    base_dir = Path(__file__).parent
+    base_dir = Path(__file__).parent.parent
     json_path = base_dir / "data" / "output" / "pnid.json"
     image_path = base_dir / "data" / "input" / "brewary.jpg"
     output_path = base_dir / "data" / "output" / "pnid_graph.html"
-    
+
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     # Create the interactive graph
-    create_interactive_graph(
-        str(json_path),
-        str(image_path),
-        str(output_path)
-    )
+    create_interactive_graph(str(json_path), str(image_path), str(output_path))
 
 
 if __name__ == "__main__":

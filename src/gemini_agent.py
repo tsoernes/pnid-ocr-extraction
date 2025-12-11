@@ -5,7 +5,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, BinaryContent
-from pydantic_ai.models.azure import AzureModel
 from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.providers.google import GoogleProvider
 
@@ -61,7 +60,6 @@ agent = Agent(
     ),
 )
 
-exit()
 result = agent.run_sync(
     [
         binary_content,
