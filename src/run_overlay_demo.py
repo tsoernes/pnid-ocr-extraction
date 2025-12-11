@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+"""
+Demo script that combines the DeepSeek OCR with bounding box overlay visualization.
+Updated to use the correct image paths for this project.
+"""
+
+import os
+
+from ocr_bbox_overlay import OCRBoundingBoxOverlay
+from ollama_deepseel_ocr_fixed import run_deepseek_ocr_via_ollama
+
+
+def main():
+    # Image path - using the project's data directory
+    image_path = "data/input/brewary.png"
+
+    # Check if image exists
+    if not os.path.exists(image_path):
+        print(f"Error: Image not found at {image_path}")
+        print("Available images in data/input:")
+        if os.path.exists("data/input"):
+            for file in os.listdir("data/input"):
+                print(f"  - {file}")
+        return
+
+    # Output path for annotated image
+    output_dir = "data/output"
+    os.makedirs(output_dir, exist_ok=True)
+
+    base_name = os.path.splitext(os.path.basename(image_path))[0]
+    output_path = os.path.join(output_dir, f"{base_name}_annotated.jpg")
+
+    print(f"Processing image: {image_path}")
+    print(f"Output will be saved to: {output_path}")
+
+    # Read image data
+    with open(image_path, "rb") as f:
+        image_data = f.read()
+
+    # Run OCR with grounding to get bounding boxes
+    prompt = "<|grounding|>Convert the document to markdown"
+    print("\nRunning OCR via Ollama...")
+
+    try:
+        ocr_response = run_deepseek_ocr_via_ollama(image_data, prompt, image_path)
+
+        print("\n=== OCR Response Summary ===")
+        if "response" in ocr_response:
+            response_length = len(ocr_response["response"])
+            print(f"Response length: {response_length} characters")
+
+            # Show first 500 characters of response
+            preview = ocr_response["response"][:500]
+            if len(ocr_response["response"]) > 500:
+                preview += "..."
+            print(f"Preview:\n{preview}")
+        else:
+            print("No 'response' field in OCR output")
+            print("Available fields:", list(ocr_response.keys()))
+            return
+
+        # Initialize the bounding box overlay class
+        overlay = OCRBoundingBoxOverlay(font_size=12)
+
+        print("\n=== Processing Bounding Boxes ===")
+
+        # Process OCR output and create annotated image
+        parsed_items = overlay.process_ocr_and_overlay(
+            image_path=image_path,
+            ocr_response=ocr_response,
+            output_path=output_path,
+            box_thickness=2,
+            show_labels=True,
+            label_background=True,
+            auto_scale_coords=True,  # Enable coordinate auto-scaling
+        )
+
+        # Show statistics
+        stats = overlay.get_statistics(parsed_items)
+        print("\n=== Statistics ===")
+        print(f"Total items found: {stats['total_items']}")
+        print(f"Text items: {stats['text_items']}")
+        print(f"Image items: {stats['image_items']}")
+        print(
+            f"Average bounding box size: {stats['average_bbox_width']}x{stats['average_bbox_height']} pixels"
+        )
+
+        # Show detailed items
+        print("\n=== Detected Items ===")
+        for i, item in enumerate(parsed_items[:20]):  # Show first 20 items
+            bbox = item["bbox"]
+            text_preview = (
+                item["text"][:50] + "..." if len(item["text"]) > 50 else item["text"]
+            )
+            print(
+                f"{i + 1:2d}. [{item['type']:5s}] '{text_preview}' at [{bbox[0]}, {bbox[1]}, {bbox[2]}, {bbox[3]}]"
+            )
+
+        if len(parsed_items) > 20:
+            print(f"... and {len(parsed_items) - 20} more items")
+
+        print(f"\n✅ Successfully created annotated image: {output_path}")
+        print(f"\nYou can view the output image at: {os.path.abspath(output_path)}")
+
+    except Exception as e:
+        print(f"Error during OCR processing: {e}")
+        import traceback
+
+        traceback.print_exc()
+
+
+if __name__ == "__main__":
+    main()

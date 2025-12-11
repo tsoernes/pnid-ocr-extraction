@@ -1,0 +1,260 @@
+{
+    "nodes": [
+        {
+            "id": "MAK",
+            "label": "MAK",
+            "category": "Process Vessel",
+            "description": "Mash Kettle (Malt, Corn, Water $\\to$ $48^\\circ\\text{C}$)"
+        },
+        {
+            "id": "MAT",
+            "label": "MAT",
+            "category": "Process Vessel",
+            "description": "Mash Tun (Malt, Water $\\to$ $48^\\circ\\text{C}$)"
+        },
+        {
+            "id": "MAT_MAK",
+            "label": "MAT + MAK",
+            "category": "Process Vessel",
+            "description": "Combined Mash (Mixing) Tank $\\to$ $65^\\circ\\text{C}$"
+        },
+        {
+            "id": "Hot_Water_Tank",
+            "label": "Hot water tank",
+            "category": "Process Vessel",
+            "description": "Tank for $80^\\circ\\text{C}$ Water/CIP"
+        },
+        {
+            "id": "Mixer",
+            "label": "Mixer",
+            "category": "Process Vessel",
+            "description": "Tank mixing $15^\\circ\\text{C}$ Water and $80^\\circ\\text{C}$ Stream"
+        },
+        {
+            "id": "WOK",
+            "label": "WOK",
+            "category": "Process Vessel",
+            "description": "Whirlpool/Kettle for separation $\\to$ $102^\\circ\\text{C}$"
+        },
+        {
+            "id": "Filter",
+            "label": "Filter",
+            "category": "Separation/Filtration",
+            "description": "Solid/Liquid Separator (Maische $\\to$ $78^\\circ\\text{C}$)"
+        },
+        {
+            "id": "Centrifuge",
+            "label": "Centrifuge",
+            "category": "Separation/Filtration",
+            "description": "Solid/Liquid Separator $\\to$ $99.8^\\circ\\text{C}$"
+        },
+        {
+            "id": "Steam_Heater_1",
+            "label": "Steam Heater 1",
+            "category": "Heat Exchanger",
+            "description": "Heating MAK effluent ($48^\\circ\\text{C}$ to $102^\\circ\\text{C}$)"
+        },
+        {
+            "id": "Steam_Heater_2",
+            "label": "Steam Heater 2",
+            "category": "Heat Exchanger",
+            "description": "Heating MAT+MAK effluent ($65^\\circ\\text{C}$ to $75^\\circ\\text{C}$)"
+        },
+        {
+            "id": "Steam_Heater_3",
+            "label": "Steam Heater 3",
+            "category": "Heat Exchanger",
+            "description": "Heating Filter effluent ($78^\\circ\\text{C}$ to $102^\\circ\\text{C}$)"
+        },
+        {
+            "id": "Steam_Heater_4",
+            "label": "Steam Heater 4",
+            "category": "Heat Exchanger",
+            "description": "Heating Mixer effluent ($80^\\circ\\text{C}$)"
+        },
+        {
+            "id": "Glycol_Cooler",
+            "label": "Glycol Cooler",
+            "category": "Heat Exchanger",
+            "description": "Cooling $15^\\circ\\text{C}$ Water (using Glycol)"
+        },
+        {
+            "id": "HX_Hot_Cold",
+            "label": "HX (Hot $\\to$ Cold)",
+            "category": "Heat Exchanger",
+            "description": "Heat Exchanger: Cooling $99.8^\\circ\\text{C}$ Stream and Heating $80^\\circ\\text{C}$ Water"
+        },
+        {
+            "id": "Input_Malt_Corn_Water_15C",
+            "label": "Malt, Corn, $15^\\circ\\text{C}$ Water",
+            "category": "Input",
+            "description": "Raw Materials Input to MAK"
+        },
+        {
+            "id": "Input_Malt_Water_15C",
+            "label": "Malt, $15^\\circ\\text{C}$ Water",
+            "category": "Input",
+            "description": "Raw Materials Input to MAT"
+        },
+        {
+            "id": "Input_Water_15C_Mixer",
+            "label": "$15^\\circ\\text{C}$ Water (Mixer)",
+            "category": "Input",
+            "description": "Input Water to Mixer"
+        },
+        {
+            "id": "Utility_Glycol",
+            "label": "Glycol",
+            "category": "Utility",
+            "description": "Cooling Utility Input"
+        },
+        {
+            "id": "Utility_Steam",
+            "label": "Steam (Utility)",
+            "category": "Utility",
+            "description": "Heating Utility Input"
+        },
+        {
+            "id": "Output_Dreche",
+            "label": "Dreche",
+            "category": "Output",
+            "description": "Solid Byproduct Output from Filter"
+        },
+        {
+            "id": "Output_Gas_102C",
+            "label": "Gas $102^\\circ\\text{C}$",
+            "category": "Output",
+            "description": "Gaseous Output from WOK"
+        },
+        {
+            "id": "Output_Trub",
+            "label": "Trub",
+            "category": "Output",
+            "description": "Solid Byproduct Output from Centrifuge"
+        },
+        {
+            "id": "Output_Wort_10C",
+            "label": "Wort treatment",
+            "category": "Output",
+            "description": "Process Output (Wort) at $10^\\circ\\text{C}$"
+        },
+        {
+            "id": "CIP",
+            "label": "CIP",
+            "category": "Other",
+            "description": "Clean-In-Place connection"
+        }
+    ],
+    "edges": [
+        {
+            "source": "Input_Malt_Corn_Water_15C",
+            "target": "MAK",
+            "label": "Raw Feed"
+        },
+        {
+            "source": "MAK",
+            "target": "Steam_Heater_1",
+            "label": "Process Stream $48^\\circ\\text{C}$"
+        },
+        {
+            "source": "Steam_Heater_1",
+            "target": "MAT_MAK",
+            "label": "Process Stream $102^\\circ\\text{C}$"
+        },
+        {
+            "source": "Input_Malt_Water_15C",
+            "target": "MAT",
+            "label": "Raw Feed"
+        },
+        {
+            "source": "MAT",
+            "target": "MAT_MAK",
+            "label": "Process Stream $48^\\circ\\text{C}$"
+        },
+        {
+            "source": "MAT_MAK",
+            "target": "Steam_Heater_2",
+            "label": "Process Stream $65^\\circ\\text{C}$"
+        },
+        {
+            "source": "Steam_Heater_2",
+            "target": "Filter",
+            "label": "Maische $75^\\circ\\text{C}$"
+        },
+        {
+            "source": "Filter",
+            "target": "Output_Dreche",
+            "label": "Solid Byproduct"
+        },
+        {
+            "source": "Filter",
+            "target": "Steam_Heater_3",
+            "label": "Process Stream $78^\\circ\\text{C}$"
+        },
+        {
+            "source": "Steam_Heater_3",
+            "target": "WOK",
+            "label": "Process Liquid $102^\\circ\\text{C}$"
+        },
+        {
+            "source": "WOK",
+            "target": "Output_Gas_102C",
+            "label": "Gaseous Output"
+        },
+        {
+            "source": "WOK",
+            "target": "Centrifuge",
+            "label": "Process Liquid $102^\\circ\\text{C}$"
+        },
+        {
+            "source": "Centrifuge",
+            "target": "Output_Trub",
+            "label": "Solid Byproduct (Trub)"
+        },
+        {
+            "source": "Centrifuge",
+            "target": "HX_Hot_Cold",
+            "label": "Process Liquid $99.8^\\circ\\text{C}$"
+        },
+        {
+            "source": "HX_Hot_Cold",
+            "target": "Glycol_Cooler",
+            "label": "Process Liquid $10^\\circ\\text{C}$"
+        },
+        {
+            "source": "Glycol_Cooler",
+            "target": "Output_Wort_10C",
+            "label": "Final Product Stream"
+        },
+        {
+            "source": "Input_Water_15C_Mixer",
+            "target": "Mixer",
+            "label": "Input Water"
+        },
+        {
+            "source": "Mixer",
+            "target": "Steam_Heater_4",
+            "label": "Process Stream"
+        },
+        {
+            "source": "Steam_Heater_4",
+            "target": "Hot_Water_Tank",
+            "label": "Stream $80^\\circ\\text{C}$"
+        },
+        {
+            "source": "Hot_Water_Tank",
+            "target": "CIP",
+            "label": "Cleaning utility path"
+        },
+        {
+            "source": "Hot_Water_Tank",
+            "target": "HX_Hot_Cold",
+            "label": "$80^\\circ\\text{C}$ Water to be heated"
+        },
+        {
+            "source": "HX_Hot_Cold",
+            "target": "Mixer",
+            "label": "$80^\\circ\\text{C}$ Water (Recycled/Heated)"
+        }
+    ]
+}

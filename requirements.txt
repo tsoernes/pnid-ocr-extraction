@@ -1,0 +1,7 @@
+Pillow>=9.0.0
+requests>=2.25.0
+pydantic-ai
+python-dotenv
+pyvis>=0.3.0
+networkx>=3.0
+anthropic
