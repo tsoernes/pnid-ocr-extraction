@@ -1,12 +1,12 @@
+import json
 import os
 from pathlib import Path
-import json
 
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, BinaryContent
-from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.models.azure import AzureModel
+from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.providers.google import GoogleProvider
 
 load_dotenv()
@@ -19,6 +19,8 @@ class Component(BaseModel):
     )
     category: str = Field(description="The category of the component")
     description: str = Field(description="The description of the component")
+    x: float = Field(description="The x coordinate of the component center")
+    y: float = Field(description="The y coordinate of the component center")
 
 
 class Pipe(BaseModel):
@@ -26,6 +28,8 @@ class Pipe(BaseModel):
     source: str = Field(description="The id of the source component")
     target: str = Field(description="The id of the target component")
     description: str = Field(description="The description of the pipe")
+    x: float = Field(description="The x coordinate of the pipe label/midpoint")
+    y: float = Field(description="The y coordinate of the pipe label/midpoint")
 
 
 class PNID(BaseModel):
