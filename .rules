@@ -1,179 +1,205 @@
-# P&ID OCR & Graph Extraction Project - Comprehensive Repository Summary
+# P&ID OCR & Graph Extraction - Comprehensive Repository Summary
 
-## 📊 Project Overview
+**Project**: P&ID OCR & Graph Extraction for Process Diagrams  
+**Organization**: Bouvet ASA  
+**Status**: Development (v0.1.0)  
+**Last Updated**: 2025-12-11
 
-This repository contains tools and scripts for **Optical Character Recognition (OCR) and Process & Instrumentation Diagram (P&ID) analysis**. The project focuses on extracting structured information from brewery process diagrams using various AI/ML approaches including local OCR (Ollama + DeepSeek-OCR), cloud-based models (Azure Anthropic, Azure DeepSeek, Google Gemini), and visualization tools.
+---
 
-**Total Size:** 388K  
-**File Count:** 14 files (11 Python scripts, 1 JSON, 1 SVG, 1 Markdown)
+## 📊 Executive Overview
+
+This repository provides a complete toolkit for extracting structured information from Process & Instrumentation Diagrams (P&IDs) using multiple AI approaches:
+
+- **Local OCR**: DeepSeek-OCR via Ollama with bounding box coordinates
+- **Cloud AI**: Google Gemini, Azure Anthropic Claude, Azure DeepSeek
+- **Visualization**: Interactive PyVis network graphs with diagram overlays
+- **Data Models**: Pydantic models with spatial (x,y) coordinates
+
+**Primary Use Case**: Convert brewery process diagrams into structured graph data (components + pipes) with spatial positioning.
+
+**Technology Stack**:
+- Python 3.12+ with modern packaging (`pyproject.toml`)
+- Ollama for local LLM inference
+- Pydantic AI for cloud model integration
+- PyVis + NetworkX for interactive visualization
+- Pillow for image processing
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-p&id/
-├── 🔧 Core OCR & Bounding Box Tools
-│   ├── ocr_bbox_overlay.py (11K) - Main class for parsing OCR output & overlaying bounding boxes
-│   ├── ollama_deepseel_ocr_fixed.py (1.8K) - DeepSeek-OCR via Ollama (local CPU inference)
-│   ├── ocr_with_bbox_demo.py (3.6K) - Original demo (Mac paths)
-│   ├── run_overlay_demo.py (3.9K) - Updated demo for this project
-│   ├── compare_bbox_scaling.py (2.7K) - Compare bbox scaling strategies
-│   └── debug_bbox.py (2.7K) - Debug script for bbox coordinate analysis
+pnid-ocr-extraction/
+├── src/                           # Core source code
+│   ├── ocr_bbox_overlay.py       # OCR bounding box parser & overlay
+│   ├── ollama_deepseel_ocr_fixed.py  # Ollama client for DeepSeek-OCR
+│   ├── run_overlay_demo.py       # OCR demo with bbox visualization
+│   ├── gemini_agent.py           # Google Gemini P&ID extraction
+│   ├── azure_antropic_agent.py   # Azure Anthropic Claude integration
+│   ├── azure_deepseek_agent.py   # Azure DeepSeek integration
+│   ├── plot_pnid_graph.py        # Interactive graph visualization
+│   ├── compare_bbox_scaling.py   # Bbox scaling comparison tool
+│   ├── debug_bbox.py             # Bbox coordinate debugger
+│   ├── ocr_with_bbox_demo.py     # Original demo (deprecated)
+│   └── opencv_test.py            # Tesseract experiments (legacy)
 │
-├── 🤖 AI Agent Integrations
-│   ├── gemini_agent.py (2.2K) - Google Gemini API for P&ID extraction
-│   ├── azure_antropic_agent.py (633B) - Azure Anthropic Claude Opus integration
-│   └── azure_deepseek_agent.py (679B) - Azure DeepSeek V3.1 integration
+├── docs/                          # Documentation
+│   ├── README.md                 # Documentation index
+│   ├── STATUS_SUMMARY.md         # Current project status
+│   ├── WORKFLOW_AND_COMPARISON.md  # Complete workflows & model comparison
+│   ├── README_OCR_BoundingBox.md   # OCR technical guide
+│   ├── PROJECT_SETUP_COMPLETE.md   # Setup documentation
+│   └── TRANSFER_TO_BOUVET.md     # Transfer checklist
 │
-├── 📊 Graph Visualization
-│   ├── plot_pnid_graph.py (12K) - Interactive PyVis network graph with background image
-│   └── brewary.json (8.1K) - Extracted P&ID graph data (nodes & edges)
+├── data/                          # Data files
+│   ├── input/                    # Source diagrams
+│   │   ├── brewary.png          # Primary test image (620×345px)
+│   │   ├── brewary.jpg
+│   │   └── brewary.svg
+│   ├── output/                   # Generated outputs
+│   │   ├── pnid.json            # Extracted graph structure
+│   │   └── pnid_graph.html      # Interactive visualization
+│   └── intermediate/             # Processing cache
 │
-├── 🧪 Testing & Prototyping
-│   ├── opencv_test.py (1.6K) - Tesseract OCR experiments
-│   └── gemini-brewery.svg (12K) - SVG output from Gemini
+├── examples/                      # Example outputs
+│   ├── brewary.json              # Sample P&ID extraction
+│   └── gemini-brewery.svg        # Gemini output example
 │
-├── 📦 Data Directory
-│   ├── data/input/ - Source images (brewary.png, brewary.jpg, brewary.svg)
-│   ├── data/output/ - Generated outputs (pnid.json, pnid_graph.html)
-│   └── data/intermediate/ - Processing intermediates
+├── lib/                           # JavaScript libraries (for visualization)
+│   ├── vis-9.1.2/                # Vis.js network library
+│   └── tom-select/               # Select component
 │
-└── 📚 Documentation
-    ├── README_OCR_BoundingBox.md (6.3K) - Comprehensive OCR overlay guide
-    └── requirements.txt (93B) - Python dependencies
+├── tests/                         # Test files (currently empty)
+│
+├── .env                           # API keys (gitignored, copied from sibling)
+├── .gitignore                     # Git ignore patterns
+├── README.md                      # Main project README
+└── pyproject.toml                 # Modern Python packaging config
+
 ```
 
 ---
 
-## 🔑 Key Components
+## 🔑 Core Components
 
-### 1. OCR & Bounding Box Overlay System
+### 1. OCR & Bounding Box System
 
-**Core File:** `ocr_bbox_overlay.py`
+**File**: `src/ocr_bbox_overlay.py` (11K)
 
-**Purpose:** Parse DeepSeek-OCR responses containing bounding box coordinates and overlay visual annotations on images.
+**Purpose**: Parse DeepSeek-OCR responses and overlay visual bounding boxes on images.
 
-**Features:**
-- **Parse OCR Output:** Extracts text + bbox coordinates from DeepSeek format:
-  ```
-  Text<|ref|>text<|/ref|><|det|>[[x1, y1, x2, y2]]<|/det|>
-  ```
-- **Auto-Scaling:** Converts 1000-bin normalized coordinates → actual pixel dimensions
-- **Visual Overlay:** Draws colored rectangles + labels using Pillow
-- **Format Support:** Handles RGBA → RGB conversion for JPEG
-- **Statistics:** Computes item counts, average bbox sizes
+**Key Features**:
+- Parses DeepSeek format: `Text<|ref|>text<|/ref|><|det|>[[x1,y1,x2,y2]]<|/det|>`
+- 1000-bin normalized coordinates → pixel conversion
+- Auto-scaling based on image dimensions
+- Colored rectangle overlays with labels
+- RGBA → RGB conversion for JPEG output
+- Statistics: item counts, average bbox sizes
 
-**Usage Example:**
-```python
-from ocr_bbox_overlay import OCRBoundingBoxOverlay
-overlay = OCRBoundingBoxOverlay(font_size=14)
-parsed_items = overlay.process_ocr_and_overlay(
-    image_path="data/input/brewary.png",
-    ocr_response=ocr_response,
-    output_path="data/output/brewary_annotated.jpg"
-)
-```
+**Class**: `OCRBoundingBoxOverlay`
+- `parse_ocr_output(ocr_response)` - Extract text + bboxes
+- `overlay_bounding_boxes(image_path, parsed_items, output_path)` - Draw annotations
+- `process_ocr_and_overlay(...)` - Complete pipeline
+- `get_statistics(parsed_items)` - Compute metrics
 
-**Key Methods:**
-- `parse_ocr_output(ocr_response)` - Extract text and bboxes from OCR response
-- `overlay_bounding_boxes(image_path, parsed_items, output_path, **kwargs)` - Draw annotations
-- `process_ocr_and_overlay(...)` - Complete pipeline (parse + overlay)
-- `get_statistics(parsed_items)` - Compute counts and averages
+**Coordinate System**:
+- Input: [0, 1000] normalized (resolution-independent)
+- Output: [0, width] × [0, height] pixels
+- Scaling: `pixel_x = bbox_x × (width / 1000)`
 
 ---
 
-### 2. Local OCR via Ollama + DeepSeek
+### 2. Local OCR via Ollama
 
-**Core File:** `ollama_deepseel_ocr_fixed.py`
+**File**: `src/ollama_deepseel_ocr_fixed.py` (1.8K)
 
-**Purpose:** Runs DeepSeek-OCR model locally via Ollama server (CPU inference on Intel integrated GPU).
+**Purpose**: Run DeepSeek-OCR model locally via Ollama server.
 
-**Architecture:**
-- **HTTP POST** to `http://localhost:11434/api/generate`
-- **Model:** `deepseek-ocr` (6.7 GB model size)
-- **Input:** Base64-encoded image + prompt
-- **Prompt Example:** `"<|grounding|>Convert the document to markdown"`
-- **Output:** JSON with `response` field containing OCR text + bbox coordinates
+**Function**: `run_deepseek_ocr_via_ollama(image_data, prompt, image_path)`
 
-**Function Signature:**
-```python
-def run_deepseek_ocr_via_ollama(
-    image_data,           # bytes or base64 str
-    prompt="Extract text from image",
-    image_path=None
-) -> dict
-```
+**Architecture**:
+- HTTP POST to `http://localhost:11434/api/generate`
+- Model: `deepseek-ocr` (6.7 GB)
+- Input: Base64-encoded image + grounding prompt
+- Output: JSON with `response` field (text + bbox coordinates)
 
-**Ollama Setup:**
-- **Installation:** `dnf install ollama` (Fedora)
-- **Binary:** `/usr/sbin/ollama`
-- **Start Server:** `ollama serve` (background process)
-- **Pull Model:** `ollama pull deepseek-ocr`
-- **List Models:** `ollama list`
+**Example Prompt**: `"<|grounding|>Convert the document to markdown"`
 
-**Hardware Configuration:**
-- **CPU:** Intel Core i7-1365U (12 cores)
-- **RAM:** 30.9 GiB total (12.0 GiB available for inference)
-- **GPU:** Intel Iris Xe Graphics (integrated, no GPU acceleration)
-- **Inference:** CPU-only (AVX2)
-- **Performance:** Expect slower inference (~few seconds per image)
+**Current Status**: ⚠️ Blocked - Ollama 0.4.4 incompatible with DeepSeek-OCR
+- Requires Ollama upgrade (needs sudo)
+- Error: "Model not supported by your version"
+
+**Hardware**:
+- CPU: Intel Core i7-1365U (12 cores)
+- RAM: 30.9 GiB (12 GB available for inference)
+- GPU: Intel Iris Xe (integrated, no GPU acceleration)
+- Performance: CPU-only inference (~2-5 seconds per image)
 
 ---
 
-### 3. P&ID Graph Extraction
+### 3. P&ID Graph Extraction (Cloud AI)
 
-**Purpose:** Extract structured component and pipe data from P&ID diagrams using multimodal LLMs.
+**Purpose**: Extract structured component and pipe data from diagrams using multimodal LLMs.
 
-**Data Model:**
+#### Data Models (with Spatial Coordinates)
+
 ```python
 class Component(BaseModel):
     label: str          # e.g., "MAK", "MAT", "WOK"
     id: str             # Unique identifier
-    category: str       # "Vessel", "Heat Exchanger", "Pump", etc.
-    description: str    # Detailed description with process parameters
+    category: str       # "Vessel", "Heat Exchanger", "Separator", etc.
+    description: str    # Detailed description with parameters
+    x: float            # Component center X coordinate (NEW)
+    y: float            # Component center Y coordinate (NEW)
 
 class Pipe(BaseModel):
     label: str          # Flow label
     source: str         # Source component ID
     target: str         # Target component ID
     description: str    # Stream properties (temp, composition)
+    x: float            # Pipe label/midpoint X coordinate (NEW)
+    y: float            # Pipe label/midpoint Y coordinate (NEW)
+
+class PNID(BaseModel):
+    components: list[Component]
+    pipes: list[Pipe]
 ```
 
-**Example Output (`brewary.json`):**
-- **24 nodes:** Process vessels (MAK, MAT, WOK), heat exchangers, filters, pumps, I/O points
-- **24 edges:** Process streams with temperatures (e.g., `48°C → 102°C`)
-- **Use Case:** Brewery mashing process flow diagram
+#### AI Agents
 
-**AI Integrations:**
+**Google Gemini** (`src/gemini_agent.py`)
+- Model: `gemini-3-pro-preview`
+- Provider: VertexAI with GoogleProvider
+- Status: ⚠️ Requires OAuth2 (API key not supported)
+- Config: `GOOGLE_API_KEY` env var
 
-1. **Google Gemini** (`gemini_agent.py`)
-   - Model: `gemini-3-pro-preview`
-   - Provider: VertexAI with GoogleProvider
-   - API Key: `GOOGLE_API_KEY` env var
+**Azure Anthropic Claude** (`src/azure_antropic_agent.py`)
+- Model: `claude-opus-4-5`
+- Endpoint: `https://aif-minside.services.ai.azure.com/anthropic/`
+- Status: ⚠️ Requires API key
+- Config: `AZURE_ANTROPIC_API_KEY` or `ANTHROPIC_FOUNDRY_API_KEY`
 
-2. **Azure Anthropic** (`azure_antropic_agent.py`)
-   - Model: `claude-opus-4-5`
-   - Endpoint: `https://aif-minside.services.ai.azure.com/anthropic/`
-   - API Key: `AZURE_ANTROPIC_API_KEY` env var
-
-3. **Azure DeepSeek** (`azure_deepseek_agent.py`)
-   - Model: `DeepSeek-V3.1`
-   - Endpoint: `https://aif-minside.cognitiveservices.azure.com/`
-   - API Key: `AZURE_ANTROPIC_API_KEY` env var
+**Azure DeepSeek V3.1** (`src/azure_deepseek_agent.py`)
+- Model: `DeepSeek-V3.1`
+- Endpoint: `https://aif-minside.cognitiveservices.azure.com/`
+- Status: ⚠️ Requires API key
+- Config: `AZURE_OPENAI_API_KEY`
 
 ---
 
 ### 4. Interactive Visualization
 
-**Core File:** `plot_pnid_graph.py`
+**File**: `src/plot_pnid_graph.py` (12K)
 
-**Purpose:** Generate interactive HTML network graph with P&ID diagram as background.
+**Purpose**: Generate interactive HTML network graphs with P&ID diagram backgrounds.
 
-**Features:**
-- **PyVis Network** for drag-and-drop node interaction
-- **Background Image:** Original diagram embedded as base64
-- **Color-coded Categories:**
+**Function**: `create_interactive_graph(json_path, image_path, output_path)`
+
+**Features**:
+- PyVis Network with drag-and-drop nodes
+- Background image (base64 embedded)
+- Color-coded by category:
   - Vessels: Green (#4CAF50)
   - Heat Exchangers: Orange (#FF9800)
   - Separators: Blue (#2196F3)
@@ -181,445 +207,403 @@ class Pipe(BaseModel):
   - Valves: Red (#F44336)
   - Source: Gray (#9E9E9E)
   - Sink: Blue Gray (#607D8B)
-- **Tooltips:** Hover to see component descriptions
-- **Physics:** Disabled by default for free positioning
-- **Interaction:** Drag nodes, zoom, pan
+- Hover tooltips with descriptions
+- Physics simulation (toggleable)
+- Background opacity control
+- Node stabilization
 
-**Usage:**
-```python
-from plot_pnid_graph import create_interactive_graph
+**Output**: Standalone HTML file (`data/output/pnid_graph.html`)
 
-create_interactive_graph(
-    json_path="data/output/pnid.json",
-    image_path="data/input/brewary.png",
-    output_path="data/output/pnid_graph.html"
-)
-```
-
-**Output:** `data/output/pnid_graph.html` (interactive, browser-viewable)
+**Current Status**: ✅ Working perfectly
 
 ---
 
-## 🔧 Dependencies
+## 🔄 Workflows
 
-**Python Packages (`requirements.txt`):**
-```
-Pillow>=9.0.0         # Image processing for bbox overlay
-requests>=2.25.0      # HTTP client for Ollama API
-pydantic-ai           # AI agent framework (pydantic_ai)
-python-dotenv         # Environment variable management
-pyvis>=0.3.0          # Interactive network visualization
-networkx>=3.0         # Graph data structure
-anthropic             # Anthropic API client
-```
+### Workflow 1: Local OCR with Bounding Box Overlay
 
-**External Tools:**
-- **Ollama** (`0.4.4-3.fc42.x86_64`) - LLM inference server
-- **DeepSeek-OCR model** (6.7 GB) - OCR with bounding box grounding
-- **UV** (optional) - Fast Python package installer
+**Status**: ⚠️ Blocked (Ollama version issue)
 
-**Installation:**
 ```bash
-# Install Python dependencies
-pip install -r requirements.txt
-# OR with uv
-uv pip install -r requirements.txt
-
-# Install Ollama (Fedora)
-sudo dnf install ollama
-
-# Start Ollama server
+# 1. Start Ollama
 ollama serve &
 
-# Pull DeepSeek-OCR model
-ollama pull deepseek-ocr
-```
-
----
-
-## 🎨 Data Flow
-
-```
-Input Image (brewary.png)
-    ↓
-OCR Processing
-    ├─→ Local: Ollama + DeepSeek-OCR
-    └─→ Cloud: Azure/Gemini APIs
-    ↓
-OCR Response (text + bboxes)
-    ├─→ ocr_bbox_overlay.py → Annotated Image (brewary_annotated.jpg)
-    └─→ P&ID Extraction → Structured JSON (brewary.json)
-                              ↓
-                       plot_pnid_graph.py
-                              ↓
-                       Interactive HTML (pnid_graph.html)
-```
-
----
-
-## 🚀 Workflows
-
-### Workflow 1: OCR with Bounding Box Visualization
-
-```bash
-# Navigate to project directory
-cd .
-
-# Ensure Ollama server is running
-pgrep -a ollama || ollama serve &
-
-# Verify DeepSeek-OCR model is available
-ollama list | grep deepseek-ocr
-
-# Run demo script
-python3 run_overlay_demo.py
+# 2. Run OCR + overlay demo
+uv run src/run_overlay_demo.py
 
 # Expected Output:
-# - data/output/brewary_annotated.jpg (image with colored bboxes)
-# - Console statistics: text/image item counts, bbox dimensions
+# - data/output/brewary_annotated.jpg
+# - Console statistics
 ```
 
-### Workflow 2: P&ID Graph Extraction & Visualization
+**Blocker**: Ollama 0.4.4 incompatible with DeepSeek-OCR
+
+---
+
+### Workflow 2: Cloud P&ID Extraction
+
+**Status**: ⚠️ Blocked (API keys needed)
 
 ```bash
-# Extract P&ID data using Gemini
-python3 gemini_agent.py
-# Output: data/output/pnid.json
+# Configure .env file first
+# Then run extraction:
+uv run src/gemini_agent.py          # Google Gemini
+uv run src/azure_antropic_agent.py  # Azure Claude
+uv run src/azure_deepseek_agent.py  # Azure DeepSeek
 
-# Generate interactive visualization
-python3 plot_pnid_graph.py
+# Expected Output:
+# - data/output/pnid.json (with x,y coordinates)
+```
+
+**Blocker**: Missing API keys in `.env`
+
+---
+
+### Workflow 3: Interactive Visualization
+
+**Status**: ✅ Working
+
+```bash
+# Generate interactive graph
+uv run src/plot_pnid_graph.py
+
 # Output: data/output/pnid_graph.html
 
 # Open in browser
 xdg-open data/output/pnid_graph.html
 ```
 
-### Workflow 3: Debug Bounding Box Coordinates
+**Features**:
+- Drag nodes to reposition
+- Scroll to zoom
+- Hover for details
+- Toggle physics
+- Adjust background opacity
 
+---
+
+## 📊 Model Comparison
+
+| Feature | DeepSeek-OCR (Ollama) | Google Gemini | Azure Claude | Azure DeepSeek |
+|---------|----------------------|---------------|--------------|----------------|
+| **Status** | ⚠️ Blocked (version) | ⚠️ OAuth2 required | ⚠️ API key needed | ⚠️ API key needed |
+| **Deployment** | Local (CPU-only) | Cloud | Cloud | Cloud |
+| **Cost** | Free | Pay-per-token | Pay-per-token | Pay-per-token |
+| **Latency** | 2-5s (CPU) | <2s | <2s | <1s |
+| **Privacy** | Full (local) | Cloud | Cloud | Cloud |
+| **Bounding Boxes** | ✅ Yes (1000-bin) | ❌ No | ❌ No | ❌ No |
+| **Structured Output** | ❌ Manual parsing | ✅ Pydantic | ✅ Pydantic | ✅ Pydantic |
+| **Spatial Coords** | ✅ Via bbox | ✅ x,y fields | ✅ x,y fields | ✅ x,y fields |
+| **Model Size** | 6.7 GB | N/A | N/A | N/A |
+| **Offline** | ✅ Yes | ❌ No | ❌ No | ❌ No |
+
+**Unique to DeepSeek-OCR**: Bounding box coordinates with 1000-bin normalization
+
+**Best for**:
+- **Quality**: Azure Anthropic Claude Opus 4.5
+- **Cost**: Azure DeepSeek V3.1
+- **Privacy**: Local Ollama DeepSeek-OCR
+- **Bounding Boxes**: DeepSeek-OCR only
+
+---
+
+## 🛠️ Technical Details
+
+### Coordinate Systems
+
+**DeepSeek-OCR (1000-bin normalized)**:
+- Range: [0, 1000] for both x and y
+- Resolution-independent
+- Scaling formula:
+  ```python
+  scale_x = image_width / 1000.0
+  scale_y = image_height / 1000.0
+  pixel_x = bbox_x * scale_x
+  pixel_y = bbox_y * scale_y
+  ```
+
+**Cloud Models (pixel coordinates)**:
+- Range: [0, image_width] for x, [0, image_height] for y
+- Direct pixel positions
+- Image-specific (not normalized)
+
+### Example Data
+
+**Current Output** (`data/output/pnid.json`):
+- 14 components (vessels, heat exchangers, separators)
+- 33 pipes (process streams with temperatures)
+- Missing: x,y coordinates (old model)
+
+**Components**:
+- MAK (Mashing vessel for Malt, Corn, Water)
+- MAT (Mashing vessel for Malt, Water)
+- WOK (Wort kettle/Whirlpool)
+- Heat Exchangers (steam heaters, main cooler)
+- Filter, Centrifuge
+- Hot Water Tank (HWT)
+
+**Pipes**:
+- Temperature ranges: 10°C to 102°C
+- Stream types: Malt, Corn, Water, Steam, Wort
+- Waste outputs: Dreche (solids), Trub, Gas
+
+---
+
+## 📦 Dependencies
+
+**Defined in**: `pyproject.toml`
+
+### Core Dependencies
+```toml
+dependencies = [
+    "Pillow>=9.0.0",        # Image processing
+    "requests>=2.25.0",     # HTTP client
+    "pydantic-ai",          # AI agent framework
+    "python-dotenv",        # Environment variables
+    "pyvis>=0.3.0",         # Interactive visualization
+    "networkx>=3.0",        # Graph structures
+    "anthropic",            # Anthropic API client
+]
+```
+
+### Development Dependencies
+```toml
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+```
+
+### Build System
+- **Backend**: hatchling
+- **Package Layout**: `src/` directory
+- **Python**: >=3.12 (tested on 3.12.7 and 3.13.9)
+
+### Installation
 ```bash
-# Compare scaling strategies
-python3 compare_bbox_scaling.py
+# Recommended (editable install)
+uv pip install -e .
 
-# Debug coordinate analysis
-python3 debug_bbox.py
+# With dev dependencies
+uv pip install -e ".[dev]"
+
+# Verify
+python -c "from src.plot_pnid_graph import create_interactive_graph; print('✅ OK')"
 ```
 
 ---
 
 ## ⚙️ Configuration
 
-**Environment Variables (`.env`):**
+### Environment Variables (`.env`)
+
+**Required for Cloud Models**:
 ```bash
-AZURE_ANTROPIC_API_KEY=<your_azure_anthropic_key>
-GOOGLE_API_KEY=<your_google_vertexai_key>
+# Google Gemini (requires OAuth2)
+GOOGLE_API_KEY=your_key_here
+
+# Azure Anthropic
+AZURE_ANTROPIC_API_KEY=your_key_here
+ANTHROPIC_FOUNDRY_API_KEY=your_key_here
+
+# Azure DeepSeek
+AZURE_OPENAI_API_KEY=your_key_here
 ```
 
-**Ollama Configuration:**
-- **Host:** `http://127.0.0.1:11434`
-- **Model:** `deepseek-ocr`
-- **Compute:** CPU-only (Intel iGPU, AVX2)
-- **Memory:** 30.9 GiB total, 12.0 GiB available for inference
-- **Config Location:** `~/.ollama/`
-- **Models Location:** `~/.ollama/models/`
+**Note**: `.env` file is gitignored and copied from sibling `p&id/` directory
+
+### Ollama Configuration
+
+**Server**: `http://localhost:11434`
+- Start: `ollama serve &`
+- Model: `ollama pull deepseek-ocr`
+- Status: `ollama list`
+
+**Model Details**:
+- Name: `deepseek-ocr:latest`
+- Size: 6.7 GB
+- Downloaded: ✅ Yes
+- Compatible: ⚠️ Needs Ollama upgrade
 
 ---
 
-## 📝 Technical Notes
+## ✅ Current Status
 
-### DeepSeek-OCR Coordinate System
+### Working Components
+- ✅ Data models updated with x,y coordinates
+- ✅ Interactive visualization (PyVis)
+- ✅ All Python dependencies installed
+- ✅ DeepSeek-OCR model downloaded
+- ✅ Modern packaging with `pyproject.toml`
+- ✅ Comprehensive documentation in `docs/`
 
-**1000-bin Normalization:**
-- All coordinates in range [0, 1000] regardless of image size
-- Ensures consistent coordinate space across different image resolutions
+### Blocked Components
+- ⚠️ Local OCR (Ollama version incompatible)
+- ⚠️ Google Gemini (OAuth2 required)
+- ⚠️ Azure Anthropic (API key needed)
+- ⚠️ Azure DeepSeek (API key needed)
 
-**Auto-scaling Formula:**
-```python
-scale_x = image_width / 1000.0
-scale_y = image_height / 1000.0
-pixel_x = bbox_x * scale_x
-pixel_y = bbox_y * scale_y
+### Recent Changes (Git History)
 ```
-
-**Example:**
-```
-Image: 620×345 pixels
-OCR coord: [500, 250, 700, 400]
-
-Scaling:
-scale_x = 620 / 1000 = 0.620
-scale_y = 345 / 1000 = 0.345
-
-Pixel coord:
-x1 = 500 * 0.620 = 310
-y1 = 250 * 0.345 = 86.25
-x2 = 700 * 0.620 = 434
-y2 = 400 * 0.345 = 138
-```
-
-**Documented in:** `README_OCR_BoundingBox.md`
-
-### Hardware Constraints
-
-**Performance Characteristics:**
-- **No GPU acceleration** on Intel iGPU (integrated graphics)
-- **ROCm packages installed but unused** (AMD-specific, 5 GiB wasted disk space)
-- **CPU inference speed:** ~2-5 seconds per image (depends on image complexity)
-- **Memory usage:** DeepSeek-OCR requires ~7-8 GB RAM when loaded
-
-**Optimization Tips:**
-- Process images in batches to amortize model load time
-- Resize large images before OCR to reduce inference time
-- Consider using cloud APIs for production workloads
-
----
-
-## 🔍 File Descriptions
-
-### Core Scripts
-
-**`ocr_bbox_overlay.py`**
-- Class: `OCRBoundingBoxOverlay`
-- Main functionality: Parse OCR + overlay bboxes
-- Methods: `parse_ocr_output()`, `overlay_bounding_boxes()`, `process_ocr_and_overlay()`
-- Color scheme: 12 predefined colors cycling through items
-
-**`ollama_deepseel_ocr_fixed.py`**
-- Function: `run_deepseek_ocr_via_ollama()`
-- Sends POST request to Ollama API
-- Handles base64 encoding of image data
-- Returns JSON with OCR response
-
-**`run_overlay_demo.py`**
-- Complete OCR + overlay demo
-- Input: `data/input/brewary.png`
-- Output: `data/output/brewary_annotated.jpg`
-- Prints detailed statistics and item preview
-
-**`gemini_agent.py`**
-- Uses Google Gemini for P&ID extraction
-- Structured output via Pydantic models
-- Saves to `data/output/pnid.json`
-
-**`plot_pnid_graph.py`**
-- Creates interactive PyVis network
-- Embeds background image as base64
-- Color-codes nodes by category
-- Outputs standalone HTML file
-
-### Debug & Comparison Scripts
-
-**`compare_bbox_scaling.py`**
-- Tests bbox overlay with/without coordinate scaling
-- Generates side-by-side comparison
-- Validates 1000-bin normalization theory
-
-**`debug_bbox.py`**
-- Analyzes raw bbox coordinates
-- Prints coordinate statistics
-- Helps diagnose scaling issues
-
-**`opencv_test.py`**
-- Early Tesseract OCR experiments
-- Uses `pytesseract` with custom PSM modes
-- Legacy code for comparison
-
-### AI Agent Scripts
-
-**`azure_antropic_agent.py`**
-- Minimal Anthropic client setup
-- Uses Azure AI Foundry endpoint
-- Test script: prints "good morning" response
-
-**`azure_deepseek_agent.py`**
-- Azure OpenAI-compatible endpoint
-- DeepSeek V3.1 model access
-- Test script: prints "good morning" response
-
----
-
-## 🗂️ Data Files
-
-### Input Data (`data/input/`)
-
-**`brewary.png`** - Primary test image (brewery P&ID)
-**`brewary.jpg`** - JPEG version of the same diagram
-**`brewary.svg`** - Vector version (if available)
-
-### Output Data (`data/output/`)
-
-**`pnid.json`** - Extracted graph structure (nodes + edges)
-**`pnid_graph.html`** - Interactive visualization
-**`brewary_annotated.jpg`** - Image with OCR bboxes overlaid
-
-### Structured Data (`brewary.json`)
-
-Example node structure:
-```json
-{
-  "id": "MAK",
-  "label": "MAK",
-  "category": "Process Vessel",
-  "description": "Mash Kettle (Malt, Corn, Water → 48°C)"
-}
-```
-
-Example edge structure:
-```json
-{
-  "source": "MAK",
-  "target": "Steam_Heater_1",
-  "label": "Process Stream 48°C"
-}
+4b469e7 Copy .env, remove requirements.txt, delete src/data folder
+f68ddd2 Migrate from requirements.txt to pyproject.toml with modern packaging
+a46c4e2 Organize documentation into docs folder with index
+4e9e36d Add executive status summary
+c41689f Complete workflow guide, fix plot paths, remove unused imports
+efce806 Add x,y coordinates to Component and Pipe data models
 ```
 
 ---
 
-## 🎯 Use Cases
+## 🚀 Quick Start
 
-### 1. P&ID Digitization
-- Extract text and symbols from scanned diagrams
-- Create structured graph representations
-- Generate interactive visualizations
-
-### 2. Process Documentation
-- Parse equipment labels and descriptions
-- Identify flow connections and temperatures
-- Build digital twins of physical processes
-
-### 3. OCR with Spatial Context
-- Get text with precise location coordinates
-- Overlay annotations on original images
-- Debug OCR output quality
-
-### 4. Multi-Model Comparison
-- Compare local vs. cloud OCR accuracy
-- Benchmark DeepSeek vs. Gemini vs. Claude
-- Optimize cost vs. performance trade-offs
-
----
-
-## 🔗 Related Resources
-
-**Documentation:**
-- [DeepSeek-OCR Paper](https://arxiv.org/abs/2410.xxxxx) - 1000-bin coordinates spec
-- [PyVis Documentation](https://pyvis.readthedocs.io/)
-- [Ollama API Docs](https://github.com/ollama/ollama/blob/main/docs/api.md)
-- [Pydantic AI](https://ai.pydantic.dev/)
-
-**Models:**
-- [DeepSeek-OCR on Ollama](https://ollama.com/library/deepseek-ocr)
-- [Google Gemini](https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini)
-- [Anthropic Claude](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
-
----
-
-## 🐛 Troubleshooting
-
-### Ollama Connection Issues
-
+### Prerequisites
 ```bash
-# Check if Ollama is running
-pgrep -a ollama
+# System requirements
+- Python 3.12+
+- Ollama (for local OCR)
+- UV (recommended for package management)
 
-# Start server if not running
-ollama serve &
+# Install Ollama (Fedora)
+sudo dnf install ollama
 
-# Test connection
-curl http://localhost:11434/api/tags
-
-# View server logs
-tail -f /tmp/ollama.log
+# Install project
+git clone <repo-url>
+cd pnid-ocr-extraction
+uv pip install -e .
 ```
 
-### Model Not Found
-
+### Run Visualization (Works Now)
 ```bash
-# List available models
-ollama list
-
-# Pull DeepSeek-OCR if missing
-ollama pull deepseek-ocr
-
-# Check download progress
-ollama ps
+uv run src/plot_pnid_graph.py
+xdg-open data/output/pnid_graph.html
 ```
 
-### Import Errors
-
+### Run Cloud Extraction (Needs API Keys)
 ```bash
-# Verify all dependencies installed
-pip list | grep -E "Pillow|requests|pydantic-ai|pyvis|networkx|anthropic"
+# 1. Configure .env with API keys
+# 2. Run extraction
+uv run src/azure_antropic_agent.py
 
-# Reinstall if needed
-pip install -r requirements.txt
+# 3. Verify output
+cat data/output/pnid.json | jq '.components[0]'
 ```
 
-### Image Format Issues
-
-```python
-# If RGBA → RGB conversion fails
-from PIL import Image
-
-img = Image.open("input.png")
-if img.mode == "RGBA":
-    img = img.convert("RGB")
-img.save("output.jpg")
+### Run Local OCR (Blocked - Needs Ollama Upgrade)
+```bash
+# Will fail until Ollama is upgraded
+uv run src/run_overlay_demo.py
 ```
 
 ---
 
-## 🚧 Known Issues & Limitations
+## 🔍 Key Files
 
-1. **CPU-only inference** - Ollama on Intel iGPU has no GPU acceleration
-2. **Large model size** - DeepSeek-OCR requires 6.7 GB disk + 7-8 GB RAM
-3. **ROCm overhead** - 5 GiB AMD GPU libraries installed but unused on Intel hardware
-4. **Hard-coded paths** in some demo scripts (e.g., `ocr_with_bbox_demo.py`)
-5. **No batch processing** - Scripts process one image at a time
-6. **No error recovery** - Network failures or API errors not gracefully handled
+### Source Code (`src/`)
+- `ocr_bbox_overlay.py` - OCR parser & overlay (11K, core functionality)
+- `plot_pnid_graph.py` - Visualization (12K, working)
+- `gemini_agent.py` - P&ID extraction with Pydantic models
+- `ollama_deepseel_ocr_fixed.py` - Ollama client
+- `run_overlay_demo.py` - OCR demo script
+
+### Documentation (`docs/`)
+- `STATUS_SUMMARY.md` - Executive status (301 lines)
+- `WORKFLOW_AND_COMPARISON.md` - Complete guide (627 lines)
+- `README_OCR_BoundingBox.md` - OCR technical details
+
+### Configuration
+- `pyproject.toml` - Modern Python packaging (125 lines)
+- `.env` - API keys (gitignored)
+- `.gitignore` - Ignore patterns
+
+### Data
+- `data/input/brewary.png` - Test diagram (620×345px)
+- `data/output/pnid.json` - Extracted graph (14 components, 33 pipes)
+- `data/output/pnid_graph.html` - Interactive visualization
 
 ---
 
-## 🔮 Future Enhancements
+## 📝 Development Notes
 
-### Short-term
-- [ ] Add batch processing support for multiple images
-- [ ] Implement caching for repeated OCR requests
-- [ ] Create systemd service for Ollama auto-start
-- [ ] Add confidence scores to OCR output
-- [ ] Generate PDF reports from P&ID extraction
+### Code Quality Tools (Configured)
+- **Black**: Line length 100, Python 3.12+
+- **Ruff**: Pycodestyle, pyflakes, isort, bugbear
+- **MyPy**: Strict type checking (disabled for external libs)
+- **Pytest**: Test framework (tests/ currently empty)
+
+### Git Workflow
+- Main branch: `main`
+- Recent commits focused on:
+  - Modern packaging migration
+  - Documentation organization
+  - Data model updates (spatial coordinates)
+  - Path fixes and code cleanup
+
+### Known Issues
+1. Ollama 0.4.4 incompatible with DeepSeek-OCR (needs upgrade)
+2. Cloud models require API key configuration
+3. Gemini requires OAuth2 (complex setup)
+4. No test coverage yet (`tests/` empty)
+
+---
+
+## 🎯 Next Steps
+
+### Immediate (Unblocked by API Keys)
+1. Configure Azure Anthropic API key in `.env`
+2. Run P&ID extraction with x,y coordinates
+3. Verify spatial coordinate accuracy
+4. Update visualization to use real positions (not random)
+
+### Medium-term (Requires Ollama Upgrade)
+1. Upgrade Ollama to latest version
+2. Test local OCR with bounding boxes
+3. Compare bbox coordinates vs. LLM spatial extraction
+4. Benchmark all models (accuracy, speed, cost)
 
 ### Long-term
-- [ ] Web UI for interactive OCR + visualization
-- [ ] Support for multiple P&ID diagram types (electrical, hydraulic)
-- [ ] Fine-tune DeepSeek-OCR on domain-specific diagrams
-- [ ] Export to CAD formats (AutoCAD, Visio)
-- [ ] Real-time OCR streaming for video feeds
+1. Add test coverage (pytest)
+2. Implement coordinate validation
+3. Batch processing for multiple diagrams
+4. Export to CAD formats (DXF, GraphML)
+5. CI/CD pipeline with GitHub Actions
 
 ---
 
-## 📄 License
+## 📚 Documentation Index
 
-Not specified in repository. Check with repository owner before commercial use.
+All documentation is in `docs/`:
 
----
+- **[docs/README.md](docs/README.md)** - Documentation index
+- **[docs/STATUS_SUMMARY.md](docs/STATUS_SUMMARY.md)** - Current status & next steps
+- **[docs/WORKFLOW_AND_COMPARISON.md](docs/WORKFLOW_AND_COMPARISON.md)** - Complete workflows
+- **[docs/README_OCR_BoundingBox.md](docs/README_OCR_BoundingBox.md)** - OCR technical guide
 
-## 👥 Contributors
-
-Original development appears to be by Christoph Imler (based on file paths in demo scripts).
-Adapted for this environment by Torstein Sornes.
-
----
-
-## 📞 Contact & Support
-
-For questions or issues:
-1. Check existing documentation in `README_OCR_BoundingBox.md`
-2. Review debug scripts (`debug_bbox.py`, `compare_bbox_scaling.py`)
-3. Consult Ollama API documentation for inference issues
-4. Refer to Pydantic AI docs for agent framework questions
+**Main README**: [README.md](README.md)
 
 ---
 
-**Last Updated:** 2025-12-11
-**Repository Size:** 388K
-**Python Version:** 3.12 (recommended via `uv`)
+## 🏢 Project Information
+
+**Organization**: Bouvet ASA  
+**Repository**: pnid-ocr-extraction  
+**Version**: 0.1.0 (Development)  
+**License**: Proprietary  
+**Python**: >=3.12  
+**Build System**: hatchling  
+
+**Keywords**: ocr, pnid, process-diagram, graph-extraction, ai, deepseek, ollama
+
+**URLs**:
+- Homepage: https://github.com/bouvet/pnid-ocr-extraction
+- Documentation: https://github.com/bouvet/pnid-ocr-extraction/tree/main/docs
+- Issues: https://github.com/bouvet/pnid-ocr-extraction/issues
+
+---
+
+**Last Summary Generated**: 2025-12-11  
+**Summary Method**: Manual comprehensive documentation  
+**Total Files**: 23 (Python, Markdown, JSON, SVG, TOML)  
+**Lines of Code**: ~2,500 (Python), ~1,800 (Documentation)
