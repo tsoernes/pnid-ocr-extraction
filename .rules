@@ -263,7 +263,7 @@ OCR Response (text + bboxes)
 
 ```bash
 # Navigate to project directory
-cd /home/torstein.sornes/code/p&id
+cd .
 
 # Ensure Ollama server is running
 pgrep -a ollama || ollama serve &
