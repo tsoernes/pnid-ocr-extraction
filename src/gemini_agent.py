@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -13,9 +12,7 @@ load_dotenv()
 
 class Component(BaseModel):
     label: str = Field(description="The label of the component")
-    id: str = Field(
-        description="The id of the component, label plus running number, if needed"
-    )
+    id: str = Field(description="The id of the component, label plus running number, if needed")
     category: str = Field(description="The category of the component")
     description: str = Field(description="The description of the component")
     x: float = Field(description="The x coordinate of the component center")
@@ -48,6 +45,8 @@ with open(image_file_path, "rb") as image_file:
 
 binary_content = BinaryContent(data=image_content, media_type="image/png")
 
+import os
+
 provider = GoogleProvider(vertexai=True, api_key=os.getenv("GOOGLE_API_KEY"))
 model = GoogleModel("gemini-3-pro-preview", provider=provider)
 agent = Agent(
@@ -68,5 +67,6 @@ result = agent.run_sync(
 
 print(result)
 
-with open("data/output/pnid.json", "w") as f:
-    json.dump(result.output.model_dump(), f, indent=4, ensure_ascii=False)
+output_path = Path("data/output/pnid.json")
+output_path.parent.mkdir(parents=True, exist_ok=True)
+output_path.write_text(json.dumps(result.output.model_dump(), indent=4, ensure_ascii=False))

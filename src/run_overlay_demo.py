@@ -4,7 +4,7 @@ Demo script that combines the DeepSeek OCR with bounding box overlay visualizati
 Updated to use the correct image paths for this project.
 """
 
-import os
+from pathlib import Path
 
 from ocr_bbox_overlay import OCRBoundingBoxOverlay
 from ollama_deepseel_ocr_fixed import run_deepseek_ocr_via_ollama
@@ -12,30 +12,29 @@ from ollama_deepseel_ocr_fixed import run_deepseek_ocr_via_ollama
 
 def main():
     # Image path - using the project's data directory
-    image_path = "data/input/brewary.png"
+    image_path = Path("data/input/brewary.png")
 
     # Check if image exists
-    if not os.path.exists(image_path):
+    if not image_path.exists():
         print(f"Error: Image not found at {image_path}")
         print("Available images in data/input:")
-        if os.path.exists("data/input"):
-            for file in os.listdir("data/input"):
-                print(f"  - {file}")
+        input_dir = Path("data/input")
+        if input_dir.exists():
+            for file in input_dir.iterdir():
+                print(f"  - {file.name}")
         return
 
     # Output path for annotated image
-    output_dir = "data/output"
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = Path("data/output")
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    base_name = os.path.splitext(os.path.basename(image_path))[0]
-    output_path = os.path.join(output_dir, f"{base_name}_annotated.jpg")
+    output_path = output_dir / f"{image_path.stem}_annotated.jpg"
 
     print(f"Processing image: {image_path}")
     print(f"Output will be saved to: {output_path}")
 
     # Read image data
-    with open(image_path, "rb") as f:
-        image_data = f.read()
+    image_data = image_path.read_bytes()
 
     # Run OCR with grounding to get bounding boxes
     prompt = "<|grounding|>Convert the document to markdown"
@@ -66,9 +65,9 @@ def main():
 
         # Process OCR output and create annotated image
         parsed_items = overlay.process_ocr_and_overlay(
-            image_path=image_path,
+            image_path=str(image_path),
             ocr_response=ocr_response,
-            output_path=output_path,
+            output_path=str(output_path),
             box_thickness=2,
             show_labels=True,
             label_background=True,
@@ -89,9 +88,7 @@ def main():
         print("\n=== Detected Items ===")
         for i, item in enumerate(parsed_items[:20]):  # Show first 20 items
             bbox = item["bbox"]
-            text_preview = (
-                item["text"][:50] + "..." if len(item["text"]) > 50 else item["text"]
-            )
+            text_preview = item["text"][:50] + "..." if len(item["text"]) > 50 else item["text"]
             print(
                 f"{i + 1:2d}. [{item['type']:5s}] '{text_preview}' at [{bbox[0]}, {bbox[1]}, {bbox[2]}, {bbox[3]}]"
             )
@@ -100,7 +97,7 @@ def main():
             print(f"... and {len(parsed_items) - 20} more items")
 
         print(f"\n✅ Successfully created annotated image: {output_path}")
-        print(f"\nYou can view the output image at: {os.path.abspath(output_path)}")
+        print(f"\nYou can view the output image at: {output_path.resolve()}")
 
     except Exception as e:
         print(f"Error during OCR processing: {e}")
