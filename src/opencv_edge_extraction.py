@@ -212,11 +212,54 @@ class PNIDEdgeExtractor:
 
         return contour_list
 
+    def detect_junctions(
+        self, lines: list[dict[str, Any]], connection_threshold: float = 10.0
+    ) -> dict[tuple[int, int], list[int]]:
+        """
+        Detect junction points where 3+ line segments meet.
+
+        Args:
+            lines: List of line segments.
+            connection_threshold: Maximum distance to consider points as same junction.
+
+        Returns:
+            Dictionary mapping junction points to list of connected line indices.
+        """
+        # Collect all endpoints
+        endpoints: dict[tuple[int, int], list[int]] = {}
+
+        for idx, line in enumerate(lines):
+            for point in [line["start"], line["end"]]:
+                key = (int(point[0]), int(point[1]))
+
+                # Check if this point is near an existing junction
+                found_junction = None
+                for junction_point in endpoints.keys():
+                    dist = np.sqrt(
+                        (key[0] - junction_point[0]) ** 2 + (key[1] - junction_point[1]) ** 2
+                    )
+                    if dist <= connection_threshold:
+                        found_junction = junction_point
+                        break
+
+                if found_junction:
+                    if idx not in endpoints[found_junction]:
+                        endpoints[found_junction].append(idx)
+                else:
+                    if key not in endpoints:
+                        endpoints[key] = []
+                    if idx not in endpoints[key]:
+                        endpoints[key].append(idx)
+
+        # Filter to only junctions (3+ connections)
+        junctions = {pt: lines for pt, lines in endpoints.items() if len(lines) >= 3}
+        return junctions
+
     def trace_pipe_routes(
         self, lines: list[dict[str, Any]], connection_threshold: float = 10.0
     ) -> list[dict[str, Any]]:
         """
-        Connect line segments into continuous pipe routes.
+        Connect line segments into continuous pipe routes, respecting junctions.
 
         Args:
             lines: List of line segments from detect_lines_hough.
@@ -227,19 +270,23 @@ class PNIDEdgeExtractor:
             - segments: List of connected line segments
             - total_length: Total length of the route
             - endpoints: [start_point, end_point] of the complete route
-            - points: Ordered list of points forming the route
             - orientation: Dominant orientation
         """
         if not lines:
             return []
 
-        # Build adjacency graph
+        # Detect junctions first
+        junctions = self.detect_junctions(lines, connection_threshold)
+        junction_line_indices = set()
+        for line_list in junctions.values():
+            junction_line_indices.update(line_list)
+
+        # Build adjacency graph, treating junctions specially
         n = len(lines)
         graph: dict[int, list[int]] = {i: [] for i in range(n)}
 
         for i in range(n):
             for j in range(i + 1, n):
-                # Check if lines are connected at any endpoint
                 line_i = lines[i]
                 line_j = lines[j]
 
@@ -260,8 +307,21 @@ class PNIDEdgeExtractor:
                 for p1, p2 in connections:
                     dist = np.linalg.norm(p1 - p2)
                     if dist <= connection_threshold:
-                        graph[i].append(j)
-                        graph[j].append(i)
+                        # Check if this connection is at a junction
+                        at_junction = False
+                        for junction_pt, junction_lines in junctions.items():
+                            if i in junction_lines and j in junction_lines:
+                                # Both lines meet at this junction - only connect if same direction
+                                angle_diff = abs(line_i["angle"] - line_j["angle"])
+                                if angle_diff < 30 or angle_diff > 150:  # Similar direction
+                                    at_junction = False  # Allow connection
+                                else:
+                                    at_junction = True  # Different directions, don't connect
+                                break
+
+                        if not at_junction:
+                            graph[i].append(j)
+                            graph[j].append(i)
                         break
 
         # Trace routes using DFS
@@ -366,7 +426,8 @@ class PNIDEdgeExtractor:
         contours = self.detect_contours(edges)
 
         # Trace pipe routes (connect line segments)
-        pipe_routes = self.trace_pipe_routes(lines, connection_threshold=15.0)
+        # Increased threshold to catch branching junctions (e.g., hot water tank to MAK/MAT)
+        pipe_routes = self.trace_pipe_routes(lines, connection_threshold=25.0)
 
         # Calculate statistics
         total_line_length = sum(line["length"] for line in lines)
@@ -652,7 +713,7 @@ def main() -> None:
         canny_high=150,
         hough_threshold=60,  # Lower threshold to detect more lines
         hough_min_line_length=20,  # Shorter minimum for small pipe segments
-        hough_max_line_gap=15,  # Larger gap to connect dashed lines
+        hough_max_line_gap=20,  # Larger gap to connect dashed lines and junctions
     )
 
     # Extract features
