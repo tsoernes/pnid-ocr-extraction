@@ -212,6 +212,126 @@ class PNIDEdgeExtractor:
 
         return contour_list
 
+    def trace_pipe_routes(
+        self, lines: list[dict[str, Any]], connection_threshold: float = 10.0
+    ) -> list[dict[str, Any]]:
+        """
+        Connect line segments into continuous pipe routes.
+
+        Args:
+            lines: List of line segments from detect_lines_hough.
+            connection_threshold: Maximum distance to consider segments connected (pixels).
+
+        Returns:
+            List of pipe routes, each containing:
+            - segments: List of connected line segments
+            - total_length: Total length of the route
+            - endpoints: [start_point, end_point] of the complete route
+            - points: Ordered list of points forming the route
+            - orientation: Dominant orientation
+        """
+        if not lines:
+            return []
+
+        # Build adjacency graph
+        n = len(lines)
+        graph: dict[int, list[int]] = {i: [] for i in range(n)}
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                # Check if lines are connected at any endpoint
+                line_i = lines[i]
+                line_j = lines[j]
+
+                # Get endpoints
+                i_start = np.array(line_i["start"])
+                i_end = np.array(line_i["end"])
+                j_start = np.array(line_j["start"])
+                j_end = np.array(line_j["end"])
+
+                # Check all endpoint combinations
+                connections = [
+                    (i_start, j_start),
+                    (i_start, j_end),
+                    (i_end, j_start),
+                    (i_end, j_end),
+                ]
+
+                for p1, p2 in connections:
+                    dist = np.linalg.norm(p1 - p2)
+                    if dist <= connection_threshold:
+                        graph[i].append(j)
+                        graph[j].append(i)
+                        break
+
+        # Trace routes using DFS
+        visited = set()
+        routes = []
+
+        def dfs_trace(start_idx: int) -> list[int]:
+            """Depth-first search to trace connected segments."""
+            stack = [start_idx]
+            route = []
+            local_visited = set()
+
+            while stack:
+                idx = stack.pop()
+                if idx in local_visited:
+                    continue
+
+                local_visited.add(idx)
+                route.append(idx)
+
+                # Add unvisited neighbors
+                for neighbor in graph[idx]:
+                    if neighbor not in local_visited and neighbor not in visited:
+                        stack.append(neighbor)
+
+            return route
+
+        for i in range(n):
+            if i not in visited:
+                route_indices = dfs_trace(i)
+                visited.update(route_indices)
+
+                if route_indices:
+                    # Build route information
+                    route_segments = [lines[idx] for idx in route_indices]
+                    total_length = sum(seg["length"] for seg in route_segments)
+
+                    # Collect all unique points
+                    points = []
+                    for seg in route_segments:
+                        points.append(seg["start"])
+                        points.append(seg["end"])
+
+                    # Find endpoints (points that appear only once)
+                    point_counts: dict[tuple[int, int], int] = {}
+                    for pt in points:
+                        key = tuple(pt)
+                        point_counts[key] = point_counts.get(key, 0) + 1
+
+                    endpoints = [list(pt) for pt, count in point_counts.items() if count == 1]
+
+                    # Determine dominant orientation
+                    orientations = [seg["orientation"] for seg in route_segments]
+                    dominant = max(set(orientations), key=orientations.count)
+
+                    routes.append(
+                        {
+                            "segments": route_segments,
+                            "segment_count": len(route_segments),
+                            "total_length": float(total_length),
+                            "endpoints": endpoints[:2] if len(endpoints) >= 2 else endpoints,
+                            "num_junctions": len(
+                                [pt for pt, count in point_counts.items() if count > 2]
+                            ),
+                            "dominant_orientation": dominant,
+                        }
+                    )
+
+        return routes
+
     def extract_features(self, image_path: Path) -> dict[str, Any]:
         """
         Extract all edge features from a P&ID diagram.
@@ -245,6 +365,9 @@ class PNIDEdgeExtractor:
         # Detect contours (vessels, equipment)
         contours = self.detect_contours(edges)
 
+        # Trace pipe routes (connect line segments)
+        pipe_routes = self.trace_pipe_routes(lines, connection_threshold=15.0)
+
         # Calculate statistics
         total_line_length = sum(line["length"] for line in lines)
         horizontal_lines = [l for l in lines if l["orientation"] == "horizontal"]
@@ -265,6 +388,7 @@ class PNIDEdgeExtractor:
         return {
             "image_size": [width, height],
             "lines": lines,
+            "pipe_routes": pipe_routes,
             "contours": contours,
             "statistics": statistics,
         }
@@ -397,13 +521,62 @@ def format_features_for_llm(features: dict[str, Any]) -> str:
         f"Image Size: {features['image_size'][0]}×{features['image_size'][1]} pixels",
         "",
         "## DETECTED LINES (Pipes/Connections):",
-        f"Total: {stats['total_lines']} lines",
-        f"- Horizontal: {len(horizontal)} lines",
-        f"- Vertical: {len(vertical)} lines",
-        f"- Diagonal: {stats['diagonal_lines']} lines",
-        f"Average Length: {stats['average_line_length']:.1f} pixels",
+        f"Total: {stats['total_lines']} line segments",
+        f"- Horizontal: {len(horizontal)} segments",
+        f"- Vertical: {len(vertical)} segments",
+        f"- Diagonal: {stats['diagonal_lines']} segments",
+        f"Average Segment Length: {stats['average_line_length']:.1f} pixels",
         "",
     ]
+
+    # Add pipe routes information
+    pipe_routes = features.get("pipe_routes", [])
+    if pipe_routes:
+        text_parts.extend(
+            [
+                "## PIPE ROUTES (Connected Segments):",
+                f"Total: {len(pipe_routes)} continuous pipe routes",
+                "",
+            ]
+        )
+
+        # Show major routes (length > 100px)
+        major_routes = [r for r in pipe_routes if r["total_length"] > 100]
+        if major_routes:
+            text_parts.append(f"Major Routes (length > 100px): {len(major_routes)}")
+            for i, route in enumerate(major_routes[:5], 1):
+                endpoints = route["endpoints"]
+                if len(endpoints) >= 2:
+                    text_parts.append(
+                        f"  Route {i}: {route['segment_count']} segments, "
+                        f"{route['total_length']:.0f}px total, "
+                        f"{route['dominant_orientation']}, "
+                        f"endpoints: {endpoints[0]} → {endpoints[1]}"
+                    )
+                else:
+                    text_parts.append(
+                        f"  Route {i}: {route['segment_count']} segments, "
+                        f"{route['total_length']:.0f}px total, "
+                        f"{route['dominant_orientation']}"
+                    )
+            if len(major_routes) > 5:
+                text_parts.append(f"  ... and {len(major_routes) - 5} more major routes")
+            text_parts.append("")
+
+        # Show route statistics
+        single_segment = len([r for r in pipe_routes if r["segment_count"] == 1])
+        multi_segment = len([r for r in pipe_routes if r["segment_count"] > 1])
+        text_parts.extend(
+            [
+                "Route Statistics:",
+                f"  Single-segment routes: {single_segment}",
+                f"  Multi-segment routes: {multi_segment}",
+                f"  Average segments per route: {sum(r['segment_count'] for r in pipe_routes) / len(pipe_routes):.1f}",
+                "",
+            ]
+        )
+    else:
+        text_parts.append("")
 
     # Sample horizontal lines
     if horizontal:
