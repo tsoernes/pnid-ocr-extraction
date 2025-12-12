@@ -158,11 +158,34 @@ def create_interactive_graph(
     }
     """)
 
-    # Collect all unique node IDs from pipes
+    # Build per-pipe unique inlet / outlet node ids based on label and target
+    augmented_pipes: list[dict[str, Any]] = []
+    for idx, pipe in enumerate(pipes):
+        src = pipe["source"]
+        tgt = pipe["target"]
+        label = pipe.get("label", "")
+        base_label = label.replace(" ", "").replace("°", "deg").replace(",", "")
+
+        # Per-pipe unique inlet nodes
+        if src == "inlet" or src.startswith("source_"):
+            src = f"inlet_{base_label}_{tgt}_{idx}"
+
+        # Per-pipe unique outlet nodes
+        if tgt == "outlet" or tgt.startswith("sink_"):
+            tgt = f"outlet_{base_label}_{pipe['source']}_{idx}"
+
+        new_pipe = dict(pipe)
+        new_pipe["source_node"] = src
+        new_pipe["target_node"] = tgt
+        augmented_pipes.append(new_pipe)
+
+    pipes = augmented_pipes
+
+    # Collect all unique node IDs from pipes (using synthesized ids)
     all_node_ids = set()
     for pipe in pipes:
-        all_node_ids.add(pipe["source"])
-        all_node_ids.add(pipe["target"])
+        all_node_ids.add(pipe["source_node"])
+        all_node_ids.add(pipe["target_node"])
 
     # Add component nodes with actual x,y coordinates
     for node_id in all_node_ids:
@@ -199,36 +222,34 @@ def create_interactive_graph(
             )
         else:
             # Source or sink nodes (not in components list)
-            # Try to find position from pipes
+            # Try to find position from pipes (using synthesized ids)
             x = 0
             y = 0
             for pipe in pipes:
-                if pipe["source"] == node_id or pipe["target"] == node_id:
+                if pipe["source_node"] == node_id or pipe["target_node"] == node_id:
                     x = pipe.get("x", 0)
                     y = pipe.get("y", 0)
                     break
 
-            if node_id.startswith("source_") or node_id == "inlet":
-                label = (
-                    node_id.replace("source_", "")
-                    .replace("_", " ")
-                    .replace("inlet", "Inlet")
-                    .title()
-                )
+            # Classify synthesized inlet/outlet vs other synthetic nodes
+            if node_id.startswith("inlet_"):
+                # Node id looks like: inlet_<label>_<target>_<idx>
+                parts = node_id.split("_", 1)
+                label_suffix = parts[1] if len(parts) > 1 else node_id
+                label = label_suffix.replace("_", " ")
                 color = get_category_color("source")
                 shape = get_node_shape("source")
-                title = f"<b>Source:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
-            elif node_id.startswith("sink_") or node_id == "outlet":
-                label = (
-                    node_id.replace("sink_", "")
-                    .replace("_", " ")
-                    .replace("outlet", "Outlet")
-                    .title()
-                )
+                title = f"<b>Inlet:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
+            elif node_id.startswith("outlet_"):
+                # Node id looks like: outlet_<label>_<source>_<idx>
+                parts = node_id.split("_", 1)
+                label_suffix = parts[1] if len(parts) > 1 else node_id
+                label = label_suffix.replace("_", " ")
                 color = get_category_color("sink")
                 shape = get_node_shape("sink")
-                title = f"<b>Sink:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
+                title = f"<b>Outlet:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
             else:
+                # Fallback for any other synthetic node ids
                 label = node_id
                 color = "#795548"
                 shape = "dot"
@@ -259,8 +280,8 @@ def create_interactive_graph(
             f"{pipe.get('description', '')}"
         )
         net.add_edge(
-            pipe["source"],
-            pipe["target"],
+            pipe["source_node"],
+            pipe["target_node"],
             label=pipe["label"],
             title=edge_title,
         )
