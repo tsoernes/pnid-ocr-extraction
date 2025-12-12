@@ -84,14 +84,14 @@ def create_interactive_graph(
     img_width, img_height = img.size
 
     # Function to convert image coordinates to vis.js coordinates
-    # Vis.js uses center origin (0,0) and arbitrary scale
+    # Vis.js uses center origin (0,0) with Y-axis pointing down (same as image)
     # Image uses top-left origin with pixel coordinates
     def transform_coords(x, y):
-        # Center the coordinates and flip Y axis
+        # Center the coordinates (both image and vis.js use Y-down)
         # Scale to match typical vis.js canvas size (~1000 units)
         scale = 1000 / max(img_width, img_height)
         vis_x = (x - img_width / 2) * scale
-        vis_y = (img_height / 2 - y) * scale  # Flip Y
+        vis_y = (y - img_height / 2) * scale  # No flip - both use Y-down
         return vis_x, vis_y
 
     # Create network with physics enabled for draggable nodes

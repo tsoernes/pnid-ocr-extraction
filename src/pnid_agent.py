@@ -99,7 +99,7 @@ def create_agent(provider: Provider, model_name: str | None = None) -> Agent:
         if not api_key:
             raise ValueError("GOOGLE_API_KEY environment variable is required for Google Gemini")
 
-        model_name = model_name or "gemini-1.5-flash"
+        model_name = model_name or "gemini-2.5-flash"
         google_provider = GoogleProvider(vertexai=False, api_key=api_key)
         model = GoogleModel(model_name, provider=google_provider)
 
