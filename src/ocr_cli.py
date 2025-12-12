@@ -113,6 +113,7 @@ Examples:
     # Determine output path
     if args.output:
         output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
     else:
         output_dir = Path("data/output")
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -154,6 +155,25 @@ Examples:
             print(f"Error message: {ocr_response['error']}")
         return 1
 
+    # Check if response looks valid
+    response_text = ocr_response["response"]
+    if not response_text or len(response_text.strip()) == 0:
+        print(f"⚠️  Warning: OCR returned empty response", file=sys.stderr)
+        return 1
+
+    # Check for gibberish (non-printable characters or just symbols)
+    printable_count = sum(1 for c in response_text[:200] if c.isprintable() and not c.isspace())
+    alpha_count = sum(1 for c in response_text[:200] if c.isalpha())
+
+    if printable_count > 0 and alpha_count / printable_count < 0.1:
+        print(f"⚠️  Warning: OCR response appears to be gibberish or corrupted", file=sys.stderr)
+        print(f"   First 200 chars: {repr(response_text[:200])}", file=sys.stderr)
+        print(f"   This may indicate a model compatibility issue", file=sys.stderr)
+
+        if not args.no_overlay:
+            print(f"   Skipping overlay generation due to invalid OCR output", file=sys.stderr)
+            return 1
+
     print("✅ OCR complete!")
     print()
 
@@ -164,8 +184,7 @@ Examples:
         json_path.write_text(json.dumps(ocr_response, indent=2, ensure_ascii=False))
         print(f"💾 Saved raw JSON to: {json_path}")
 
-    # Show response preview
-    response_text = ocr_response["response"]
+    # Show response preview (already have response_text from above)
     print("=" * 80)
     print("OCR RESPONSE PREVIEW (first 500 characters)")
     print("=" * 80)
@@ -207,6 +226,15 @@ Examples:
             )
             print("=" * 80)
             print()
+
+            # Warn if no items found
+            if stats["total_items"] == 0:
+                print("⚠️  Warning: No bounding boxes found in OCR output", file=sys.stderr)
+                print("   Possible causes:", file=sys.stderr)
+                print("   - Model may not support grounding mode", file=sys.stderr)
+                print("   - Try without grounding: --prompt 'Extract all text'", file=sys.stderr)
+                print("   - Or use --no-overlay for text-only output", file=sys.stderr)
+                print()
 
             # Show first few items
             if parsed_items:
