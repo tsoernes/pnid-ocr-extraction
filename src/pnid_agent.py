@@ -83,13 +83,26 @@ def create_agent(provider: Provider, model_name: str | None = None) -> Agent:
         ValueError: If required environment variables are missing
         ImportError: If required provider packages are not installed
     """
-    system_prompt = (
+    base_system_prompt = (
         "You are an expert in process network identification. "
         "You are given an image of a process network and you have to identify the components and pipes. "
         "You have to identify the components and pipes based on the image. "
         "For each component and pipe, provide the x,y coordinates of its center or label position. "
         "Use pixel coordinates based on the image dimensions."
     )
+
+    # Provider-specific prompt tweaks
+    if provider == Provider.AZURE_DEEPSEEK and (model_name or "").startswith("gpt-5.2"):
+        system_prompt = (
+            base_system_prompt
+            + " Represent every flow, inlet, and outlet as a separate Pipe object in the PNID model. "
+            + " Do NOT hide inlets or outlets inside component descriptions. "
+            + " For any connection to or from outside the diagram, create a Pipe with a synthetic source or "
+            + " target like 'External - <utility or sink name>'. "
+            + " Ensure that the total number of Pipe objects matches all visible labeled streams in the image."
+        )
+    else:
+        system_prompt = base_system_prompt
 
     if provider == Provider.GOOGLE_GEMINI:
         from pydantic_ai.models.google import GoogleModel
