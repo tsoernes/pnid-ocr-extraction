@@ -6,6 +6,7 @@ as an interactive network graph with the original diagram as background.
 Nodes can be freely moved/dragged by the user.
 """
 
+import argparse
 import base64
 import json
 from pathlib import Path
@@ -528,13 +529,37 @@ def create_interactive_graph(
     print("  - Use controls to toggle physics and adjust background opacity")
 
 
-def main():
+def main() -> None:
     """Main entry point."""
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Generate interactive P&ID graph visualization")
+    parser.add_argument(
+        "--json",
+        type=str,
+        help="Path to PNID JSON file (default: data/output/pnid_route_based.json)",
+    )
+    parser.add_argument(
+        "--image",
+        type=str,
+        help="Path to background image (default: data/input/brewery.jpg)",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        help="Path to output HTML file (default: data/output/pnid_graph.html)",
+    )
+
+    args = parser.parse_args()
+
     # Define paths
     base_dir = Path(__file__).parent.parent
-    json_path = base_dir / "data" / "output" / "pnid_from_paddle_anthropic.json"
-    image_path = base_dir / "data" / "input" / "brewery.jpg"
-    output_path = base_dir / "data" / "output" / "pnid_graph.html"
+    json_path = (
+        Path(args.json) if args.json else base_dir / "data" / "output" / "pnid_route_based.json"
+    )
+    image_path = Path(args.image) if args.image else base_dir / "data" / "input" / "brewery.jpg"
+    output_path = (
+        Path(args.output) if args.output else base_dir / "data" / "output" / "pnid_graph.html"
+    )
 
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
