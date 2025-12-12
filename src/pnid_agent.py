@@ -99,7 +99,7 @@ def create_agent(provider: Provider, model_name: str | None = None) -> Agent:
         if not api_key:
             raise ValueError("GOOGLE_API_KEY environment variable is required for Google Gemini")
 
-        model_name = model_name or "gemini-2.5-flash"
+        model_name = model_name or "gemini-3.0-pro-preview"
         google_provider = GoogleProvider(vertexai=False, api_key=api_key)
         model = GoogleModel(model_name, provider=google_provider)
 
@@ -126,16 +126,18 @@ def create_agent(provider: Provider, model_name: str | None = None) -> Agent:
         from pydantic_ai.models.openai import OpenAIChatModel
         from pydantic_ai.providers.openai import OpenAIProvider
 
-        api_key = os.getenv("AZURE_OPENAI_API_KEY")
+        # Use generalized Azure AI key for Azure OpenAI as well
+        api_key = os.getenv("AZURE_AI_API_KEY")
         if not api_key:
-            raise ValueError("AZURE_OPENAI_API_KEY environment variable is required")
+            raise ValueError("AZURE_AI_API_KEY environment variable is required for Azure OpenAI")
 
         client = AsyncAzureOpenAI(
             azure_endpoint="https://aif-minside.cognitiveservices.azure.com/",
             api_version="2024-07-01-preview",
             api_key=api_key,
         )
-        model_name = model_name or "DeepSeek-V3.1"
+        # Default to GPT-5.1 on Azure unless overridden
+        model_name = model_name or "gpt-5.1"
         model = OpenAIChatModel(model_name, provider=OpenAIProvider(openai_client=client))
 
     elif provider == Provider.ANTHROPIC:
