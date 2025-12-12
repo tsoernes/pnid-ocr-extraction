@@ -67,6 +67,9 @@ Keep this terminal open. The server runs on `http://localhost:11434`.
 # Basic OCR with bounding box overlay
 uv run python src/ocr_cli.py data/input/brewery.png
 
+# With streaming (shows progress dots)
+uv run python src/ocr_cli.py data/input/brewery.png --stream
+
 # Text-only output (no visualization)
 uv run python src/ocr_cli.py data/input/brewery.png --no-overlay
 
@@ -108,6 +111,7 @@ uv run python src/ocr_cli.py <image_path> [OPTIONS]
 | `--box-thickness N` | Bounding box line thickness | 2 |
 | `--font-size N` | Label font size | 12 |
 | `--no-labels` | Hide text labels on boxes | False |
+| `--stream` | Stream response (shows progress dots) | False |
 
 ### Examples
 
@@ -116,12 +120,17 @@ uv run python src/ocr_cli.py <image_path> [OPTIONS]
 uv run python src/ocr_cli.py data/input/brewery.png
 ```
 
-**2. Text extraction only**:
+**2. With streaming progress (recommended)**:
+```bash
+uv run python src/ocr_cli.py data/input/brewery.png --stream
+```
+
+**3. Text extraction only**:
 ```bash
 uv run python src/ocr_cli.py data/input/brewery.png --no-overlay
 ```
 
-**3. Custom styling**:
+**4. Custom styling**:
 ```bash
 uv run python src/ocr_cli.py data/input/brewery.png \
     --box-thickness 3 \
@@ -129,9 +138,10 @@ uv run python src/ocr_cli.py data/input/brewery.png \
     --output results/styled.jpg
 ```
 
-**4. Save all outputs**:
+**5. Save all outputs with streaming**:
 ```bash
 uv run python src/ocr_cli.py data/input/brewery.png \
+    --stream \
     --output data/output/annotated.jpg \
     --json-output data/output/ocr.json
 ```
@@ -155,6 +165,7 @@ Example:
 
 ⏳ Running OCR via Ollama (this may take several minutes on CPU)...
    DeepSeek-OCR model processing...
+   [Streaming response................] ✓
 ✅ OCR complete!
 
 ================================================================================
@@ -237,8 +248,15 @@ uv run python src/ocr_cli.py data/input/brewery.png \
 - Large images (4K): **1-2 hours**
 
 **Monitor progress**:
+
+Option 1: Use streaming mode (recommended):
 ```bash
-# In another terminal
+uv run python src/ocr_cli.py data/input/brewery.png --stream
+# Shows progress dots as Ollama generates output
+```
+
+Option 2: Monitor process in another terminal:
+```bash
 watch -n 5 "ps aux | grep ollama | grep -v grep"
 ```
 

@@ -96,6 +96,12 @@ Examples:
         help="Don't show text labels on bounding boxes",
     )
 
+    parser.add_argument(
+        "--stream",
+        action="store_true",
+        help="Stream response from Ollama (shows progress dots)",
+    )
+
     args = parser.parse_args()
 
     # Validate image path
@@ -130,7 +136,9 @@ Examples:
     print("   DeepSeek-OCR model processing...")
 
     try:
-        ocr_response = run_deepseek_ocr_via_ollama(image_data, args.prompt, str(image_path))
+        ocr_response = run_deepseek_ocr_via_ollama(
+            image_data, args.prompt, str(image_path), stream=args.stream
+        )
     except Exception as e:
         print(f"❌ Error during OCR: {e}", file=sys.stderr)
         import traceback
