@@ -248,11 +248,8 @@ def create_interactive_graph(
                         target_id = pipe.get("__orig_target", "")
                         break
                 nice_stream = stream_label.replace("deg", "°")
-                # Node label: "<stream> → <target>"
-                if target_id:
-                    label = f"{nice_stream} \u2192 {target_id}"
-                else:
-                    label = nice_stream
+                # Node label: stream only, e.g. "Water,15°C"
+                label = nice_stream
                 color = get_category_color("source")
                 shape = get_node_shape("source")
                 title = (
