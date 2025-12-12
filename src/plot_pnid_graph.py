@@ -467,7 +467,7 @@ def main():
     """Main entry point."""
     # Define paths
     base_dir = Path(__file__).parent.parent
-    json_path = base_dir / "data" / "output" / "pnid.json"
+    json_path = base_dir / "data" / "output" / "pnid_gemini.json"
     image_path = base_dir / "data" / "input" / "brewery.jpg"
     output_path = base_dir / "data" / "output" / "pnid_graph.html"
 
