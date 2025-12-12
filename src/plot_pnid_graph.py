@@ -178,6 +178,10 @@ def create_interactive_graph(
         new_pipe: dict[str, Any] = dict(pipe)
         new_pipe["source_node"] = src
         new_pipe["target_node"] = tgt
+        # Store original stream label and endpoints for nicer node labels
+        new_pipe["__stream_label"] = label
+        new_pipe["__orig_source"] = pipe["source"]
+        new_pipe["__orig_target"] = pipe["target"]
         augmented_pipes.append(new_pipe)
 
     pipes = augmented_pipes
@@ -234,21 +238,52 @@ def create_interactive_graph(
 
             # Classify synthesized inlet/outlet vs other synthetic nodes
             if node_id.startswith("inlet_"):
-                # Node id looks like: inlet_<label>_<target>_<idx>
-                parts = node_id.split("_", 1)
-                label_suffix = parts[1] if len(parts) > 1 else node_id
-                label = label_suffix.replace("_", " ")
+                # Node id: inlet_<baseLabel>_<targetId>_<idx>
+                # Recover a meaningful label from any pipe that uses this node_id
+                stream_label = node_id
+                target_id = ""
+                for pipe in pipes:
+                    if pipe["source_node"] == node_id:
+                        stream_label = pipe.get("__stream_label", stream_label)
+                        target_id = pipe.get("__orig_target", "")
+                        break
+                nice_stream = stream_label.replace("deg", "°")
+                # Node label: "<stream> → <target>"
+                if target_id:
+                    label = f"{nice_stream} \u2192 {target_id}"
+                else:
+                    label = nice_stream
                 color = get_category_color("source")
                 shape = get_node_shape("source")
-                title = f"<b>Inlet:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
+                title = (
+                    f"<b>Inlet</b><br>"
+                    f"Stream: {nice_stream}<br>"
+                    f"To: {target_id or 'unknown'}<br>"
+                    f"Position: ({x:.1f}, {y:.1f})"
+                )
             elif node_id.startswith("outlet_"):
-                # Node id looks like: outlet_<label>_<source>_<idx>
-                parts = node_id.split("_", 1)
-                label_suffix = parts[1] if len(parts) > 1 else node_id
-                label = label_suffix.replace("_", " ")
+                # Node id: outlet_<baseLabel>_<sourceId>_<idx>
+                stream_label = node_id
+                source_id = ""
+                for pipe in pipes:
+                    if pipe["target_node"] == node_id:
+                        stream_label = pipe.get("__stream_label", stream_label)
+                        source_id = pipe.get("__orig_source", "")
+                        break
+                nice_stream = stream_label.replace("deg", "°")
+                # Node label: "<stream> ← <source>"
+                if source_id:
+                    label = f"{nice_stream} \u2190 {source_id}"
+                else:
+                    label = nice_stream
                 color = get_category_color("sink")
                 shape = get_node_shape("sink")
-                title = f"<b>Outlet:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
+                title = (
+                    f"<b>Outlet</b><br>"
+                    f"Stream: {nice_stream}<br>"
+                    f"From: {source_id or 'unknown'}<br>"
+                    f"Position: ({x:.1f}, {y:.1f})"
+                )
             else:
                 # Fallback for any other synthetic node ids
                 label = node_id
