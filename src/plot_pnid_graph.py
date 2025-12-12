@@ -147,15 +147,23 @@ def create_interactive_graph(
         all_node_ids.add(pipe["source"])
         all_node_ids.add(pipe["target"])
 
-    # Add component nodes
+    # Add component nodes with actual x,y coordinates
     for node_id in all_node_ids:
         if node_id in components:
             comp = components[node_id]
             category = comp.get("category", "Unknown")
             color = get_category_color(category)
             shape = get_node_shape(category)
+
+            # Get coordinates from extraction
+            x = comp.get("x", 0)
+            y = comp.get("y", 0)
+
             title = (
-                f"<b>{comp['label']}</b><br>Category: {category}<br>{comp.get('description', '')}"
+                f"<b>{comp['label']}</b><br>"
+                f"Category: {category}<br>"
+                f"Position: ({x:.1f}, {y:.1f})<br>"
+                f"{comp.get('description', '')}"
             )
 
             net.add_node(
@@ -165,24 +173,46 @@ def create_interactive_graph(
                 color=color,
                 shape=shape,
                 size=30,
+                x=float(x),
+                y=float(y),
+                physics=False,  # Use fixed positions from extraction
             )
         else:
             # Source or sink nodes (not in components list)
-            if node_id.startswith("source_"):
-                label = node_id.replace("source_", "").replace("_", " ").title()
+            # Try to find position from pipes
+            x = 0
+            y = 0
+            for pipe in pipes:
+                if pipe["source"] == node_id or pipe["target"] == node_id:
+                    x = pipe.get("x", 0)
+                    y = pipe.get("y", 0)
+                    break
+
+            if node_id.startswith("source_") or node_id == "inlet":
+                label = (
+                    node_id.replace("source_", "")
+                    .replace("_", " ")
+                    .replace("inlet", "Inlet")
+                    .title()
+                )
                 color = get_category_color("source")
                 shape = get_node_shape("source")
-                title = f"<b>Source:</b> {label}"
-            elif node_id.startswith("sink_"):
-                label = node_id.replace("sink_", "").replace("_", " ").title()
+                title = f"<b>Source:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
+            elif node_id.startswith("sink_") or node_id == "outlet":
+                label = (
+                    node_id.replace("sink_", "")
+                    .replace("_", " ")
+                    .replace("outlet", "Outlet")
+                    .title()
+                )
                 color = get_category_color("sink")
                 shape = get_node_shape("sink")
-                title = f"<b>Sink:</b> {label}"
+                title = f"<b>Sink:</b> {label}<br>Position: ({x:.1f}, {y:.1f})"
             else:
                 label = node_id
                 color = "#795548"
                 shape = "dot"
-                title = node_id
+                title = f"{node_id}<br>Position: ({x:.1f}, {y:.1f})"
 
             net.add_node(
                 node_id,
@@ -191,11 +221,20 @@ def create_interactive_graph(
                 color=color,
                 shape=shape,
                 size=20,
+                x=float(x),
+                y=float(y),
+                physics=False,
             )
 
-    # Add edges (pipes)
+    # Add edges (pipes) with position information
     for pipe in pipes:
-        edge_title = f"<b>{pipe['label']}</b><br>{pipe.get('description', '')}"
+        x = pipe.get("x", 0)
+        y = pipe.get("y", 0)
+        edge_title = (
+            f"<b>{pipe['label']}</b><br>"
+            f"Position: ({x:.1f}, {y:.1f})<br>"
+            f"{pipe.get('description', '')}"
+        )
         net.add_edge(
             pipe["source"],
             pipe["target"],
@@ -262,8 +301,21 @@ def create_interactive_graph(
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             font-family: Arial, sans-serif;
+            z-index: 1000;
+        }}
+        .info {{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
             font-size: 12px;
             z-index: 1000;
+            color: #2196F3;
+            font-weight: bold;
         }}
         .controls h4 {{
             margin: 0 0 10px 0;
@@ -294,7 +346,13 @@ def create_interactive_graph(
     </style>
     """
 
-    # Add legend and controls HTML
+    # Add info banner and legend HTML
+    info_html = """
+    <div class="info">
+        ℹ️ Node positions from AI-extracted coordinates
+    </div>
+    """
+
     legend_html = """
     <div class="legend">
         <h4>Legend</h4>
@@ -327,7 +385,9 @@ def create_interactive_graph(
         <label>Background Opacity:</label>
         <input type="range" min="0" max="100" value="30" onchange="setOpacity(this.value)">
     </div>
+    """
 
+    controls_html = """
     <script>
         var physicsEnabled = true;
 
@@ -361,8 +421,10 @@ def create_interactive_graph(
     # Insert CSS after <head>
     html_content = html_content.replace("<head>", "<head>" + background_css)
 
-    # Insert legend and controls before </body>
-    html_content = html_content.replace("</body>", legend_html + "</body>")
+    # Insert info banner, legend and controls before </body>
+    html_content = html_content.replace(
+        "</body>", info_html + legend_html + controls_html + "</body>"
+    )
 
     # Write modified HTML
     with open(output_path, "w") as f:
