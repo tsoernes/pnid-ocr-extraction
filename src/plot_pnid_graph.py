@@ -178,8 +178,9 @@ def create_interactive_graph(
         new_pipe: dict[str, Any] = dict(pipe)
         new_pipe["source_node"] = src
         new_pipe["target_node"] = tgt
-        # Store original stream label and endpoints for nicer node labels
+        # Store original stream info for nicer inlet/outlet labels
         new_pipe["__stream_label"] = label
+        new_pipe["__stream_description"] = pipe.get("description", "")
         new_pipe["__orig_source"] = pipe["source"]
         new_pipe["__orig_target"] = pipe["target"]
         augmented_pipes.append(new_pipe)
@@ -244,11 +245,16 @@ def create_interactive_graph(
                 target_id = ""
                 for pipe in pipes:
                     if pipe["source_node"] == node_id:
-                        stream_label = pipe.get("__stream_label", stream_label)
+                        # Prefer description as the human-friendly stream name if available
+                        stream_label = (
+                            pipe.get("__stream_description")
+                            or pipe.get("__stream_label")
+                            or stream_label
+                        )
                         target_id = pipe.get("__orig_target", "")
                         break
                 nice_stream = stream_label.replace("deg", "°")
-                # Node label: stream only, e.g. "Water,15°C"
+                # Node label: stream only, e.g. "Malt, Corn, Water at 15°C"
                 label = nice_stream
                 color = get_category_color("source")
                 shape = get_node_shape("source")
@@ -264,7 +270,12 @@ def create_interactive_graph(
                 source_id = ""
                 for pipe in pipes:
                     if pipe["target_node"] == node_id:
-                        stream_label = pipe.get("__stream_label", stream_label)
+                        # Prefer description as the human-friendly stream name if available
+                        stream_label = (
+                            pipe.get("__stream_description")
+                            or pipe.get("__stream_label")
+                            or stream_label
+                        )
                         source_id = pipe.get("__orig_source", "")
                         break
                 nice_stream = stream_label.replace("deg", "°")
