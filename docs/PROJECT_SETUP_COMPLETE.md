@@ -14,7 +14,7 @@
   pnid-ocr-extraction/
   ├── src/            # Core source code (11 Python files)
   ├── data/           # Input, output, intermediate data
-  ├── examples/       # Example outputs (brewary.json, SVG)
+  ├── examples/       # Example outputs (brewery.json, SVG)
   ├── docs/           # Documentation (future use)
   ├── tests/          # Test scripts (future use)
   └── .github/        # CI/CD workflows (future use)
@@ -61,12 +61,12 @@
 - `opencv_test.py` - Tesseract experiments (legacy)
 
 ### Data (`data/`)
-- `input/` - brewary.png, brewary.jpg, brewary.svg
+- `input/` - brewery.png, brewery.jpg, brewery.svg
 - `output/` - Empty with .gitkeep
 - `intermediate/` - Empty with .gitkeep
 
 ### Examples (`examples/`)
-- `brewary.json` - Extracted P&ID graph structure
+- `brewery.json` - Extracted P&ID graph structure
 - `gemini-brewery.svg` - SVG output from Gemini
 
 ## Next Steps

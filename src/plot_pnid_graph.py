@@ -148,7 +148,9 @@ def create_interactive_graph(
             category = comp.get("category", "Unknown")
             color = get_category_color(category)
             shape = get_node_shape(category)
-            title = f"<b>{comp['label']}</b><br>Category: {category}<br>{comp.get('description', '')}"
+            title = (
+                f"<b>{comp['label']}</b><br>Category: {category}<br>{comp.get('description', '')}"
+            )
 
             net.add_node(
                 node_id,
@@ -375,7 +377,7 @@ def main():
     # Define paths
     base_dir = Path(__file__).parent.parent
     json_path = base_dir / "data" / "output" / "pnid.json"
-    image_path = base_dir / "data" / "input" / "brewary.jpg"
+    image_path = base_dir / "data" / "input" / "brewery.jpg"
     output_path = base_dir / "data" / "output" / "pnid_graph.html"
 
     # Ensure output directory exists

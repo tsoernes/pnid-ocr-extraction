@@ -20,7 +20,7 @@ This project provides tools for extracting structured information from Process &
 - **Cloud AI**: Google Gemini, Azure Anthropic Claude, Azure DeepSeek
 - **Visualization**: Interactive PyVis network graphs with background images
 
-**Test Image**: `data/input/brewary.png` - Brewery mashing process diagram (620×345 pixels)
+**Test Image**: `data/input/brewery.png` - Brewery mashing process diagram (620×345 pixels)
 
 **Updated Data Models** (as of latest commit):
 - `Component`: Added `x`, `y` coordinates for spatial positioning
@@ -132,7 +132,7 @@ AZURE_OPENAI_API_KEY=your_azure_openai_key
 
 3. **Expected Output:**
    - Console: OCR statistics (text/image items, bbox dimensions)
-   - File: `data/output/brewary_annotated.jpg` (image with colored bboxes)
+   - File: `data/output/brewery_annotated.jpg` (image with colored bboxes)
 
 **⚠️ Current Status: BLOCKED**
 

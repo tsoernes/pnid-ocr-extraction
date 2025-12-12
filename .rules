@@ -54,16 +54,16 @@ pnid-ocr-extraction/
 │
 ├── data/                          # Data files
 │   ├── input/                    # Source diagrams
-│   │   ├── brewary.png          # Primary test image (620×345px)
-│   │   ├── brewary.jpg
-│   │   └── brewary.svg
+│   │   ├── brewery.png          # Primary test image (620×345px)
+│   │   ├── brewery.jpg
+│   │   └── brewery.svg
 │   ├── output/                   # Generated outputs
 │   │   ├── pnid.json            # Extracted graph structure
 │   │   └── pnid_graph.html      # Interactive visualization
 │   └── intermediate/             # Processing cache
 │
 ├── examples/                      # Example outputs
-│   ├── brewary.json              # Sample P&ID extraction
+│   ├── brewery.json              # Sample P&ID extraction
 │   └── gemini-brewery.svg        # Gemini output example
 │
 ├── lib/                           # JavaScript libraries (for visualization)
@@ -232,7 +232,7 @@ ollama serve &
 uv run src/run_overlay_demo.py
 
 # Expected Output:
-# - data/output/brewary_annotated.jpg
+# - data/output/brewery_annotated.jpg
 # - Console statistics
 ```
 
@@ -519,7 +519,7 @@ uv run src/run_overlay_demo.py
 - `.gitignore` - Ignore patterns
 
 ### Data
-- `data/input/brewary.png` - Test diagram (620×345px)
+- `data/input/brewery.png` - Test diagram (620×345px)
 - `data/output/pnid.json` - Extracted graph (14 components, 33 pipes)
 - `data/output/pnid_graph.html` - Interactive visualization
 

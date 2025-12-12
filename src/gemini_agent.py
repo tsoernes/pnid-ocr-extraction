@@ -33,7 +33,7 @@ class PNID(BaseModel):
     pipes: list[Pipe] = Field(description="The pipes of the PNID")
 
 
-INPUT_IMAGE = "data/input/brewary.jpg"
+INPUT_IMAGE = "data/input/brewery.jpg"
 
 
 # Assuming you have an image file named 'my_image.jpg' in the same directory

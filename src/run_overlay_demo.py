@@ -12,7 +12,7 @@ from ollama_deepseel_ocr_fixed import run_deepseek_ocr_via_ollama
 
 def main():
     # Image path - using the project's data directory
-    image_path = Path("data/input/brewary.png")
+    image_path = Path("data/input/brewery.png")
 
     # Check if image exists
     if not image_path.exists():
