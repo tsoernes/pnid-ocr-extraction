@@ -68,8 +68,14 @@ def create_interactive_graph(
     """
     # Load data
     data = load_pnid_data(json_path)
-    components = {c["id"]: c for c in data["components"]}
-    pipes = data["pipes"]
+
+    # Handle both old format (direct) and new format (nested in 'output')
+    if "output" in data:
+        components = {c["id"]: c for c in data["output"]["components"]}
+        pipes = data["output"]["pipes"]
+    else:
+        components = {c["id"]: c for c in data["components"]}
+        pipes = data["pipes"]
 
     # Create network with physics enabled for draggable nodes
     net = Network(
