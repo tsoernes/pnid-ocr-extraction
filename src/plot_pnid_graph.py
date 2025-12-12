@@ -77,6 +77,23 @@ def create_interactive_graph(
         components = {c["id"]: c for c in data["components"]}
         pipes = data["pipes"]
 
+    # Load image to get dimensions for coordinate transformation
+    from PIL import Image
+
+    img = Image.open(image_path)
+    img_width, img_height = img.size
+
+    # Function to convert image coordinates to vis.js coordinates
+    # Vis.js uses center origin (0,0) and arbitrary scale
+    # Image uses top-left origin with pixel coordinates
+    def transform_coords(x, y):
+        # Center the coordinates and flip Y axis
+        # Scale to match typical vis.js canvas size (~1000 units)
+        scale = 1000 / max(img_width, img_height)
+        vis_x = (x - img_width / 2) * scale
+        vis_y = (img_height / 2 - y) * scale  # Flip Y
+        return vis_x, vis_y
+
     # Create network with physics enabled for draggable nodes
     net = Network(
         height="900px",
@@ -166,6 +183,9 @@ def create_interactive_graph(
                 f"{comp.get('description', '')}"
             )
 
+            # Transform coordinates to vis.js space
+            vis_x, vis_y = transform_coords(x, y)
+
             net.add_node(
                 node_id,
                 label=comp["label"],
@@ -173,8 +193,8 @@ def create_interactive_graph(
                 color=color,
                 shape=shape,
                 size=30,
-                x=float(x),
-                y=float(y),
+                x=vis_x,
+                y=vis_y,
                 physics=False,  # Use fixed positions from extraction
             )
         else:
@@ -214,6 +234,9 @@ def create_interactive_graph(
                 shape = "dot"
                 title = f"{node_id}<br>Position: ({x:.1f}, {y:.1f})"
 
+            # Transform coordinates to vis.js space
+            vis_x, vis_y = transform_coords(x, y)
+
             net.add_node(
                 node_id,
                 label=label,
@@ -221,8 +244,8 @@ def create_interactive_graph(
                 color=color,
                 shape=shape,
                 size=20,
-                x=float(x),
-                y=float(y),
+                x=vis_x,
+                y=vis_y,
                 physics=False,
             )
 
