@@ -1,22 +1,16 @@
-import os
+"""Azure DeepSeek P&ID extraction agent using the generalized pnid_agent module."""
 
-from dotenv import load_dotenv
-from openai import AsyncAzureOpenAI
-from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIChatModel
-from pydantic_ai.providers.openai import OpenAIProvider
+from pnid_agent import Provider, extract_pnid
 
-load_dotenv()
+if __name__ == "__main__":
+    result = extract_pnid(
+        image_path="data/input/brewery.jpg",
+        provider=Provider.AZURE_DEEPSEEK,
+        output_path="data/output/pnid.json",
+    )
 
-
-# Create client with API key authentication
-client = AsyncAzureOpenAI(
-    azure_endpoint="https://aif-minside.cognitiveservices.azure.com/",
-    api_version="2024-07-01-preview",
-    api_key=os.getenv("AZURE_ANTROPIC_API_KEY"),
-)
-
-model = OpenAIChatModel("DeepSeek-V3.1", provider=OpenAIProvider(openai_client=client))
-agent = Agent(model)
-response = agent.run_sync("good morning")
-print(response.output)
+    print(f"\n✅ Extraction complete!")
+    print(f"Provider: {result['provider']}")
+    print(f"Model: {result['model']}")
+    print(f"Components: {len(result['output']['components'])}")
+    print(f"Pipes: {len(result['output']['pipes'])}")

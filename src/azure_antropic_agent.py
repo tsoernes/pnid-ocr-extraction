@@ -1,21 +1,16 @@
-import os
+"""Azure Anthropic Claude P&ID extraction agent using the generalized pnid_agent module."""
 
-from anthropic import AsyncAnthropicFoundry
-from dotenv import load_dotenv
-from pydantic_ai import Agent
-from pydantic_ai.models.anthropic import AnthropicModel
-from pydantic_ai.providers.anthropic import AnthropicProvider
+from pnid_agent import Provider, extract_pnid
 
-load_dotenv()
+if __name__ == "__main__":
+    result = extract_pnid(
+        image_path="data/input/brewery.jpg",
+        provider=Provider.AZURE_ANTHROPIC,
+        output_path="data/output/pnid.json",
+    )
 
-
-# Create client with API key authentication
-client = AsyncAnthropicFoundry(
-    base_url="https://aif-minside.services.ai.azure.com/anthropic/",
-    api_key=os.getenv("AZURE_ANTROPIC_API_KEY"),
-)
-
-model = AnthropicModel("claude-opus-4-5", provider=AnthropicProvider(anthropic_client=client))
-agent = Agent(model)
-response = agent.run_sync("good morning")
-print(response.output)
+    print(f"\n✅ Extraction complete!")
+    print(f"Provider: {result['provider']}")
+    print(f"Model: {result['model']}")
+    print(f"Components: {len(result['output']['components'])}")
+    print(f"Pipes: {len(result['output']['pipes'])}")
