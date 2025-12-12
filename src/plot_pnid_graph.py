@@ -158,7 +158,8 @@ def create_interactive_graph(
     }
     """)
 
-    # Build per-pipe unique inlet / outlet node ids based on label and target
+    # Build per-pipe unique inlet / outlet node ids based on label and target/source
+    # Treat any pipe endpoint that is not a known component id as a distinct inlet/outlet node
     augmented_pipes: list[dict[str, Any]] = []
     for idx, pipe in enumerate(pipes):
         src = pipe["source"]
@@ -166,15 +167,15 @@ def create_interactive_graph(
         label = pipe.get("label", "")
         base_label = label.replace(" ", "").replace("°", "deg").replace(",", "")
 
-        # Per-pipe unique inlet nodes
-        if src == "inlet" or src.startswith("source_"):
+        # Per-pipe unique inlet nodes: source not a known component
+        if src not in components:
             src = f"inlet_{base_label}_{tgt}_{idx}"
 
-        # Per-pipe unique outlet nodes
-        if tgt == "outlet" or tgt.startswith("sink_"):
+        # Per-pipe unique outlet nodes: target not a known component
+        if tgt not in components:
             tgt = f"outlet_{base_label}_{pipe['source']}_{idx}"
 
-        new_pipe = dict(pipe)
+        new_pipe: dict[str, Any] = dict(pipe)
         new_pipe["source_node"] = src
         new_pipe["target_node"] = tgt
         augmented_pipes.append(new_pipe)
