@@ -83,6 +83,10 @@ def draw_component_boxes(
         x2 = min(image.width, x2)
         y2 = min(image.height, y2)
 
+        # Ensure x1 < x2 and y1 < y2
+        if x1 >= x2 or y1 >= y2:
+            continue  # Skip invalid boxes
+
         # Draw bounding box
         draw.rectangle([x1, y1, x2, y2], outline=box_color, width=box_thickness)
 
