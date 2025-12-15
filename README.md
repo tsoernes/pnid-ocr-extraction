@@ -18,21 +18,38 @@ Extract structured information from P&ID diagrams using local OCR (Ollama + Deep
 ```
 pnid-ocr-extraction/
 ├── src/                    # Core source code
-│   ├── ocr_bbox_overlay.py              # OCR bounding box overlay
-│   ├── ollama_deepseel_ocr_fixed.py     # Local Ollama OCR client
-│   ├── run_overlay_demo.py              # OCR demo script
-│   ├── gemini_agent.py                  # Google Gemini P&ID extraction
-│   ├── azure_antropic_agent.py          # Azure Anthropic integration
-│   ├── azure_deepseek_agent.py          # Azure DeepSeek integration
-│   └── plot_pnid_graph.py               # Interactive graph visualization
+│   ├── ocr_approach/                    # OCR/image-based extraction (18 scripts)
+│   │   ├── README.md                    # OCR approach documentation
+│   │   ├── ollama_deepseel_ocr_fixed.py # DeepSeek-OCR via Ollama
+│   │   ├── paddle_ocr_extract.py        # PaddleOCR extraction
+│   │   ├── easyocr_extract.py           # EasyOCR extraction
+│   │   ├── ocr_bbox_overlay.py          # Bounding box overlay
+│   │   ├── opencv_edge_extraction.py    # Edge detection
+│   │   ├── skeleton_path_mapping.py     # Graph topology from edges
+│   │   └── three_step_pipeline.py       # OCR + Edge + LLM pipeline
+│   ├── pnid_agent.py                    # Universal P&ID extraction agent
+│   ├── gemini_agent.py                  # Google Gemini integration
+│   ├── azure_antropic_agent.py          # Azure Anthropic Claude
+│   ├── azure_deepseek_agent.py          # Azure DeepSeek
+│   ├── compare_pnid_jsonld.py           # Rule-based comparison
+│   ├── compare_pnid_llm.py              # LLM-based semantic comparison
+│   ├── dexpi_reader.py                  # DEXPI XML parser
+│   ├── dwg_reader.py                    # DWG/DXF CAD parser
+│   ├── jsonld_to_dxf.py                 # JSON-LD to DXF converter
+│   ├── plot_pnid_graph.py               # Interactive visualization
+│   └── generate_pnid_variations.py      # Test variation generator
 ├── data/
-│   ├── input/              # Source images
-│   ├── output/             # Generated outputs
+│   ├── input/              # Source images and CAD files
+│   ├── output/             # Generated P&ID outputs
+│   ├── variations/         # Generated test variations
 │   └── intermediate/       # Processing intermediates
+├── docs/                   # Documentation
+│   ├── COMPARISON_GUIDE.md              # Rule-based comparison
+│   ├── LLM_COMPARISON_GUIDE.md          # LLM semantic comparison
+│   └── WORKFLOW_AND_COMPARISON.md       # Complete workflows
 ├── examples/               # Example outputs and data
-├── docs/                   # Additional documentation
 ├── tests/                  # Test scripts
-└── .github/workflows/      # CI/CD workflows
+└── demo_comparison.sh      # Comparison demo script
 ```
 
 ## 🚀 Quick Start
@@ -78,17 +95,20 @@ python -c "from src.plot_pnid_graph import create_interactive_graph; print('✅ 
 ### Basic Usage
 
 ```bash
-# Run OCR with bounding box overlay
-uv run src/run_overlay_demo.py
+# Run OCR with bounding box overlay (OCR approach)
+uv run src/ocr_approach/run_overlay_demo.py
 
-# Extract P&ID graph using Gemini
+# Extract P&ID graph using Gemini (direct LLM)
 uv run src/gemini_agent.py
 
 # Generate interactive visualization
 uv run src/plot_pnid_graph.py
 
-# Or using installed environment
-python src/plot_pnid_graph.py
+# Compare two P&IDs (rule-based)
+python src/compare_pnid_jsonld.py file1.json file2.json
+
+# Compare two P&IDs (LLM-based)
+python src/compare_pnid_llm.py file1.json file2.json
 ```
 
 ## 🔍 P&ID Comparison
