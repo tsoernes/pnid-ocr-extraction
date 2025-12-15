@@ -225,7 +225,7 @@ def create_interactive_graph(
                 size=30,
                 x=vis_x,
                 y=vis_y,
-                physics=False,  # Use fixed positions from extraction
+                physics=True,  # Enable physics for automatic layout (previously fixed)
             )
         else:
             # Source or sink nodes (not in components list)
@@ -309,10 +309,10 @@ def create_interactive_graph(
                 title=title,
                 color=color,
                 shape=shape,
-                size=20,
+                size=18,
                 x=vis_x,
                 y=vis_y,
-                physics=False,
+                physics=True,  # Enable physics for automatic layout (previously fixed)
             )
 
     # Add edges (pipes) with position information
