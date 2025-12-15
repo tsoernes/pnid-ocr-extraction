@@ -104,11 +104,24 @@ def parse_dexpi_xml(xml_path: Path) -> dict[str, Any]:
                     tag_name = child.text.strip()
                     break
 
-        # Extract position if available
+        # Extract position if available - look for Position/Location nested structure
         x, y = None, None
         for child in elem:
             child_tag = child.tag.split("}")[-1]
-            if "position" in child_tag.lower() or "location" in child_tag.lower():
+            if "position" in child_tag.lower():
+                # Look for Location child element
+                for location in child:
+                    location_tag = location.tag.split("}")[-1]
+                    if "location" in location_tag.lower():
+                        x_val = location.get("X") or location.get("x")
+                        y_val = location.get("Y") or location.get("y")
+                        if x_val:
+                            x = float(x_val)
+                        if y_val:
+                            y = float(y_val)
+                        break
+                break
+            elif "location" in child_tag.lower():
                 x_val = child.get("X") or child.get("x")
                 y_val = child.get("Y") or child.get("y")
                 if x_val:
@@ -128,6 +141,7 @@ def parse_dexpi_xml(xml_path: Path) -> dict[str, Any]:
             "Tank",
             "Instrument",
             "HeatExchanger",
+            "Nozzle",
         ]:
             # Map to P&ID type
             pid_type = DEXPI_CLASS_TO_TYPE.get(component_class, "pid:Component")
@@ -146,18 +160,19 @@ def parse_dexpi_xml(xml_path: Path) -> dict[str, Any]:
             node = {k: v for k, v in node.items() if v is not None}
             nodes.append(node)
 
-    # Look for connections/associations
+    # Look for Connection elements (standard in DEXPI)
     for elem in root.iter():
         tag = elem.tag.split("}")[-1]
 
-        if "association" in tag.lower() or "connection" in tag.lower() or "nozzle" in tag.lower():
-            elem_id = elem.get("ID") or elem.get("id")
-            from_ref = elem.get("FromID") or elem.get("From") or elem.get("Source")
-            to_ref = elem.get("ToID") or elem.get("To") or elem.get("Target")
+        if tag == "Connection":
+            from_ref = elem.get("FromID")
+            to_ref = elem.get("ToID")
 
-            if elem_id and from_ref and to_ref:
+            if from_ref and to_ref:
+                # Create unique ID for connection
+                conn_id = f"{from_ref}--{to_ref}"
                 edge = {
-                    "@id": f"pid:{elem_id}",
+                    "@id": f"pid:{conn_id}",
                     "@type": "pid:Connection",
                     "connectedTo": [f"pid:{from_ref}", f"pid:{to_ref}"],
                 }
