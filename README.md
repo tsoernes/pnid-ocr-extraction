@@ -93,7 +93,11 @@ python src/plot_pnid_graph.py
 
 ## 🔍 P&ID Comparison
 
-Compare two JSON-LD P&ID files to identify differences:
+Two comparison tools are available for different use cases:
+
+### Rule-Based Comparison (Fast, Deterministic)
+
+Compare structural differences with exact counts and IDs:
 
 ```bash
 # Compare two P&ID files (human-readable output)
@@ -106,12 +110,40 @@ python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/pni
 ./demo_comparison.sh
 ```
 
-The comparison script identifies:
+**Features**:
+- Instant results (<1 second)
 - Missing/added components and connections
-- Component attribute changes (type, name, position)
-- Connection endpoint differences
+- Component attribute changes (type, name)
+- Position differences ignored by default
+- Works offline, no API required
 
-See **[Comparison Guide](docs/COMPARISON_GUIDE.md)** for detailed usage examples.
+See **[Comparison Guide](docs/COMPARISON_GUIDE.md)** for detailed usage.
+
+### LLM-Based Comparison (Intelligent, Semantic)
+
+Get engineering insights with GPT-5.1 reasoning:
+
+```bash
+# Semantic analysis with impact assessment
+python src/compare_pnid_llm.py data/output/pnid_base.json data/variations/pnid_var_001.json
+
+# JSON output with reasoning tokens
+python src/compare_pnid_llm.py data/output/pnid_base.json data/variations/pnid_var_001.json --json
+
+# Control reasoning effort (low/medium/high)
+python src/compare_pnid_llm.py data/output/pnid_base.json data/variations/pnid_var_001.json --reasoning high
+```
+
+**Features**:
+- Understands engineering implications
+- Process impact assessment
+- Equivalence determination with confidence levels
+- Actionable recommendations
+- Structured output via Pydantic models
+
+**Requirements**: Azure OpenAI API key (set `AZURE_AI_API_KEY` in `.env`)
+
+See **[LLM Comparison Guide](docs/LLM_COMPARISON_GUIDE.md)** for detailed usage.
 
 ## 📚 Documentation
 
@@ -120,7 +152,8 @@ Comprehensive documentation is available in the [`docs/`](docs/) folder:
 - **[Documentation Index](docs/README.md)** - Complete guide to all documentation
 - **[Status Summary](docs/STATUS_SUMMARY.md)** - Current project status and next steps
 - **[Workflow & Comparison](docs/WORKFLOW_AND_COMPARISON.md)** - Complete workflows and model comparison
-- **[Comparison Guide](docs/COMPARISON_GUIDE.md)** - JSON-LD P&ID comparison tool usage
+- **[Comparison Guide](docs/COMPARISON_GUIDE.md)** - Rule-based P&ID comparison tool
+- **[LLM Comparison Guide](docs/LLM_COMPARISON_GUIDE.md)** - Intelligent semantic comparison with GPT-5.1
 - **[OCR Bounding Box Guide](docs/README_OCR_BoundingBox.md)** - Detailed OCR overlay documentation
 - **[Technical Details](.rules)** - Comprehensive repository summary
 
