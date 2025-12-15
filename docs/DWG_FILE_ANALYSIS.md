@@ -2,7 +2,7 @@
 
 **Date**: 2025-01-XX  
 **File**: `data/input/Diagramas P&ID.dwg`  
-**Status**: ⚠️ Conversion blocked by DWG format version
+**Status**: ✅ Conversion successful, but extraction requires different approach
 
 ---
 
@@ -19,17 +19,21 @@
 
 ### DWG Reader Script
 
-**File**: `src/dwg_reader.py`
+**Files**: 
+- `src/convert_dwg_to_dxf.py` - DWG to DXF conversion using ODA File Converter
+- `src/dwg_reader.py` - Extract P&ID from DXF with block references
 
 **Purpose**: Convert DXF/DWG P&ID files to JSON-LD with heuristic component and pipe extraction.
 
 **Features**:
+- ✅ DWG → DXF conversion using ODA File Converter (successfully tested)
 - Extracts P&ID nodes (components) from INSERT entities (block references)
 - Maps block names to component types (Valve, Pump, Filter, Instrument, etc.)
 - Extracts pipe geometry from LINE and LWPOLYLINE entities
 - Infers connectivity by snapping components to pipe vertices
 - Outputs JSON-LD with spatial coordinates (x, y)
-- Supports DWG → DXF conversion via external converter
+
+**Limitation Discovered**: `dwg_reader.py` requires block-based P&IDs (INSERT entities). The Diagramas P&ID.dwg file uses primitive geometry (lines, circles, arcs) + text labels instead, similar to raster images.
 
 **Heuristics**:
 - Block name pattern matching (e.g., `\bVALVE\b` → `pid:Valve`)
@@ -67,35 +71,74 @@ class PIDEdge:
 
 ---
 
-## ⚠️ Conversion Issues
+## ✅ Conversion Success
 
-### Issue 1: dwg2dxf Format Incompatibility
+### ODA File Converter - Working Solution
 
-**Tool**: `/usr/sbin/dwg2dxf`
+**Tool**: `/usr/local/bin/ODAFileConverter`
 
-**Error**:
+**Result**: ✅ **Successful conversion**
 ```
-DWG file error: format 18 error 3
-Error reading file data/input/Diagramas P&ID.dwg
-Conversion failed
-```
-
-**Root Cause**:
-- The DWG file is in AutoCAD 2018/2019/2020 format (format 18)
-- The installed `dwg2dxf` tool cannot parse this newer format
-- Format 18 was introduced in AutoCAD 2018 and is not supported by older converters
-
-**Original Script Syntax Issue**:
-The original `maybe_convert_dwg_to_dxf()` function had incorrect command syntax:
-```python
-# Original (incorrect):
-cmd = ["dwg2dxf", str(input_path), "-o", str(dxf_path)]
-
-# Fixed:
-cmd = ["dwg2dxf", str(input_path), "-v2007", str(dxf_path)]
+Input:  data/input/Diagramas P&ID.dwg (167 KB, AutoCAD 2018/2019/2020)
+Output: data/input/Diagramas P&ID.dxf (713 KB, ACAD2018 DXF format)
 ```
 
-The tool expects: `dwg2dxf <input> [-b] <-version> <output>`
+**Command Used**:
+```bash
+uv run src/convert_dwg_to_dxf.py "data/input/Diagramas P&ID.dwg"
+```
+
+**Conversion Script**: `src/convert_dwg_to_dxf.py`
+- Uses ODA File Converter with temporary directories
+- Configurable output version (ACAD2018, ACAD2010, etc.)
+- Audit/repair option during conversion
+- Proper error handling and output validation
+
+### DXF Structure Analysis
+
+**Entities Found**:
+- **887 LINE entities** - Pipe routing and component outlines
+- **85 ARC entities** - Curved pipes and component details
+- **52 CIRCLE entities** - Tanks, vessels, instrument symbols
+- **73 TEXT/MTEXT entities** - Labels (VP, LIC, PY, etc.)
+- **4 LWPOLYLINE entities** - Complex paths
+- **0 INSERT entities** - ⚠️ No block references!
+
+**Layers**:
+- `0` (default layer) - 558 lines
+- `MOTOR-BASE` - 299 lines
+- `Formato` - 30 lines (border/title block)
+- Plus 25 more layers
+
+**Text Labels Found**:
+- Instrument tags: "VP", "LIC", "PY"
+- Signal types: "4 - 20 mA"
+- Connection points: "IN A1", "OUT A1", "+", "-"
+- Material: "ss" (stainless steel)
+- Section: "SIMBOLOGIA" (symbology/legend)
+
+### Key Finding: Primitive-Based P&ID
+
+**Discovery**: This P&ID does **not** use block references (INSERT entities). Instead, it's drawn with:
+- Basic geometric primitives (lines, circles, arcs)
+- Text labels for component identification
+- Similar structure to raster images
+
+**Implication**: The `dwg_reader.py` script (which expects block-based components) extracted **0 nodes and 0 edges**.
+
+**Why This Matters**:
+- This P&ID is closer in structure to the `brewery.jpg` image we've been working with
+- Extraction requires geometric pattern recognition (like our OpenCV pipeline)
+- Text labels need spatial parsing (like OCR output)
+- Connection inference needed (like skeleton mapping)
+
+## ⚠️ Previous Issue (Resolved)
+
+### Issue: dwg2dxf Format Incompatibility (Bypassed)
+
+**Old Tool**: `/usr/sbin/dwg2dxf` - Failed with format 18 error
+
+**Solution**: Use ODA File Converter instead (handles all modern DWG formats)
 
 ---
 
@@ -322,52 +365,122 @@ Once conversion succeeds, the output JSON-LD will contain:
 
 ## 🔍 Next Steps
 
-### Priority 1: Convert DWG to DXF
+### ✅ Priority 1: Convert DWG to DXF - COMPLETED
 
-**Options** (pick one):
-- [ ] Manual conversion via AutoCAD/FreeCAD/Online service
-- [ ] Install ODA File Converter (requires sudo)
-- [ ] Install LibreDWG tools: `sudo dnf install libredwg-tools`
+**Status**: ✅ Successfully converted using ODA File Converter
 
-### Priority 2: Run DWG Reader
-
-Once DXF is available:
+**Command Used**:
 ```bash
-uv run src/dwg_reader.py \
-  "data/input/Diagramas P&ID.dxf" \
-  -o data/output/pnid_dwg.json \
-  --snap 5.0 \
-  --include-unknown-blocks
+uv run src/convert_dwg_to_dxf.py "data/input/Diagramas P&ID.dwg"
 ```
 
-### Priority 3: Visualize Results
+**Output**: `data/input/Diagramas P&ID.dxf` (713 KB)
 
+### ⚠️ Priority 2: Extract P&ID Structure - Needs New Approach
+
+**Status**: Block-based extraction not applicable (0 INSERTs found)
+
+**Finding**: This P&ID uses primitive geometry, not component blocks.
+
+**Options for Extraction**:
+
+#### Option A: Adapt Existing Image Pipeline (Recommended)
+Convert DXF to image and use the proven three-step pipeline:
 ```bash
-# Adapt plot_pnid_graph.py to handle JSON-LD format
-# Or convert JSON-LD to PNID JSON format first
+# 1. Convert DXF to PNG/SVG
+python3 -c "
+import ezdxf
+from ezdxf.addons.drawing import RenderContext, Frontend
+from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
+import matplotlib.pyplot as plt
 
-# Visualization command (after format conversion):
-uv run src/plot_pnid_graph.py \
-  --json data/output/pnid_dwg.json \
-  --out data/output/pnid_dwg_graph.html
+doc = ezdxf.readfile('data/input/Diagramas P&ID.dxf')
+msp = doc.modelspace()
+fig = plt.figure()
+ax = fig.add_axes([0, 0, 1, 1])
+ctx = RenderContext(doc)
+out = MatplotlibBackend(ax)
+Frontend(ctx, out).draw_layout(msp, finalize=True)
+fig.savefig('data/input/diagramas_pnid_from_dxf.png', dpi=300)
+"
+
+# 2. Run three-step pipeline
+PNID_PROVIDER=azure-anthropic \
+PNID_MODEL=claude-opus-4-5 \
+uv run src/three_step_pipeline.py \
+  --image data/input/diagramas_pnid_from_dxf.png \
+  --output data/output/pnid_diagramas_three_step.json
 ```
 
-### Priority 4: Compare Approaches
+#### Option B: Create DXF-Specific Extractor
+Build a new script that:
+- Parses TEXT entities for component labels (VP, LIC, PY, etc.)
+- Groups nearby geometric primitives (circles, arcs) as components
+- Traces LINE/LWPOLYLINE entities as pipe paths
+- Infers connectivity from geometric proximity
 
-Once DWG extraction works:
-- Compare DWG-based extraction vs. OCR-based extraction
-- Evaluate accuracy, completeness, spatial coordinates
-- Determine best workflow for production use
+#### Option C: Hybrid Approach
+1. Extract text labels + coordinates from DXF
+2. Extract line/arc geometry from DXF
+3. Use LLM with structured prompt describing DXF entities
+4. Merge with spatial analysis results
+
+### Priority 3: Analyze Text Labels and Geometry
+
+Extract structured data from the DXF:
+```python
+import ezdxf
+from collections import defaultdict
+
+doc = ezdxf.readfile('data/input/Diagramas P&ID.dxf')
+msp = doc.modelspace()
+
+# Extract text with positions
+texts = []
+for txt in msp.query('TEXT MTEXT'):
+    content = txt.dxf.text if hasattr(txt.dxf, 'text') else txt.text
+    pos = txt.dxf.insert
+    texts.append({
+        'text': content,
+        'x': pos.x,
+        'y': pos.y,
+        'layer': txt.dxf.layer
+    })
+
+# Extract circles (likely instruments/vessels)
+circles = []
+for circle in msp.query('CIRCLE'):
+    circles.append({
+        'x': circle.dxf.center.x,
+        'y': circle.dxf.center.y,
+        'radius': circle.dxf.radius,
+        'layer': circle.dxf.layer
+    })
+
+# Match text labels to nearby circles
+# ... spatial clustering logic ...
+```
+
+### Priority 4: Compare Vector vs. Raster Extraction
+
+Once extraction works for both:
+- **Vector (DXF)**: Precise coordinates, clean geometry, text labels
+- **Raster (Image + OCR)**: Proven pipeline, works with any diagram source
+- Evaluate which provides better results for this specific diagram style
 
 ---
 
 ## 📝 Notes
 
-- The DWG file likely contains proper CAD entities (blocks, lines, polylines)
-- This should provide **more accurate** geometry than image-based OCR
-- Connectivity inference may need tuning (snap tolerance parameter)
-- Block name patterns may need customization for this specific diagram
-- Layer names in the DWG will guide pipe vs. component classification
+- ✅ DWG conversion successful using ODA File Converter
+- ⚠️ This P&ID does **not** use CAD blocks - it uses primitive geometry
+- Structure is similar to raster images: shapes + text labels
+- Extraction approach needs to be geometric pattern recognition, not block parsing
+- Text labels (VP, LIC, PY) indicate instrument/control components
+- 887 lines suggest complex pipe routing
+- This diagram may actually be **easier to process as an image** using the existing pipeline
+- Advantage of DXF: precise coordinates, no OCR errors on text
+- Disadvantage: requires geometric pattern matching (similar complexity to image processing)
 
 ---
 
@@ -381,4 +494,4 @@ Once DWG extraction works:
 
 ---
 
-**Summary**: The DWG file analysis is blocked by format incompatibility with the installed `dwg2dxf` tool. The recommended solution is to either (1) manually convert the DWG to DXF using AutoCAD/FreeCAD/online service, or (2) install ODA File Converter or LibreDWG for automated conversion. Once converted, the existing `dwg_reader.py` script should successfully extract P&ID components and pipes with spatial coordinates.
+**Summary**: ✅ DWG file successfully converted to DXF using ODA File Converter. However, the diagram uses primitive geometry (lines, circles, arcs) with text labels rather than block-based components. The existing `dwg_reader.py` script is not applicable. **Recommended next step**: Either (1) render DXF to image and use the proven three-step pipeline, or (2) build a DXF-specific extractor that parses geometry + text labels. The primitive-based structure means this P&ID is similar in complexity to raster image processing, and may benefit from the existing OCR + LLM pipeline rather than pure vector analysis.
