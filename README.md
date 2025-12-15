@@ -91,6 +91,28 @@ uv run src/plot_pnid_graph.py
 python src/plot_pnid_graph.py
 ```
 
+## 🔍 P&ID Comparison
+
+Compare two JSON-LD P&ID files to identify differences:
+
+```bash
+# Compare two P&ID files (human-readable output)
+python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/pnid_var_001.json
+
+# JSON output for programmatic processing
+python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/pnid_var_001.json --json
+
+# Run comparison demo
+./demo_comparison.sh
+```
+
+The comparison script identifies:
+- Missing/added components and connections
+- Component attribute changes (type, name, position)
+- Connection endpoint differences
+
+See **[Comparison Guide](docs/COMPARISON_GUIDE.md)** for detailed usage examples.
+
 ## 📚 Documentation
 
 Comprehensive documentation is available in the [`docs/`](docs/) folder:
@@ -98,6 +120,7 @@ Comprehensive documentation is available in the [`docs/`](docs/) folder:
 - **[Documentation Index](docs/README.md)** - Complete guide to all documentation
 - **[Status Summary](docs/STATUS_SUMMARY.md)** - Current project status and next steps
 - **[Workflow & Comparison](docs/WORKFLOW_AND_COMPARISON.md)** - Complete workflows and model comparison
+- **[Comparison Guide](docs/COMPARISON_GUIDE.md)** - JSON-LD P&ID comparison tool usage
 - **[OCR Bounding Box Guide](docs/README_OCR_BoundingBox.md)** - Detailed OCR overlay documentation
 - **[Technical Details](.rules)** - Comprehensive repository summary
 
