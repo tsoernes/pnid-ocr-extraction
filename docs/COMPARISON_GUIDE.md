@@ -6,9 +6,11 @@ This guide explains how to use the `compare_pnid_jsonld.py` script to compare tw
 
 The comparison script identifies differences between two P&ID JSON-LD files, including:
 - **Missing/Added Components**: Components present in one file but not the other
-- **Component Attribute Differences**: Changes in type, name, or position
+- **Component Attribute Differences**: Changes in type, name, or other attributes
 - **Missing/Added Connections**: Pipe connections present in one file but not the other
 - **Connection Endpoint Differences**: Changes in connection source/target
+
+**Important**: Position/coordinate differences are **IGNORED by default**. Use the `--include-positions` flag if you need to compare spatial coordinates.
 
 This is particularly useful for:
 - Validating extraction accuracy (original vs. extracted)
@@ -35,6 +37,9 @@ uv pip install -e .
 
 ```bash
 python src/compare_pnid_jsonld.py <file1.json> <file2.json>
+
+# Include position/coordinate comparison
+python src/compare_pnid_jsonld.py <file1.json> <file2.json> --include-positions
 ```
 
 **Example:**
@@ -79,6 +84,9 @@ For programmatic processing or integration with other tools:
 
 ```bash
 python src/compare_pnid_jsonld.py <file1.json> <file2.json> --json
+
+# Include positions in JSON output
+python src/compare_pnid_jsonld.py <file1.json> <file2.json> --json --include-positions
 ```
 
 **Example:**
@@ -223,7 +231,7 @@ echo "✅ Comparison complete. Reports saved in $OUTPUT_DIR/"
 **Attribute Changes:**
 - `type_diff`: Component type changed (e.g., `pid:Valve` → `pid:Pump`)
 - `name_diff`: Component name/label changed
-- `position_diff`: Position changed beyond threshold (>1.0 units distance)
+- `position_diff`: Position changed beyond threshold (>1.0 units distance) - **only reported with `--include-positions` flag**
 - `other_diffs`: Other attribute changes (description, category, etc.)
 
 ### Connection Differences
@@ -233,7 +241,14 @@ echo "✅ Comparison complete. Reports saved in $OUTPUT_DIR/"
 
 ### Position Comparison
 
-Position differences are reported when:
+**By default, position/coordinate differences are IGNORED.** This is because:
+- Different extraction methods may use different coordinate systems
+- Position precision varies between sources (OCR vs. CAD vs. LLM)
+- Semantic graph comparison should focus on topology, not layout
+
+To include position comparison, use the `--include-positions` flag.
+
+When position comparison is enabled, differences are reported when:
 - Both files have positions AND distance > 1.0 units
 - One file has position, the other doesn't
 
