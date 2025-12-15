@@ -13,6 +13,9 @@ Usage:
     python src/compare_pnid_jsonld.py <file1.json> <file2.json>
     python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/var_001.json
     python src/compare_pnid_jsonld.py <file1.json> <file2.json> --json
+    python src/compare_pnid_jsonld.py <file1.json> <file2.json> --include-positions
+
+Note: Position/coordinate differences are IGNORED by default. Use --include-positions to compare them.
 """
 
 import json
@@ -97,15 +100,17 @@ def normalize_connection(conn: dict[str, Any]) -> tuple[str, str]:
 
 def get_position(comp: dict[str, Any]) -> tuple[float, float] | None:
     """Extract (x, y) position from component."""
-    x = comp.get("pnid:x")
-    y = comp.get("pnid:y")
+    x = comp.get("pnid:x") or comp.get("x")
+    y = comp.get("pnid:y") or comp.get("y")
     if x is not None and y is not None:
         return (float(x), float(y))
     return None
 
 
 def compare_components(
-    comps1: dict[str, dict[str, Any]], comps2: dict[str, dict[str, Any]]
+    comps1: dict[str, dict[str, Any]],
+    comps2: dict[str, dict[str, Any]],
+    include_positions: bool = False,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[ComponentDiff]]:
     """
     Compare two component dictionaries.
@@ -137,29 +142,43 @@ def compare_components(
             has_diff = True
 
         # Check name
-        n1 = c1.get("pnid:name") or c1.get("rdfs:label")
-        n2 = c2.get("pnid:name") or c2.get("rdfs:label")
+        n1 = c1.get("pnid:name") or c1.get("rdfs:label") or c1.get("name")
+        n2 = c2.get("pnid:name") or c2.get("rdfs:label") or c2.get("name")
         if n1 != n2:
             diff.name_diff = (n1, n2)
             has_diff = True
 
-        # Check position
-        pos1 = get_position(c1)
-        pos2 = get_position(c2)
-        if pos1 != pos2:
-            # Only report if both have positions or positions differ significantly
-            if pos1 is not None and pos2 is not None:
-                dist = ((pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2) ** 0.5
-                if dist > 1.0:  # Threshold for "significant" position change
+        # Check position (only if include_positions is True)
+        if include_positions:
+            pos1 = get_position(c1)
+            pos2 = get_position(c2)
+            if pos1 != pos2:
+                # Only report if both have positions or positions differ significantly
+                if pos1 is not None and pos2 is not None:
+                    dist = ((pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2) ** 0.5
+                    if dist > 1.0:  # Threshold for "significant" position change
+                        diff.position_diff = (pos1, pos2)
+                        has_diff = True
+                elif pos1 != pos2:
                     diff.position_diff = (pos1, pos2)
                     has_diff = True
-            elif pos1 != pos2:
-                diff.position_diff = (pos1, pos2)
-                has_diff = True
 
         # Check other attributes (description, category, etc.)
         keys = set(c1.keys()) | set(c2.keys())
-        ignore_keys = {"@id", "@type", "pnid:name", "rdfs:label", "pnid:x", "pnid:y"}
+        # Ignore position coordinates (x, y) - compared separately if include_positions=True
+        # Also ignore name (checked separately above), dexpiClass (internal metadata)
+        ignore_keys = {
+            "@id",
+            "@type",
+            "pnid:name",
+            "rdfs:label",
+            "pnid:x",
+            "pnid:y",
+            "x",
+            "y",
+            "name",
+            "dexpiClass",
+        }
         for key in keys - ignore_keys:
             v1 = c1.get(key)
             v2 = c2.get(key)
@@ -206,7 +225,7 @@ def compare_connections(
     return only_in_1, only_in_2, conn_diffs
 
 
-def compare_pnids(path1: Path, path2: Path) -> ComparisonResult:
+def compare_pnids(path1: Path, path2: Path, include_positions: bool = False) -> ComparisonResult:
     """Compare two JSON-LD P&ID files."""
     data1 = load_jsonld(path1)
     data2 = load_jsonld(path2)
@@ -217,7 +236,7 @@ def compare_pnids(path1: Path, path2: Path) -> ComparisonResult:
     conns1 = extract_connections(data1)
     conns2 = extract_connections(data2)
 
-    only_c1, only_c2, c_diffs = compare_components(comps1, comps2)
+    only_c1, only_c2, c_diffs = compare_components(comps1, comps2, include_positions)
     only_conn1, only_conn2, conn_diffs = compare_connections(conns1, conns2)
 
     return ComparisonResult(
@@ -335,19 +354,26 @@ def print_comparison(result: ComparisonResult) -> None:
 def main():
     """Main entry point."""
     if len(sys.argv) < 3:
-        print("Usage: python src/compare_pnid_jsonld.py <file1.json> <file2.json> [--json]")
-        print("\nExample:")
+        print(
+            "Usage: python src/compare_pnid_jsonld.py <file1.json> <file2.json> [--json] [--include-positions]"
+        )
+        print("\nExamples:")
         print(
             "  python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/var_001.json"
         )
         print(
             "  python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/var_001.json --json"
         )
+        print(
+            "  python src/compare_pnid_jsonld.py data/output/pnid_base.json data/variations/var_001.json --include-positions"
+        )
+        print("\nNote: Position/coordinate differences are IGNORED by default.")
         sys.exit(1)
 
     path1 = Path(sys.argv[1])
     path2 = Path(sys.argv[2])
     json_output = "--json" in sys.argv
+    include_positions = "--include-positions" in sys.argv
 
     if not path1.exists():
         print(f"❌ Error: File not found: {path1}")
@@ -357,7 +383,7 @@ def main():
         print(f"❌ Error: File not found: {path2}")
         sys.exit(1)
 
-    result = compare_pnids(path1, path2)
+    result = compare_pnids(path1, path2, include_positions)
 
     if json_output:
         # Output as JSON for programmatic consumption

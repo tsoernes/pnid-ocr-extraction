@@ -1,0 +1,671 @@
+{
+  "@context": {
+    "pid": "https://example.com/pid#",
+    "schema": "https://schema.org/",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "dexpiClass": "pid:dexpiClass",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:GlobeValve-2",
+      "@type": "pid:Component",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "GlobeValve",
+      "x": 167.41042370289304,
+      "y": 168.27084405627528
+    },
+    {
+      "@id": "pid:ButterflyValve-1",
+      "@type": "pid:Component",
+      "name": "BUTTERFLY_VALVE_SHAPE_V2",
+      "dexpiClass": "ButterflyValve",
+      "x": 190.4062233714571,
+      "y": 166.1101379014799
+    },
+    {
+      "@id": "pid:SwingCheckValve-1",
+      "@type": "pid:Component",
+      "name": "SWING_CHECK_VALVE_SHAPE",
+      "dexpiClass": "SwingCheckValve",
+      "x": 203.0078703966864,
+      "y": 153.00062607259633
+    },
+    {
+      "@id": "pid:PipeReducer-1",
+      "@type": "pid:Component",
+      "name": "REDUCER_GENERAL_SHAPE",
+      "dexpiClass": "PipeReducer",
+      "x": 226.18600559700292,
+      "y": 130.16226489776474
+    },
+    {
+      "@id": "pid:BallValve-1",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve",
+      "x": 241.85293086067765,
+      "y": 129.26906784688373
+    },
+    {
+      "@id": "pid:SpringLoadedGlobeSafetyValve-1",
+      "@type": "pid:Tank",
+      "name": "ANGLE_SAFETY_VALVE_SPRING_LOADED_SHAPE",
+      "dexpiClass": "SpringLoadedGlobeSafetyValve",
+      "x": 254.56224609756936,
+      "y": 215.63487303507236
+    },
+    {
+      "@id": "pid:PipeTee-2",
+      "@type": "pid:Component",
+      "name": "ALT_T_TYPE_CONNECTION_SHAPE_V2",
+      "dexpiClass": "PipeTee",
+      "x": 275.86330040836197,
+      "y": 145.27277482210494
+    },
+    {
+      "@id": "pid:BallValve-2",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE_MOD",
+      "dexpiClass": "BallValve",
+      "x": 267.2019904265753,
+      "y": 143.28496884706803
+    },
+    {
+      "@id": "pid:PipeTee-1",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee",
+      "x": 266.5308187953044,
+      "y": 131.45520117991396
+    },
+    {
+      "@id": "pid:PipeTee-3",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee",
+      "x": 266.6256967707425,
+      "y": 137.74304538336543
+    },
+    {
+      "@id": "pid:BallValve-3",
+      "@type": "pid:FlowMeter",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve",
+      "x": 290.03966462931356,
+      "y": 152.5437578991272
+    },
+    {
+      "@id": "pid:BlindFlange-1",
+      "@type": "pid:Component",
+      "name": "NEW_BLIND_COVER_SHAPE_V2",
+      "dexpiClass": "BlindFlange",
+      "x": 290.9607773921512,
+      "y": 164.39309255224154
+    },
+    {
+      "@id": "pid:BallValve-4",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve",
+      "x": 276.64389643893657,
+      "y": 153.33453079444092
+    },
+    {
+      "@id": "pid:PipeTee-4",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE_NEW",
+      "dexpiClass": "PipeTee",
+      "x": 315.799494244682,
+      "y": 145.66613864908737
+    },
+    {
+      "@id": "pid:PipeTee-5",
+      "@type": "pid:Component",
+      "name": "ALT_T_TYPE_CONNECTION_SHAPE_NEW",
+      "dexpiClass": "PipeTee",
+      "x": 365.71887629001895,
+      "y": 139.87300090577997
+    },
+    {
+      "@id": "pid:BallValve-5",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve",
+      "x": 359.30823685507585,
+      "y": 144.18539843445393
+    },
+    {
+      "@id": "pid:BlindFlange-2",
+      "@type": "pid:Component",
+      "name": "BLIND_COVER_SHAPE",
+      "dexpiClass": "BlindFlange",
+      "x": 359.99205867479395,
+      "y": 141.8439812413706
+    },
+    {
+      "@id": "pid:GlobeValve-1",
+      "@type": "pid:Component",
+      "name": "ALT_GLOBE_VALVE_SHAPE_NEW",
+      "dexpiClass": "GlobeValve",
+      "x": 323.81449853626447,
+      "y": 187.42079919515658
+    },
+    {
+      "@id": "pid:GlobeValve-3",
+      "@type": "pid:Valve",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "GlobeValve",
+      "x": 340.79856186968914,
+      "y": 196.1776819474015
+    },
+    {
+      "@id": "pid:PlateHeatExchanger-1",
+      "@type": "pid:Component",
+      "name": "NEW_PLATE_TYPE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "PlateHeatExchanger",
+      "x": 135.48125796417142,
+      "y": 160.32137317021713
+    },
+    {
+      "@id": "pid:Nozzle-3",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 145.56845804574556,
+      "y": 152.45111017250042
+    },
+    {
+      "@id": "pid:Nozzle-4",
+      "@type": "pid:Component",
+      "name": "ALT_NOZZLE_SHAPE_MOD",
+      "dexpiClass": "Nozzle",
+      "x": 136.08806546840174,
+      "y": 153.39332654833083
+    },
+    {
+      "@id": "pid:Nozzle-13",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE_V2",
+      "dexpiClass": "Nozzle",
+      "x": 126.9181540847195,
+      "y": 167.07196955819498
+    },
+    {
+      "@id": "pid:Nozzle-14",
+      "@type": "pid:Valve",
+      "name": "NEW_NOZZLE_SHAPE_ALT",
+      "dexpiClass": "Nozzle",
+      "x": 151.80645886640676,
+      "y": 147.66527031556217
+    },
+    {
+      "@id": "pid:Chamber-1",
+      "@type": "pid:Component",
+      "name": "Chamber-1",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-2",
+      "@type": "pid:Component",
+      "name": "Chamber-2",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TubularHeatExchanger-1",
+      "@type": "pid:Component",
+      "name": "FLOATING_HEAD_TUBE_BUNDLE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "TubularHeatExchanger",
+      "x": 324.3143838684169,
+      "y": 175.1854426774268
+    },
+    {
+      "@id": "pid:Nozzle-10",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE_MOD",
+      "dexpiClass": "Nozzle",
+      "x": 323.3235107505217,
+      "y": 171.13337475740957
+    },
+    {
+      "@id": "pid:Nozzle-11",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 331.29631448823244,
+      "y": 168.9671577098519
+    },
+    {
+      "@id": "pid:Nozzle-16",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 340.72462775156976,
+      "y": 172.434753502084
+    },
+    {
+      "@id": "pid:Nozzle-15",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 348.5589495718178,
+      "y": 167.23565338325685
+    },
+    {
+      "@id": "pid:Chamber-3",
+      "@type": "pid:HeatExchanger",
+      "name": "Chamber-3",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-4",
+      "@type": "pid:Component",
+      "name": "Chamber-4",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TubeBundle-1",
+      "@type": "pid:Component",
+      "name": "TubeBundle-1",
+      "dexpiClass": "TubeBundle"
+    },
+    {
+      "@id": "pid:CentrifugalPump-1",
+      "@type": "pid:Component",
+      "name": "CENTRIFUGAL_PUMP_SHAPE",
+      "dexpiClass": "CentrifugalPump",
+      "x": 94.92740624494249,
+      "y": 146.81652220699314
+    },
+    {
+      "@id": "pid:Nozzle-1",
+      "@type": "pid:Component",
+      "name": "NEW_NOZZLE_SHAPE_MOD",
+      "dexpiClass": "Nozzle",
+      "x": 68.2787220417923,
+      "y": 130.04858775487267
+    },
+    {
+      "@id": "pid:Nozzle-2",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE_NEW",
+      "dexpiClass": "Nozzle",
+      "x": 87.51624191508854,
+      "y": 137.08461305417038
+    },
+    {
+      "@id": "pid:Chamber-5",
+      "@type": "pid:Component",
+      "name": "Chamber-5",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Impeller-1",
+      "@type": "pid:Component",
+      "name": "NEW_Impeller-1_ALT",
+      "dexpiClass": "Impeller"
+    },
+    {
+      "@id": "pid:ReciprocatingPump-1",
+      "@type": "pid:HeatExchanger",
+      "name": "NEW_RECIPROCATING_PUMP_SHAPE_ALT",
+      "dexpiClass": "ReciprocatingPump",
+      "x": 244.24021002458477,
+      "y": 129.68516360639234
+    },
+    {
+      "@id": "pid:Nozzle-7",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 245.97010655869335,
+      "y": 137.31223551818934
+    },
+    {
+      "@id": "pid:Nozzle-9",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 254.80741591102046,
+      "y": 129.70670152501856
+    },
+    {
+      "@id": "pid:Displacer-1",
+      "@type": "pid:Component",
+      "name": "Displacer-1",
+      "dexpiClass": "Displacer"
+    },
+    {
+      "@id": "pid:Tank-1",
+      "@type": "pid:Tank",
+      "name": "NEW_VESSEL_WITH_DISHED_HEADS_SHAPE_V2",
+      "dexpiClass": "Tank",
+      "x": 203.95089894989366,
+      "y": 185.30193003520364
+    },
+    {
+      "@id": "pid:Nozzle-5",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 191.92750101775718,
+      "y": 231.01780505268272
+    },
+    {
+      "@id": "pid:Nozzle-6",
+      "@type": "pid:Component",
+      "name": "NEW_NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 197.45025165246722,
+      "y": 172.71203452001865
+    },
+    {
+      "@id": "pid:Nozzle-18",
+      "@type": "pid:Component",
+      "name": "NEW_NOZZLE_SHAPE_MOD",
+      "dexpiClass": "Nozzle",
+      "x": 177.88134976781816,
+      "y": 187.62949114014913
+    },
+    {
+      "@id": "pid:Nozzle-8",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 217.75453391796077,
+      "y": 214.8763029667041
+    },
+    {
+      "@id": "pid:Nozzle-12",
+      "@type": "pid:Component",
+      "name": "NOZZLE_SHAPE_MOD",
+      "dexpiClass": "Nozzle",
+      "x": 207.4920111095272,
+      "y": 223.29447753093913
+    },
+    {
+      "@id": "pid:Nozzle-17",
+      "@type": "pid:Component",
+      "name": "ALT_NOZZLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 208.5551236394583,
+      "y": 216.32198625641283
+    },
+    {
+      "@id": "pid:Nozzle-19",
+      "@type": "pid:Component",
+      "name": "MANHOLE_SHAPE",
+      "dexpiClass": "Nozzle",
+      "x": 178.2688708382921,
+      "y": 192.52583230086915
+    },
+    {
+      "@id": "pid:Chamber-7",
+      "@type": "pid:Component",
+      "name": "Chamber-7",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-8",
+      "@type": "pid:Component",
+      "name": "Chamber-8",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-1",
+      "@type": "pid:Component",
+      "name": "ALT_CENTRIFUGAL_PUMP_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-2",
+      "@type": "pid:Component",
+      "name": "ALT_RECIPROCATING_PUMP_SHAPE_ALT",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-3",
+      "@type": "pid:Component",
+      "name": "VESSEL_WITH_DISHED_HEADS_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-4",
+      "@type": "pid:Instrument",
+      "name": "PLATE_TYPE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-5",
+      "@type": "pid:Component",
+      "name": "ALT_FLOATING_HEAD_TUBE_BUNDLE_HEAT_EXCHANGER_SHAPE_ALT",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:NozzleShape-1",
+      "@type": "pid:Tank",
+      "name": "ALT_MANHOLE_SHAPE_NEW",
+      "dexpiClass": "Nozzle"
+    },
+    {
+      "@id": "pid:NozzleShape-2",
+      "@type": "pid:Component",
+      "name": "NEW_NOZZLE_SHAPE_NEW",
+      "dexpiClass": "Nozzle"
+    },
+    {
+      "@id": "pid:PipingComponentShape-1",
+      "@type": "pid:Component",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-2",
+      "@type": "pid:Component",
+      "name": "NEW_GLOBE_VALVE_SHAPE_NEW",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-3",
+      "@type": "pid:HeatExchanger",
+      "name": "ALT_SWING_CHECK_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-4",
+      "@type": "pid:Component",
+      "name": "BUTTERFLY_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-5",
+      "@type": "pid:FlowMeter",
+      "name": "NEW_ANGLE_SAFETY_VALVE_SPRING_LOADED_SHAPE_ALT",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-6",
+      "@type": "pid:Component",
+      "name": "ALT_BLIND_COVER_SHAPE_NEW",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-7",
+      "@type": "pid:Component",
+      "name": "ALT_REDUCER_GENERAL_SHAPE_V2",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-8",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:FlowInPipeOffPageConnector-1--Nozzle-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:FlowInPipeOffPageConnector-1",
+        "pid:Nozzle-1"
+      ]
+    },
+    {
+      "@id": "pid:Nozzle-4--Nozzle-5",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:Nozzle-4",
+        "pid:Nozzle-5"
+      ]
+    },
+    {
+      "@id": "pid:SwingCheckValve-1--PipeReducer-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:SwingCheckValve-1",
+        "pid:PipeReducer-1"
+      ]
+    },
+    {
+      "@id": "pid:PipeReducer-1--Nozzle-7",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeReducer-1",
+        "pid:Nozzle-7"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-1--SpringLoadedGlobeSafetyValve-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-1",
+        "pid:SpringLoadedGlobeSafetyValve-1"
+      ]
+    },
+    {
+      "@id": "pid:SpringLoadedGlobeSafetyValve-1--Nozzle-8",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:SpringLoadedGlobeSafetyValve-1",
+        "pid:Nozzle-8"
+      ]
+    },
+    {
+      "@id": "pid:Nozzle-9--PipeTee-2",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:Nozzle-9",
+        "pid:PipeTee-2"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-2--PipeTee-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-2",
+        "pid:PipeTee-1"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-3--BlindFlange-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-3",
+        "pid:BlindFlange-1"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-4--Nozzle-10",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-4",
+        "pid:Nozzle-10"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-4--PipeTee-5",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-4",
+        "pid:PipeTee-5"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-5--BlindFlange-2",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-5",
+        "pid:BlindFlange-2"
+      ]
+    },
+    {
+      "@id": "pid:PipeTee-5--FlowOutPipeOffPageConnector-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:PipeTee-5",
+        "pid:FlowOutPipeOffPageConnector-1"
+      ]
+    },
+    {
+      "@id": "pid:Nozzle-11--Nozzle-12",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:Nozzle-11",
+        "pid:Nozzle-12"
+      ]
+    },
+    {
+      "@id": "pid:BlindFlange-1--ProcessInstrumentationFunction-1",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:BlindFlange-1",
+        "pid:ProcessInstrumentationFunction-1"
+      ]
+    },
+    {
+      "@id": "pid:BlindFlange-2--ProcessInstrumentationFunction-2",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:BlindFlange-2",
+        "pid:ProcessInstrumentationFunction-2"
+      ]
+    },
+    {
+      "@id": "pid:Nozzle-17--ProcessInstrumentationFunction-4",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:Nozzle-17",
+        "pid:ProcessInstrumentationFunction-4"
+      ]
+    },
+    {
+      "@id": "pid:ProcessInstrumentationFunction-4--ControlledActuator-3",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:ProcessInstrumentationFunction-4",
+        "pid:ControlledActuator-3"
+      ]
+    },
+    {
+      "@id": "pid:AddedVALVE-70",
+      "@type": "pid:Valve",
+      "name": "NEW_VALVE-70_ALT",
+      "dexpiClass": "AddedVALVE",
+      "x": 70.15325875664078,
+      "y": 57.02830124721801
+    },
+    {
+      "@id": "pid:AddedFM-71",
+      "@type": "pid:Tank",
+      "name": "FM-71_MOD",
+      "dexpiClass": "AddedFM",
+      "x": 97.21982290518496,
+      "y": 209.07661050915482
+    }
+  ]
+}

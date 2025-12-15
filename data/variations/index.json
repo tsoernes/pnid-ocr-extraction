@@ -1,0 +1,10 @@
+{
+  "base_pnid": "data/output/pnid_dexpi_final.json",
+  "num_variations": 20,
+  "intensity": "medium",
+  "base_stats": {
+    "components": 69,
+    "connections": 25
+  },
+  "variations": []
+}
