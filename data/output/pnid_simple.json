@@ -1,0 +1,107 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "pid": "https://example.com/pid#",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "lineNumber": "pid:lineNumber",
+    "layer": "pid:layer",
+    "blockName": "pid:blockName",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:PUMP_1",
+      "@type": "pid:Pump",
+      "name": "PUMP",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIPMENT",
+      "blockName": "PUMP",
+      "x": 50.0,
+      "y": 30.0
+    },
+    {
+      "@id": "pid:VALVE_2",
+      "@type": "pid:Valve",
+      "name": "VALVE",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIPMENT",
+      "blockName": "VALVE",
+      "x": 120.0,
+      "y": 20.0
+    },
+    {
+      "@id": "pid:VALVE_3",
+      "@type": "pid:Valve",
+      "name": "VALVE",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIPMENT",
+      "blockName": "VALVE",
+      "x": 220.0,
+      "y": 60.0
+    },
+    {
+      "@id": "pid:TANK_4",
+      "@type": "pid:Component",
+      "name": "TANK",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIPMENT",
+      "blockName": "TANK",
+      "x": 50.0,
+      "y": 100.0
+    },
+    {
+      "@id": "pid:LT_5",
+      "@type": "pid:Component",
+      "name": "LT",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "INSTRUMENTS",
+      "blockName": "LT",
+      "x": 70.0,
+      "y": 110.0
+    },
+    {
+      "@id": "pid:FT_6",
+      "@type": "pid:Component",
+      "name": "FT",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "INSTRUMENTS",
+      "blockName": "FT",
+      "x": 75.0,
+      "y": 20.0
+    },
+    {
+      "@id": "pid:TANK_7",
+      "@type": "pid:Component",
+      "name": "TANK",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIPMENT",
+      "blockName": "TANK",
+      "x": 170.0,
+      "y": 120.0
+    },
+    {
+      "@id": "pid:LT_8",
+      "@type": "pid:Component",
+      "name": "LT",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "INSTRUMENTS",
+      "blockName": "LT",
+      "x": 190.0,
+      "y": 130.0
+    }
+  ]
+}

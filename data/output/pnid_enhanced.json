@@ -1,0 +1,350 @@
+{
+  "components": [
+    {
+      "label": "MAK",
+      "id": "MAK-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt and corn, operated at 48\u00b0C",
+      "x": 89.0,
+      "y": 55.0
+    },
+    {
+      "label": "MAT",
+      "id": "MAT-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt and water at 15\u00b0C, operated at 48\u00b0C",
+      "x": 89.0,
+      "y": 140.0
+    },
+    {
+      "label": "Mixer",
+      "id": "Mixer-1",
+      "category": "mixer",
+      "description": "Mixer combining MAT and MAK streams at 65\u00b0C",
+      "x": 225.0,
+      "y": 55.0
+    },
+    {
+      "label": "Maische",
+      "id": "Maische-1",
+      "category": "vessel",
+      "description": "Maische vessel operated at 75\u00b0C",
+      "x": 338.0,
+      "y": 55.0
+    },
+    {
+      "label": "Filter",
+      "id": "Filter-1",
+      "category": "filter",
+      "description": "Maische filter separating Dreche",
+      "x": 420.0,
+      "y": 55.0
+    },
+    {
+      "label": "Hot water tank",
+      "id": "HWT-1",
+      "category": "tank",
+      "description": "Hot water tank with CIP",
+      "x": 239.0,
+      "y": 210.0
+    },
+    {
+      "label": "Mixer",
+      "id": "Mixer-2",
+      "category": "mixer",
+      "description": "Mixer for water at 15\u00b0C with steam heating to 80\u00b0C",
+      "x": 280.0,
+      "y": 165.0
+    },
+    {
+      "label": "WOK",
+      "id": "WOK-1",
+      "category": "vessel",
+      "description": "Wort kettle receiving gas at 102\u00b0C",
+      "x": 470.0,
+      "y": 220.0
+    },
+    {
+      "label": "Centrifuge",
+      "id": "Centrifuge-1",
+      "category": "centrifuge",
+      "description": "Centrifuge for trub separation",
+      "x": 341.0,
+      "y": 360.0
+    },
+    {
+      "label": "Wort treatment",
+      "id": "WT-1",
+      "category": "vessel",
+      "description": "Wort treatment vessel with glycol cooling at 10\u00b0C",
+      "x": 170.0,
+      "y": 320.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-1",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger at 102\u00b0C after MAK",
+      "x": 145.0,
+      "y": 55.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-2",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger at 78\u00b0C before filter outlet",
+      "x": 455.0,
+      "y": 55.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-1",
+      "category": "pump",
+      "description": "Pump after mixer for mash transfer",
+      "x": 280.0,
+      "y": 55.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-2",
+      "category": "pump",
+      "description": "Pump for hot water circulation",
+      "x": 240.0,
+      "y": 165.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-3",
+      "category": "pump",
+      "description": "Pump for wort treatment discharge",
+      "x": 210.0,
+      "y": 290.0
+    },
+    {
+      "label": "Valve",
+      "id": "V-1",
+      "category": "valve",
+      "description": "Control valve for glycol",
+      "x": 130.0,
+      "y": 265.0
+    }
+  ],
+  "pipes": [
+    {
+      "label": "Malt/Corn",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Malt and corn feed to MAK at 15\u00b0C",
+      "x": 30.0,
+      "y": 50.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Steam heating to MAK",
+      "x": 151.0,
+      "y": 18.0
+    },
+    {
+      "label": "48\u00b0C",
+      "source": "MAK-1",
+      "target": "HX-1",
+      "description": "Stream from MAK at 48\u00b0C",
+      "x": 122.0,
+      "y": 98.0
+    },
+    {
+      "label": "102\u00b0C",
+      "source": "HX-1",
+      "target": "Mixer-1",
+      "description": "Heated stream at 102\u00b0C to mixer",
+      "x": 190.0,
+      "y": 41.0
+    },
+    {
+      "label": "Malt/Water",
+      "source": "inlet",
+      "target": "MAT-1",
+      "description": "Malt and water feed to MAT at 15\u00b0C",
+      "x": 30.0,
+      "y": 130.0
+    },
+    {
+      "label": "48\u00b0C",
+      "source": "MAT-1",
+      "target": "Mixer-1",
+      "description": "Stream from MAT at 48\u00b0C",
+      "x": 145.0,
+      "y": 98.0
+    },
+    {
+      "label": "MAT+MAK",
+      "source": "Mixer-1",
+      "target": "P-1",
+      "description": "Combined MAT and MAK at 65\u00b0C",
+      "x": 224.0,
+      "y": 13.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Maische-1",
+      "description": "Steam heating to Maische",
+      "x": 307.0,
+      "y": 18.0
+    },
+    {
+      "label": "75\u00b0C",
+      "source": "P-1",
+      "target": "Maische-1",
+      "description": "Mash stream to Maische at 75\u00b0C",
+      "x": 300.0,
+      "y": 55.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Filter-1",
+      "description": "Steam to filter",
+      "x": 455.0,
+      "y": 18.0
+    },
+    {
+      "label": "Maische",
+      "source": "Maische-1",
+      "target": "Filter-1",
+      "description": "Maische to filter",
+      "x": 380.0,
+      "y": 55.0
+    },
+    {
+      "label": "Dreche",
+      "source": "Filter-1",
+      "target": "outlet",
+      "description": "Spent grain discharge",
+      "x": 391.0,
+      "y": 95.0
+    },
+    {
+      "label": "102\u00b0C",
+      "source": "HX-2",
+      "target": "WOK-1",
+      "description": "Filtered wort at 102\u00b0C to WOK",
+      "x": 472.0,
+      "y": 120.0
+    },
+    {
+      "label": "Water,15\u00b0C",
+      "source": "inlet",
+      "target": "P-2",
+      "description": "Water feed at 15\u00b0C",
+      "x": 169.0,
+      "y": 136.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Mixer-2",
+      "description": "Steam heating for water",
+      "x": 291.0,
+      "y": 128.0
+    },
+    {
+      "label": "80\u00b0C",
+      "source": "Mixer-2",
+      "target": "HWT-1",
+      "description": "Heated water at 80\u00b0C",
+      "x": 323.0,
+      "y": 171.0
+    },
+    {
+      "label": "CIP",
+      "source": "HWT-1",
+      "target": "various",
+      "description": "Clean-in-place supply",
+      "x": 264.0,
+      "y": 240.0
+    },
+    {
+      "label": "Water,80\u00b0C",
+      "source": "HWT-1",
+      "target": "P-3",
+      "description": "Hot water at 80\u00b0C",
+      "x": 189.0,
+      "y": 266.0
+    },
+    {
+      "label": "Gas",
+      "source": "inlet",
+      "target": "WOK-1",
+      "description": "Gas feed to WOK at 102\u00b0C",
+      "x": 407.0,
+      "y": 231.0
+    },
+    {
+      "label": "Liquid",
+      "source": "WOK-1",
+      "target": "Centrifuge-1",
+      "description": "Liquid from WOK at 102\u00b0C",
+      "x": 470.0,
+      "y": 302.0
+    },
+    {
+      "label": "Trub",
+      "source": "Centrifuge-1",
+      "target": "outlet",
+      "description": "Trub discharge from centrifuge",
+      "x": 341.0,
+      "y": 285.0
+    },
+    {
+      "label": "99.8\u00b0C",
+      "source": "Centrifuge-1",
+      "target": "WT-1",
+      "description": "Wort to treatment at 99.8\u00b0C",
+      "x": 280.0,
+      "y": 326.0
+    },
+    {
+      "label": "Glycol",
+      "source": "inlet",
+      "target": "V-1",
+      "description": "Glycol cooling supply",
+      "x": 99.0,
+      "y": 262.0
+    },
+    {
+      "label": "10\u00b0C",
+      "source": "WT-1",
+      "target": "outlet",
+      "description": "Cooled wort discharge at 10\u00b0C",
+      "x": 170.0,
+      "y": 300.0
+    },
+    {
+      "label": "Water,15\u00b0C",
+      "source": "inlet",
+      "target": "WT-1",
+      "description": "Water feed to wort treatment",
+      "x": 34.0,
+      "y": 290.0
+    },
+    {
+      "label": "Hot Water",
+      "source": "HWT-1",
+      "target": "MAK-1",
+      "description": "Hot water feed from tank to MAK vessel (detected at y\u2248105)",
+      "x": 170.0,
+      "y": 105.0
+    },
+    {
+      "label": "Hot Water",
+      "source": "HWT-1",
+      "target": "MAT-1",
+      "description": "Hot water feed from tank to MAT vessel (detected at y\u2248108)",
+      "x": 170.0,
+      "y": 108.0
+    }
+  ]
+}

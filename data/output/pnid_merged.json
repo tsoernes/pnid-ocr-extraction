@@ -1,0 +1,1622 @@
+{
+  "components": [
+    {
+      "label": "MAK",
+      "id": "MAK-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt and corn, operated at 48\u00b0C",
+      "x": 89.0,
+      "y": 55.0
+    },
+    {
+      "label": "MAT",
+      "id": "MAT-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt and water at 15\u00b0C, operated at 48\u00b0C",
+      "x": 89.0,
+      "y": 140.0
+    },
+    {
+      "label": "Mixer",
+      "id": "Mixer-1",
+      "category": "mixer",
+      "description": "Mixer combining MAT and MAK streams at 65\u00b0C",
+      "x": 225.0,
+      "y": 55.0
+    },
+    {
+      "label": "Maische",
+      "id": "Maische-1",
+      "category": "vessel",
+      "description": "Maische vessel operated at 75\u00b0C",
+      "x": 338.0,
+      "y": 55.0
+    },
+    {
+      "label": "Filter",
+      "id": "Filter-1",
+      "category": "filter",
+      "description": "Maische filter separating Dreche",
+      "x": 420.0,
+      "y": 55.0
+    },
+    {
+      "label": "Hot water tank",
+      "id": "HWT-1",
+      "category": "tank",
+      "description": "Hot water tank with CIP",
+      "x": 239.0,
+      "y": 210.0
+    },
+    {
+      "label": "Mixer",
+      "id": "Mixer-2",
+      "category": "mixer",
+      "description": "Mixer for water at 15\u00b0C with steam heating to 80\u00b0C",
+      "x": 280.0,
+      "y": 165.0
+    },
+    {
+      "label": "WOK",
+      "id": "WOK-1",
+      "category": "vessel",
+      "description": "Wort kettle receiving gas at 102\u00b0C",
+      "x": 470.0,
+      "y": 220.0
+    },
+    {
+      "label": "Centrifuge",
+      "id": "Centrifuge-1",
+      "category": "centrifuge",
+      "description": "Centrifuge for trub separation",
+      "x": 341.0,
+      "y": 360.0
+    },
+    {
+      "label": "Wort treatment",
+      "id": "WT-1",
+      "category": "vessel",
+      "description": "Wort treatment vessel with glycol cooling at 10\u00b0C",
+      "x": 170.0,
+      "y": 320.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-1",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger at 102\u00b0C after MAK",
+      "x": 145.0,
+      "y": 55.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-2",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger at 78\u00b0C before filter outlet",
+      "x": 455.0,
+      "y": 55.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-1",
+      "category": "pump",
+      "description": "Pump after mixer for mash transfer",
+      "x": 280.0,
+      "y": 55.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-2",
+      "category": "pump",
+      "description": "Pump for hot water circulation",
+      "x": 240.0,
+      "y": 165.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-3",
+      "category": "pump",
+      "description": "Pump for wort treatment discharge",
+      "x": 210.0,
+      "y": 290.0
+    },
+    {
+      "label": "Valve",
+      "id": "V-1",
+      "category": "valve",
+      "description": "Control valve for glycol",
+      "x": 130.0,
+      "y": 265.0
+    }
+  ],
+  "pipes": [
+    {
+      "label": "Malt/Corn",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Malt and corn feed to MAK at 15\u00b0C",
+      "x": 30.0,
+      "y": 50.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Steam heating to MAK",
+      "x": 151.0,
+      "y": 18.0
+    },
+    {
+      "label": "48\u00b0C",
+      "source": "MAK-1",
+      "target": "HX-1",
+      "description": "Stream from MAK at 48\u00b0C",
+      "x": 122.0,
+      "y": 98.0
+    },
+    {
+      "label": "102\u00b0C",
+      "source": "HX-1",
+      "target": "Mixer-1",
+      "description": "Heated stream at 102\u00b0C to mixer",
+      "x": 190.0,
+      "y": 41.0
+    },
+    {
+      "label": "Malt/Water",
+      "source": "inlet",
+      "target": "MAT-1",
+      "description": "Malt and water feed to MAT at 15\u00b0C",
+      "x": 30.0,
+      "y": 130.0
+    },
+    {
+      "label": "48\u00b0C",
+      "source": "MAT-1",
+      "target": "Mixer-1",
+      "description": "Stream from MAT at 48\u00b0C",
+      "x": 145.0,
+      "y": 98.0
+    },
+    {
+      "label": "MAT+MAK",
+      "source": "Mixer-1",
+      "target": "P-1",
+      "description": "Combined MAT and MAK at 65\u00b0C",
+      "x": 224.0,
+      "y": 13.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Maische-1",
+      "description": "Steam heating to Maische",
+      "x": 307.0,
+      "y": 18.0
+    },
+    {
+      "label": "75\u00b0C",
+      "source": "P-1",
+      "target": "Maische-1",
+      "description": "Mash stream to Maische at 75\u00b0C",
+      "x": 300.0,
+      "y": 55.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Filter-1",
+      "description": "Steam to filter",
+      "x": 455.0,
+      "y": 18.0
+    },
+    {
+      "label": "Maische",
+      "source": "Maische-1",
+      "target": "Filter-1",
+      "description": "Maische to filter",
+      "x": 380.0,
+      "y": 55.0
+    },
+    {
+      "label": "Dreche",
+      "source": "Filter-1",
+      "target": "outlet",
+      "description": "Spent grain discharge",
+      "x": 391.0,
+      "y": 95.0
+    },
+    {
+      "label": "102\u00b0C",
+      "source": "HX-2",
+      "target": "WOK-1",
+      "description": "Filtered wort at 102\u00b0C to WOK",
+      "x": 472.0,
+      "y": 120.0
+    },
+    {
+      "label": "Water,15\u00b0C",
+      "source": "inlet",
+      "target": "P-2",
+      "description": "Water feed at 15\u00b0C",
+      "x": 169.0,
+      "y": 136.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "Mixer-2",
+      "description": "Steam heating for water",
+      "x": 291.0,
+      "y": 128.0
+    },
+    {
+      "label": "80\u00b0C",
+      "source": "Mixer-2",
+      "target": "HWT-1",
+      "description": "Heated water at 80\u00b0C",
+      "x": 323.0,
+      "y": 171.0
+    },
+    {
+      "label": "CIP",
+      "source": "HWT-1",
+      "target": "various",
+      "description": "Clean-in-place supply",
+      "x": 264.0,
+      "y": 240.0
+    },
+    {
+      "label": "Water,80\u00b0C",
+      "source": "HWT-1",
+      "target": "P-3",
+      "description": "Hot water at 80\u00b0C",
+      "x": 189.0,
+      "y": 266.0
+    },
+    {
+      "label": "Gas",
+      "source": "inlet",
+      "target": "WOK-1",
+      "description": "Gas feed to WOK at 102\u00b0C",
+      "x": 407.0,
+      "y": 231.0
+    },
+    {
+      "label": "Liquid",
+      "source": "WOK-1",
+      "target": "Centrifuge-1",
+      "description": "Liquid from WOK at 102\u00b0C",
+      "x": 470.0,
+      "y": 302.0
+    },
+    {
+      "label": "Trub",
+      "source": "Centrifuge-1",
+      "target": "outlet",
+      "description": "Trub discharge from centrifuge",
+      "x": 341.0,
+      "y": 285.0
+    },
+    {
+      "label": "99.8\u00b0C",
+      "source": "Centrifuge-1",
+      "target": "WT-1",
+      "description": "Wort to treatment at 99.8\u00b0C",
+      "x": 280.0,
+      "y": 326.0
+    },
+    {
+      "label": "Glycol",
+      "source": "inlet",
+      "target": "V-1",
+      "description": "Glycol cooling supply",
+      "x": 99.0,
+      "y": 262.0
+    },
+    {
+      "label": "10\u00b0C",
+      "source": "WT-1",
+      "target": "outlet",
+      "description": "Cooled wort discharge at 10\u00b0C",
+      "x": 170.0,
+      "y": 300.0
+    },
+    {
+      "label": "Water,15\u00b0C",
+      "source": "inlet",
+      "target": "WT-1",
+      "description": "Water feed to wort treatment",
+      "x": 34.0,
+      "y": 290.0
+    },
+    {
+      "label": "MAK",
+      "source": "Mixer-1",
+      "target": "Maische-1",
+      "description": "Geometric path via skeleton, length 187.3px | OCR labels: MAK",
+      "x": 268.0,
+      "y": 47.0,
+      "path_length": 187.3259018078045,
+      "path_pixels": [
+        [
+          225,
+          49
+        ],
+        [
+          225,
+          50
+        ],
+        [
+          225,
+          48
+        ],
+        [
+          225,
+          49
+        ],
+        [
+          225,
+          47
+        ],
+        [
+          225,
+          48
+        ],
+        [
+          225,
+          46
+        ],
+        [
+          225,
+          47
+        ],
+        [
+          225,
+          46
+        ],
+        [
+          226,
+          45
+        ],
+        [
+          226,
+          44
+        ],
+        [
+          226,
+          43
+        ],
+        [
+          226,
+          42
+        ],
+        [
+          226,
+          41
+        ],
+        [
+          226,
+          40
+        ],
+        [
+          226,
+          39
+        ],
+        [
+          226,
+          38
+        ],
+        [
+          226,
+          37
+        ],
+        [
+          226,
+          36
+        ],
+        [
+          226,
+          35
+        ],
+        [
+          226,
+          34
+        ],
+        [
+          226,
+          33
+        ],
+        [
+          226,
+          32
+        ],
+        [
+          226,
+          31
+        ],
+        [
+          226,
+          30
+        ],
+        [
+          226,
+          29
+        ],
+        [
+          226,
+          28
+        ],
+        [
+          227,
+          27
+        ],
+        [
+          227,
+          26
+        ],
+        [
+          227,
+          25
+        ],
+        [
+          228,
+          24
+        ],
+        [
+          229,
+          23
+        ],
+        [
+          230,
+          22
+        ],
+        [
+          231,
+          22
+        ],
+        [
+          232,
+          21
+        ],
+        [
+          233,
+          21
+        ],
+        [
+          234,
+          20
+        ],
+        [
+          235,
+          20
+        ],
+        [
+          236,
+          20
+        ],
+        [
+          237,
+          20
+        ],
+        [
+          238,
+          19
+        ],
+        [
+          239,
+          19
+        ],
+        [
+          240,
+          19
+        ],
+        [
+          241,
+          19
+        ],
+        [
+          242,
+          19
+        ],
+        [
+          243,
+          19
+        ],
+        [
+          244,
+          19
+        ],
+        [
+          245,
+          19
+        ],
+        [
+          246,
+          20
+        ],
+        [
+          247,
+          20
+        ],
+        [
+          248,
+          20
+        ],
+        [
+          249,
+          21
+        ],
+        [
+          250,
+          21
+        ],
+        [
+          251,
+          22
+        ],
+        [
+          252,
+          23
+        ],
+        [
+          253,
+          24
+        ],
+        [
+          254,
+          25
+        ],
+        [
+          255,
+          26
+        ],
+        [
+          256,
+          27
+        ],
+        [
+          256,
+          28
+        ],
+        [
+          256,
+          29
+        ],
+        [
+          256,
+          30
+        ],
+        [
+          256,
+          31
+        ],
+        [
+          256,
+          32
+        ],
+        [
+          256,
+          33
+        ],
+        [
+          256,
+          34
+        ],
+        [
+          256,
+          35
+        ],
+        [
+          256,
+          36
+        ],
+        [
+          256,
+          37
+        ],
+        [
+          256,
+          38
+        ],
+        [
+          256,
+          39
+        ],
+        [
+          256,
+          40
+        ],
+        [
+          256,
+          41
+        ],
+        [
+          256,
+          42
+        ],
+        [
+          256,
+          43
+        ],
+        [
+          256,
+          44
+        ],
+        [
+          256,
+          45
+        ],
+        [
+          256,
+          46
+        ],
+        [
+          257,
+          47
+        ],
+        [
+          258,
+          47
+        ],
+        [
+          259,
+          47
+        ],
+        [
+          260,
+          47
+        ],
+        [
+          261,
+          47
+        ],
+        [
+          262,
+          47
+        ],
+        [
+          263,
+          47
+        ],
+        [
+          264,
+          47
+        ],
+        [
+          265,
+          47
+        ],
+        [
+          266,
+          47
+        ],
+        [
+          267,
+          47
+        ],
+        [
+          268,
+          47
+        ],
+        [
+          269,
+          47
+        ],
+        [
+          270,
+          47
+        ],
+        [
+          271,
+          47
+        ],
+        [
+          272,
+          47
+        ],
+        [
+          273,
+          47
+        ],
+        [
+          274,
+          47
+        ],
+        [
+          275,
+          47
+        ],
+        [
+          276,
+          47
+        ],
+        [
+          277,
+          47
+        ],
+        [
+          278,
+          47
+        ],
+        [
+          279,
+          47
+        ],
+        [
+          280,
+          47
+        ],
+        [
+          281,
+          47
+        ],
+        [
+          282,
+          47
+        ],
+        [
+          283,
+          47
+        ],
+        [
+          284,
+          47
+        ],
+        [
+          285,
+          47
+        ],
+        [
+          286,
+          47
+        ],
+        [
+          287,
+          47
+        ],
+        [
+          288,
+          48
+        ],
+        [
+          288,
+          49
+        ],
+        [
+          288,
+          50
+        ],
+        [
+          289,
+          51
+        ],
+        [
+          290,
+          51
+        ],
+        [
+          291,
+          50
+        ],
+        [
+          292,
+          50
+        ],
+        [
+          293,
+          50
+        ],
+        [
+          294,
+          51
+        ],
+        [
+          294,
+          52
+        ],
+        [
+          294,
+          53
+        ],
+        [
+          294,
+          54
+        ],
+        [
+          295,
+          55
+        ],
+        [
+          296,
+          56
+        ],
+        [
+          297,
+          57
+        ],
+        [
+          298,
+          58
+        ],
+        [
+          299,
+          59
+        ],
+        [
+          300,
+          60
+        ],
+        [
+          301,
+          60
+        ],
+        [
+          302,
+          61
+        ],
+        [
+          303,
+          61
+        ],
+        [
+          304,
+          61
+        ],
+        [
+          305,
+          61
+        ],
+        [
+          306,
+          61
+        ],
+        [
+          307,
+          61
+        ],
+        [
+          308,
+          61
+        ],
+        [
+          309,
+          60
+        ],
+        [
+          310,
+          60
+        ],
+        [
+          311,
+          59
+        ],
+        [
+          312,
+          58
+        ],
+        [
+          313,
+          57
+        ],
+        [
+          314,
+          56
+        ],
+        [
+          315,
+          55
+        ],
+        [
+          315,
+          54
+        ],
+        [
+          316,
+          53
+        ],
+        [
+          316,
+          52
+        ],
+        [
+          316,
+          51
+        ],
+        [
+          317,
+          50
+        ],
+        [
+          317,
+          49
+        ],
+        [
+          317,
+          50
+        ],
+        [
+          317,
+          49
+        ],
+        [
+          318,
+          48
+        ],
+        [
+          319,
+          48
+        ],
+        [
+          320,
+          48
+        ],
+        [
+          321,
+          48
+        ],
+        [
+          322,
+          48
+        ],
+        [
+          323,
+          48
+        ],
+        [
+          324,
+          48
+        ],
+        [
+          325,
+          48
+        ],
+        [
+          326,
+          48
+        ],
+        [
+          327,
+          48
+        ],
+        [
+          328,
+          48
+        ],
+        [
+          329,
+          48
+        ],
+        [
+          330,
+          48
+        ],
+        [
+          331,
+          48
+        ],
+        [
+          332,
+          48
+        ],
+        [
+          333,
+          48
+        ],
+        [
+          334,
+          48
+        ],
+        [
+          335,
+          48
+        ],
+        [
+          336,
+          48
+        ],
+        [
+          337,
+          48
+        ],
+        [
+          338,
+          48
+        ],
+        [
+          339,
+          48
+        ],
+        [
+          340,
+          48
+        ],
+        [
+          341,
+          48
+        ],
+        [
+          342,
+          48
+        ],
+        [
+          343,
+          48
+        ],
+        [
+          344,
+          48
+        ],
+        [
+          345,
+          48
+        ],
+        [
+          346,
+          48
+        ]
+      ]
+    },
+    {
+      "label": "75PC / Maische",
+      "source": "Maische-1",
+      "target": "P-1",
+      "description": "Geometric path via skeleton, length 138.2px | OCR labels: 75PC, Maische",
+      "x": 315.0,
+      "y": 54.0,
+      "path_length": 138.18376618407356,
+      "path_pixels": [
+        [
+          318,
+          48
+        ],
+        [
+          319,
+          48
+        ],
+        [
+          320,
+          48
+        ],
+        [
+          321,
+          48
+        ],
+        [
+          322,
+          48
+        ],
+        [
+          323,
+          48
+        ],
+        [
+          324,
+          48
+        ],
+        [
+          325,
+          48
+        ],
+        [
+          326,
+          48
+        ],
+        [
+          327,
+          48
+        ],
+        [
+          328,
+          48
+        ],
+        [
+          329,
+          48
+        ],
+        [
+          330,
+          48
+        ],
+        [
+          331,
+          48
+        ],
+        [
+          332,
+          48
+        ],
+        [
+          333,
+          48
+        ],
+        [
+          334,
+          48
+        ],
+        [
+          335,
+          48
+        ],
+        [
+          336,
+          48
+        ],
+        [
+          337,
+          48
+        ],
+        [
+          338,
+          48
+        ],
+        [
+          339,
+          48
+        ],
+        [
+          340,
+          48
+        ],
+        [
+          341,
+          48
+        ],
+        [
+          342,
+          48
+        ],
+        [
+          343,
+          48
+        ],
+        [
+          344,
+          48
+        ],
+        [
+          345,
+          48
+        ],
+        [
+          346,
+          48
+        ],
+        [
+          317,
+          49
+        ],
+        [
+          318,
+          48
+        ],
+        [
+          317,
+          49
+        ],
+        [
+          317,
+          50
+        ],
+        [
+          316,
+          51
+        ],
+        [
+          317,
+          50
+        ],
+        [
+          288,
+          48
+        ],
+        [
+          288,
+          49
+        ],
+        [
+          288,
+          50
+        ],
+        [
+          289,
+          51
+        ],
+        [
+          290,
+          51
+        ],
+        [
+          291,
+          50
+        ],
+        [
+          292,
+          50
+        ],
+        [
+          293,
+          50
+        ],
+        [
+          294,
+          51
+        ],
+        [
+          294,
+          52
+        ],
+        [
+          294,
+          53
+        ],
+        [
+          294,
+          54
+        ],
+        [
+          295,
+          55
+        ],
+        [
+          296,
+          56
+        ],
+        [
+          297,
+          57
+        ],
+        [
+          298,
+          58
+        ],
+        [
+          299,
+          59
+        ],
+        [
+          300,
+          60
+        ],
+        [
+          301,
+          60
+        ],
+        [
+          302,
+          61
+        ],
+        [
+          303,
+          61
+        ],
+        [
+          304,
+          61
+        ],
+        [
+          305,
+          61
+        ],
+        [
+          306,
+          61
+        ],
+        [
+          307,
+          61
+        ],
+        [
+          308,
+          61
+        ],
+        [
+          309,
+          60
+        ],
+        [
+          310,
+          60
+        ],
+        [
+          311,
+          59
+        ],
+        [
+          312,
+          58
+        ],
+        [
+          313,
+          57
+        ],
+        [
+          314,
+          56
+        ],
+        [
+          315,
+          55
+        ],
+        [
+          315,
+          54
+        ],
+        [
+          316,
+          53
+        ],
+        [
+          316,
+          52
+        ],
+        [
+          316,
+          51
+        ],
+        [
+          287,
+          47
+        ],
+        [
+          288,
+          48
+        ],
+        [
+          258,
+          47
+        ],
+        [
+          259,
+          47
+        ],
+        [
+          260,
+          47
+        ],
+        [
+          261,
+          47
+        ],
+        [
+          262,
+          47
+        ],
+        [
+          263,
+          47
+        ],
+        [
+          264,
+          47
+        ],
+        [
+          265,
+          47
+        ],
+        [
+          266,
+          47
+        ],
+        [
+          267,
+          47
+        ],
+        [
+          268,
+          47
+        ],
+        [
+          269,
+          47
+        ],
+        [
+          270,
+          47
+        ],
+        [
+          271,
+          47
+        ],
+        [
+          272,
+          47
+        ],
+        [
+          273,
+          47
+        ],
+        [
+          274,
+          47
+        ],
+        [
+          275,
+          47
+        ],
+        [
+          276,
+          47
+        ],
+        [
+          277,
+          47
+        ],
+        [
+          278,
+          47
+        ],
+        [
+          279,
+          47
+        ],
+        [
+          280,
+          47
+        ],
+        [
+          281,
+          47
+        ],
+        [
+          282,
+          47
+        ],
+        [
+          283,
+          47
+        ],
+        [
+          284,
+          47
+        ],
+        [
+          285,
+          47
+        ],
+        [
+          286,
+          47
+        ],
+        [
+          287,
+          47
+        ],
+        [
+          257,
+          48
+        ],
+        [
+          258,
+          47
+        ],
+        [
+          257,
+          48
+        ],
+        [
+          257,
+          49
+        ],
+        [
+          258,
+          50
+        ],
+        [
+          259,
+          49
+        ],
+        [
+          260,
+          49
+        ],
+        [
+          261,
+          49
+        ],
+        [
+          262,
+          49
+        ],
+        [
+          263,
+          49
+        ],
+        [
+          264,
+          49
+        ],
+        [
+          265,
+          49
+        ],
+        [
+          266,
+          49
+        ],
+        [
+          267,
+          49
+        ],
+        [
+          268,
+          49
+        ],
+        [
+          269,
+          49
+        ],
+        [
+          270,
+          49
+        ],
+        [
+          271,
+          50
+        ],
+        [
+          272,
+          49
+        ],
+        [
+          273,
+          50
+        ],
+        [
+          274,
+          50
+        ],
+        [
+          275,
+          50
+        ],
+        [
+          276,
+          50
+        ],
+        [
+          277,
+          49
+        ],
+        [
+          278,
+          49
+        ],
+        [
+          279,
+          49
+        ],
+        [
+          280,
+          49
+        ],
+        [
+          281,
+          49
+        ],
+        [
+          282,
+          49
+        ],
+        [
+          283,
+          49
+        ],
+        [
+          284,
+          49
+        ],
+        [
+          285,
+          49
+        ]
+      ]
+    }
+  ],
+  "metadata": {
+    "merged_from": [
+      "llm",
+      "skeleton"
+    ]
+  }
+}

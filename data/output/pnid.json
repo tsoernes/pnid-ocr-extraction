@@ -1,0 +1,323 @@
+{
+    "output": {
+        "components": [
+            {
+                "label": "MAK",
+                "id": "MAK",
+                "category": "Tank",
+                "description": "Mashing tank for malt and corn at 48°C",
+                "x": 113.0,
+                "y": 52.0
+            },
+            {
+                "label": "MAT",
+                "id": "MAT",
+                "category": "Tank",
+                "description": "Mashing tank for malt and water at 15°C",
+                "x": 113.0,
+                "y": 152.0
+            },
+            {
+                "label": "Heater",
+                "id": "Heater-1",
+                "category": "Heat Exchanger",
+                "description": "Heater raising temperature to 102°C",
+                "x": 178.0,
+                "y": 52.0
+            },
+            {
+                "label": "Maische",
+                "id": "Maische",
+                "category": "Tank",
+                "description": "Maische tank at 75°C",
+                "x": 340.0,
+                "y": 52.0
+            },
+            {
+                "label": "Filter",
+                "id": "Filter",
+                "category": "Filter",
+                "description": "Filter unit at 78°C producing Dreche",
+                "x": 430.0,
+                "y": 52.0
+            },
+            {
+                "label": "Heater",
+                "id": "Heater-2",
+                "category": "Heat Exchanger",
+                "description": "Heater at 102°C",
+                "x": 495.0,
+                "y": 52.0
+            },
+            {
+                "label": "Mixer",
+                "id": "Mixer",
+                "category": "Mixer",
+                "description": "Mixer for combining streams",
+                "x": 235.0,
+                "y": 188.0
+            },
+            {
+                "label": "Pump",
+                "id": "Pump-1",
+                "category": "Pump",
+                "description": "Pump after mixer",
+                "x": 280.0,
+                "y": 188.0
+            },
+            {
+                "label": "Heater",
+                "id": "Heater-3",
+                "category": "Heat Exchanger",
+                "description": "Steam heater",
+                "x": 325.0,
+                "y": 188.0
+            },
+            {
+                "label": "Hot water tank",
+                "id": "Hot-water-tank",
+                "category": "Tank",
+                "description": "Hot water tank with CIP",
+                "x": 235.0,
+                "y": 248.0
+            },
+            {
+                "label": "WOK",
+                "id": "WOK",
+                "category": "Vessel",
+                "description": "Wort kettle producing gas at 102°C and liquid at 102°C",
+                "x": 495.0,
+                "y": 218.0
+            },
+            {
+                "label": "Centrifuge",
+                "id": "Centrifuge",
+                "category": "Separator",
+                "description": "Centrifuge separating Trub at 99.8°C",
+                "x": 400.0,
+                "y": 318.0
+            },
+            {
+                "label": "Glycol",
+                "id": "Glycol",
+                "category": "Heat Exchanger",
+                "description": "Glycol cooling system",
+                "x": 113.0,
+                "y": 298.0
+            },
+            {
+                "label": "Wort treatment",
+                "id": "Wort-treatment",
+                "category": "Process",
+                "description": "Wort treatment at 10°C",
+                "x": 160.0,
+                "y": 348.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HX-1",
+                "category": "Heat Exchanger",
+                "description": "Heat exchanger for cooling with water at 80°C output",
+                "x": 280.0,
+                "y": 248.0
+            },
+            {
+                "label": "Pump",
+                "id": "Pump-2",
+                "category": "Pump",
+                "description": "Pump for wort circulation",
+                "x": 235.0,
+                "y": 318.0
+            }
+        ],
+        "pipes": [
+            {
+                "label": "Malt, Corn",
+                "source": "inlet",
+                "target": "MAK",
+                "description": "Malt and corn feed to MAK",
+                "x": 50.0,
+                "y": 45.0
+            },
+            {
+                "label": "Water,15°C",
+                "source": "inlet",
+                "target": "MAK",
+                "description": "Water at 15°C feed to MAK",
+                "x": 50.0,
+                "y": 75.0
+            },
+            {
+                "label": "Steam",
+                "source": "inlet",
+                "target": "Heater-1",
+                "description": "Steam input to heater",
+                "x": 178.0,
+                "y": 30.0
+            },
+            {
+                "label": "48°C",
+                "source": "MAK",
+                "target": "Heater-1",
+                "description": "Stream at 48°C from MAK to heater",
+                "x": 145.0,
+                "y": 52.0
+            },
+            {
+                "label": "MAT + MAK",
+                "source": "Heater-1",
+                "target": "Maische",
+                "description": "Combined stream at 102°C to Maische",
+                "x": 230.0,
+                "y": 30.0
+            },
+            {
+                "label": "65°C",
+                "source": "Heater-1",
+                "target": "Maische",
+                "description": "Stream at 65°C",
+                "x": 275.0,
+                "y": 52.0
+            },
+            {
+                "label": "Malt",
+                "source": "inlet",
+                "target": "MAT",
+                "description": "Malt feed to MAT",
+                "x": 50.0,
+                "y": 138.0
+            },
+            {
+                "label": "Water, 15°C",
+                "source": "inlet",
+                "target": "MAT",
+                "description": "Water at 15°C feed to MAT",
+                "x": 50.0,
+                "y": 160.0
+            },
+            {
+                "label": "48°C",
+                "source": "MAT",
+                "target": "Heater-1",
+                "description": "Stream at 48°C from MAT",
+                "x": 145.0,
+                "y": 130.0
+            },
+            {
+                "label": "Steam",
+                "source": "inlet",
+                "target": "Maische",
+                "description": "Steam input to Maische",
+                "x": 340.0,
+                "y": 30.0
+            },
+            {
+                "label": "Steam",
+                "source": "inlet",
+                "target": "Filter",
+                "description": "Steam output from Filter",
+                "x": 460.0,
+                "y": 30.0
+            },
+            {
+                "label": "Dreche",
+                "source": "Filter",
+                "target": "outlet",
+                "description": "Dreche byproduct output",
+                "x": 430.0,
+                "y": 105.0
+            },
+            {
+                "label": "Water,15°C",
+                "source": "inlet",
+                "target": "Mixer",
+                "description": "Water at 15°C to mixer",
+                "x": 210.0,
+                "y": 175.0
+            },
+            {
+                "label": "Steam",
+                "source": "inlet",
+                "target": "Heater-3",
+                "description": "Steam to heater",
+                "x": 325.0,
+                "y": 168.0
+            },
+            {
+                "label": "80°C",
+                "source": "Heater-3",
+                "target": "WOK",
+                "description": "Stream at 80°C to WOK",
+                "x": 400.0,
+                "y": 188.0
+            },
+            {
+                "label": "CIP",
+                "source": "Hot-water-tank",
+                "target": "outlet",
+                "description": "CIP output from hot water tank",
+                "x": 260.0,
+                "y": 238.0
+            },
+            {
+                "label": "Water,80°C",
+                "source": "HX-1",
+                "target": "Hot-water-tank",
+                "description": "Water at 80°C from heat exchanger",
+                "x": 170.0,
+                "y": 280.0
+            },
+            {
+                "label": "Water,15°C",
+                "source": "inlet",
+                "target": "Glycol",
+                "description": "Water at 15°C input to glycol cooler",
+                "x": 50.0,
+                "y": 298.0
+            },
+            {
+                "label": "Gas 102°C",
+                "source": "WOK",
+                "target": "outlet",
+                "description": "Gas output at 102°C from WOK",
+                "x": 480.0,
+                "y": 188.0
+            },
+            {
+                "label": "Liquid 102°C",
+                "source": "WOK",
+                "target": "Centrifuge",
+                "description": "Liquid at 102°C to centrifuge",
+                "x": 495.0,
+                "y": 280.0
+            },
+            {
+                "label": "Trub",
+                "source": "Centrifuge",
+                "target": "outlet",
+                "description": "Trub output from centrifuge",
+                "x": 365.0,
+                "y": 290.0
+            },
+            {
+                "label": "99.8°C",
+                "source": "Centrifuge",
+                "target": "HX-1",
+                "description": "Stream at 99.8°C from centrifuge",
+                "x": 330.0,
+                "y": 318.0
+            },
+            {
+                "label": "10°C",
+                "source": "Glycol",
+                "target": "Wort-treatment",
+                "description": "Stream at 10°C to wort treatment",
+                "x": 160.0,
+                "y": 318.0
+            }
+        ]
+    },
+    "provider": "azure-anthropic",
+    "model": "claude-opus-4-5-20251101",
+    "image_path": "data/input/brewery.jpg"
+}

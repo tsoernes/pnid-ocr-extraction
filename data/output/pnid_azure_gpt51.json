@@ -1,0 +1,475 @@
+{
+    "output": {
+        "components": [
+            {
+                "label": "MAK",
+                "id": "MAK_1",
+                "category": "mash_tun",
+                "description": "MAK vessel (mashing kettle)",
+                "x": 101.0,
+                "y": 67.0
+            },
+            {
+                "label": "Mixer",
+                "id": "MIXER_1",
+                "category": "mixer",
+                "description": "Mixer vessel",
+                "x": 268.0,
+                "y": 188.0
+            },
+            {
+                "label": "MAT",
+                "id": "MAT_1",
+                "category": "mash_tun",
+                "description": "MAT vessel (mash tun)",
+                "x": 101.0,
+                "y": 155.0
+            },
+            {
+                "label": "MAT+MAK",
+                "id": "MAT_MAK_1",
+                "category": "mash_tun",
+                "description": "Combined MAT + MAK vessel",
+                "x": 300.0,
+                "y": 65.0
+            },
+            {
+                "label": "Filter",
+                "id": "FILTER_1",
+                "category": "filter",
+                "description": "Filter unit",
+                "x": 398.0,
+                "y": 92.0
+            },
+            {
+                "label": "Hot water tank",
+                "id": "HWT_1",
+                "category": "tank",
+                "description": "Hot water tank",
+                "x": 268.0,
+                "y": 234.0
+            },
+            {
+                "label": "Centrifuge",
+                "id": "CENT_1",
+                "category": "centrifuge",
+                "description": "Centrifuge unit",
+                "x": 332.0,
+                "y": 301.0
+            },
+            {
+                "label": "WOK",
+                "id": "WOK_1",
+                "category": "kettle",
+                "description": "WOK boiling vessel",
+                "x": 446.0,
+                "y": 241.0
+            },
+            {
+                "label": "Pump (wort treatment)",
+                "id": "PUMP_1",
+                "category": "pump",
+                "description": "Pump for wort treatment circuit",
+                "x": 142.0,
+                "y": 292.0
+            },
+            {
+                "label": "Pump (glycol)",
+                "id": "PUMP_2",
+                "category": "pump",
+                "description": "Pump for glycol circuit",
+                "x": 142.0,
+                "y": 263.0
+            },
+            {
+                "label": "Pump (water to MAK)",
+                "id": "PUMP_3",
+                "category": "pump",
+                "description": "Pump feeding water 15°C to MAK",
+                "x": 48.0,
+                "y": 86.0
+            },
+            {
+                "label": "Pump (water to MAT)",
+                "id": "PUMP_4",
+                "category": "pump",
+                "description": "Pump feeding water 15°C to MAT",
+                "x": 48.0,
+                "y": 173.0
+            },
+            {
+                "label": "Steam valve to MAK",
+                "id": "STEAMV_1",
+                "category": "valve",
+                "description": "Steam supply to MAK at 48°C",
+                "x": 164.0,
+                "y": 40.0
+            },
+            {
+                "label": "Steam valve to MAT+MAK",
+                "id": "STEAMV_2",
+                "category": "valve",
+                "description": "Steam supply to MAT+MAK at 65°C",
+                "x": 352.0,
+                "y": 37.0
+            },
+            {
+                "label": "Steam valve to Maische line",
+                "id": "STEAMV_3",
+                "category": "valve",
+                "description": "Steam supply to Maische 75°C before filter",
+                "x": 352.0,
+                "y": 63.0
+            },
+            {
+                "label": "Steam valve after filter",
+                "id": "STEAMV_4",
+                "category": "valve",
+                "description": "Steam supply after filter at 78°C",
+                "x": 496.0,
+                "y": 64.0
+            },
+            {
+                "label": "Steam valve to mixer outlet",
+                "id": "STEAMV_5",
+                "category": "valve",
+                "description": "Steam supply to 80°C line from mixer",
+                "x": 332.0,
+                "y": 159.0
+            },
+            {
+                "label": "CIP connection",
+                "id": "CIP_1",
+                "category": "connection",
+                "description": "CIP inlet to hot water tank",
+                "x": 302.0,
+                "y": 216.0
+            },
+            {
+                "label": "Glycol inlet",
+                "id": "GLYCOL_IN_1",
+                "category": "connection",
+                "description": "Glycol line coming from left",
+                "x": 48.0,
+                "y": 263.0
+            },
+            {
+                "label": "Water inlet 15°C to wort treatment",
+                "id": "WATER_IN_1",
+                "category": "connection",
+                "description": "Water 15°C inlet to wort treatment circuit",
+                "x": 48.0,
+                "y": 292.0
+            },
+            {
+                "label": "Water inlet 15°C to MAK",
+                "id": "WATER_IN_2",
+                "category": "connection",
+                "description": "Water 15°C inlet line toward MAK pump",
+                "x": 16.0,
+                "y": 86.0
+            },
+            {
+                "label": "Water inlet 15°C to MAT",
+                "id": "WATER_IN_3",
+                "category": "connection",
+                "description": "Water 15°C inlet line toward MAT pump",
+                "x": 16.0,
+                "y": 173.0
+            },
+            {
+                "label": "Gas inlet to WOK",
+                "id": "GAS_IN_1",
+                "category": "connection",
+                "description": "Gas 102°C line to WOK",
+                "x": 416.0,
+                "y": 188.0
+            },
+            {
+                "label": "Wort treatment output",
+                "id": "WORT_OUT_1",
+                "category": "connection",
+                "description": "Wort treatment outlet (10°C)",
+                "x": 206.0,
+                "y": 292.0
+            },
+            {
+                "label": "Hot water outlet 99.8°C",
+                "id": "HW_OUT_1",
+                "category": "connection",
+                "description": "99.8°C line from hot water tank to centrifuge",
+                "x": 268.0,
+                "y": 279.0
+            },
+            {
+                "label": "Trub outlet from centrifuge",
+                "id": "TRUB_OUT_1",
+                "category": "connection",
+                "description": "Trub discharge from centrifuge",
+                "x": 332.0,
+                "y": 255.0
+            },
+            {
+                "label": "Liquid outlet from WOK",
+                "id": "LIQ_OUT_1",
+                "category": "connection",
+                "description": "Liquid 102°C outlet from WOK",
+                "x": 476.0,
+                "y": 279.0
+            },
+            {
+                "label": "Dreche outlet from filter",
+                "id": "DRECHE_OUT_1",
+                "category": "connection",
+                "description": "Dreche (spent grain) discharge from filter",
+                "x": 398.0,
+                "y": 142.0
+            }
+        ],
+        "pipes": [
+            {
+                "label": "Malt/Corn to MAK",
+                "source": "MAK_1",
+                "target": "MAK_1",
+                "description": "Feed of malt and corn to MAK",
+                "x": 60.0,
+                "y": 40.0
+            },
+            {
+                "label": "Water 15°C to MAK",
+                "source": "WATER_IN_2",
+                "target": "PUMP_3",
+                "description": "Water at 15°C fed to MAK pump",
+                "x": 32.0,
+                "y": 86.0
+            },
+            {
+                "label": "Pump discharge to MAK",
+                "source": "PUMP_3",
+                "target": "MAK_1",
+                "description": "Water 15°C pumped into MAK",
+                "x": 76.0,
+                "y": 86.0
+            },
+            {
+                "label": "Water 15°C to MAT",
+                "source": "WATER_IN_3",
+                "target": "PUMP_4",
+                "description": "Water at 15°C fed to MAT pump",
+                "x": 32.0,
+                "y": 173.0
+            },
+            {
+                "label": "Pump discharge to MAT",
+                "source": "PUMP_4",
+                "target": "MAT_1",
+                "description": "Water 15°C pumped into MAT",
+                "x": 76.0,
+                "y": 173.0
+            },
+            {
+                "label": "MAK to MAT+MAK",
+                "source": "MAK_1",
+                "target": "MAT_MAK_1",
+                "description": "Flow from MAK to MAT+MAK vessel (48°C)",
+                "x": 204.0,
+                "y": 67.0
+            },
+            {
+                "label": "MAT to MAT+MAK",
+                "source": "MAT_1",
+                "target": "MAT_MAK_1",
+                "description": "Flow from MAT to MAT+MAK vessel",
+                "x": 204.0,
+                "y": 111.0
+            },
+            {
+                "label": "MAT+MAK to maische line",
+                "source": "MAT_MAK_1",
+                "target": "FILTER_1",
+                "description": "Maische 65°C to filter via steam heated line",
+                "x": 352.0,
+                "y": 80.0
+            },
+            {
+                "label": "Maische to filter",
+                "source": "MAT_MAK_1",
+                "target": "FILTER_1",
+                "description": "Maische 75°C into filter",
+                "x": 352.0,
+                "y": 96.0
+            },
+            {
+                "label": "Filter to WOK",
+                "source": "FILTER_1",
+                "target": "WOK_1",
+                "description": "Filtered wort line (78°C then 102°C steam heated) to WOK",
+                "x": 446.0,
+                "y": 118.0
+            },
+            {
+                "label": "Dreche from filter",
+                "source": "FILTER_1",
+                "target": "DRECHE_OUT_1",
+                "description": "Solid dreche leaving filter downwards",
+                "x": 398.0,
+                "y": 128.0
+            },
+            {
+                "label": "Hot water 80°C to mixer",
+                "source": "HWT_1",
+                "target": "MIXER_1",
+                "description": "Hot water 80°C line from hot water tank to mixer",
+                "x": 268.0,
+                "y": 210.0
+            },
+            {
+                "label": "Water 15°C to mixer",
+                "source": "MAK_1",
+                "target": "MIXER_1",
+                "description": "Water 15°C line entering mixer from MAK side",
+                "x": 204.0,
+                "y": 188.0
+            },
+            {
+                "label": "Mixer to WOK/centrifuge line",
+                "source": "MIXER_1",
+                "target": "WOK_1",
+                "description": "Outlet 80°C from mixer splitting toward hot water tank/centrifuge/WOK",
+                "x": 300.0,
+                "y": 172.0
+            },
+            {
+                "label": "Mixer to hot water tank return",
+                "source": "MIXER_1",
+                "target": "HWT_1",
+                "description": "Return 80°C to hot water tank",
+                "x": 268.0,
+                "y": 210.0
+            },
+            {
+                "label": "Hot water 99.8°C to centrifuge",
+                "source": "HWT_1",
+                "target": "CENT_1",
+                "description": "Line carrying 99.8°C liquid to centrifuge",
+                "x": 300.0,
+                "y": 279.0
+            },
+            {
+                "label": "Centrifuge to WOK",
+                "source": "CENT_1",
+                "target": "WOK_1",
+                "description": "Clarified wort from centrifuge to WOK",
+                "x": 384.0,
+                "y": 279.0
+            },
+            {
+                "label": "Trub discharge",
+                "source": "CENT_1",
+                "target": "TRUB_OUT_1",
+                "description": "Trub leaving centrifuge downward",
+                "x": 332.0,
+                "y": 275.0
+            },
+            {
+                "label": "WOK liquid outlet",
+                "source": "WOK_1",
+                "target": "LIQ_OUT_1",
+                "description": "Liquid 102°C leaving WOK to the right",
+                "x": 462.0,
+                "y": 279.0
+            },
+            {
+                "label": "Steam to MAK",
+                "source": "STEAMV_1",
+                "target": "MAK_1",
+                "description": "Steam at 102°C supplied to MAK",
+                "x": 164.0,
+                "y": 54.0
+            },
+            {
+                "label": "Steam to MAT+MAK",
+                "source": "STEAMV_2",
+                "target": "MAT_MAK_1",
+                "description": "Steam at 102°C supplied to MAT+MAK",
+                "x": 352.0,
+                "y": 51.0
+            },
+            {
+                "label": "Steam to maische line",
+                "source": "STEAMV_3",
+                "target": "FILTER_1",
+                "description": "Steam at 102°C supplied to maische 75°C line",
+                "x": 352.0,
+                "y": 77.0
+            },
+            {
+                "label": "Steam after filter",
+                "source": "STEAMV_4",
+                "target": "WOK_1",
+                "description": "Steam at 102°C supplied after filter (78°C to 102°C)",
+                "x": 496.0,
+                "y": 78.0
+            },
+            {
+                "label": "Steam to mixer outlet line",
+                "source": "STEAMV_5",
+                "target": "MIXER_1",
+                "description": "Steam at 80°C supplied to mixer outlet line",
+                "x": 332.0,
+                "y": 173.0
+            },
+            {
+                "label": "Glycol to wort treatment pump",
+                "source": "GLYCOL_IN_1",
+                "target": "PUMP_2",
+                "description": "Glycol supply into pump",
+                "x": 96.0,
+                "y": 263.0
+            },
+            {
+                "label": "Pump glycol discharge",
+                "source": "PUMP_2",
+                "target": "PUMP_1",
+                "description": "Glycol circuit through wort treatment pump",
+                "x": 142.0,
+                "y": 278.0
+            },
+            {
+                "label": "Water 15°C to wort treatment pump",
+                "source": "WATER_IN_1",
+                "target": "PUMP_1",
+                "description": "Water at 15°C into wort treatment pump",
+                "x": 96.0,
+                "y": 292.0
+            },
+            {
+                "label": "Wort treatment outlet 10°C",
+                "source": "PUMP_1",
+                "target": "WORT_OUT_1",
+                "description": "Cooled wort leaving wort treatment unit",
+                "x": 174.0,
+                "y": 292.0
+            },
+            {
+                "label": "CIP to hot water tank",
+                "source": "CIP_1",
+                "target": "HWT_1",
+                "description": "CIP line into hot water tank",
+                "x": 285.0,
+                "y": 225.0
+            },
+            {
+                "label": "Gas to WOK",
+                "source": "GAS_IN_1",
+                "target": "WOK_1",
+                "description": "Gas 102°C supply to WOK burner",
+                "x": 431.0,
+                "y": 214.0
+            }
+        ]
+    },
+    "provider": "azure-deepseek",
+    "model": "gpt-5.1-2025-11-13",
+    "image_path": "data/input/brewery.jpg"
+}

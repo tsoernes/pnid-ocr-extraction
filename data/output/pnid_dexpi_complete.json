@@ -1,0 +1,305 @@
+{
+  "@context": {
+    "pid": "https://example.com/pid#",
+    "schema": "https://schema.org/",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "dexpiClass": "pid:dexpiClass",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:GlobeValve-2",
+      "@type": "pid:Component",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "GlobeValve"
+    },
+    {
+      "@id": "pid:ButterflyValve-1",
+      "@type": "pid:Component",
+      "name": "BUTTERFLY_VALVE_SHAPE",
+      "dexpiClass": "ButterflyValve"
+    },
+    {
+      "@id": "pid:SwingCheckValve-1",
+      "@type": "pid:Component",
+      "name": "SWING_CHECK_VALVE_SHAPE",
+      "dexpiClass": "SwingCheckValve"
+    },
+    {
+      "@id": "pid:PipeReducer-1",
+      "@type": "pid:Component",
+      "name": "REDUCER_GENERAL_SHAPE",
+      "dexpiClass": "PipeReducer"
+    },
+    {
+      "@id": "pid:BallValve-1",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve"
+    },
+    {
+      "@id": "pid:SpringLoadedGlobeSafetyValve-1",
+      "@type": "pid:Component",
+      "name": "ANGLE_SAFETY_VALVE_SPRING_LOADED_SHAPE",
+      "dexpiClass": "SpringLoadedGlobeSafetyValve"
+    },
+    {
+      "@id": "pid:PipeTee-2",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee"
+    },
+    {
+      "@id": "pid:BallValve-2",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve"
+    },
+    {
+      "@id": "pid:PipeTee-1",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee"
+    },
+    {
+      "@id": "pid:PipeTee-3",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee"
+    },
+    {
+      "@id": "pid:BallValve-3",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve"
+    },
+    {
+      "@id": "pid:BlindFlange-1",
+      "@type": "pid:Component",
+      "name": "BLIND_COVER_SHAPE",
+      "dexpiClass": "BlindFlange"
+    },
+    {
+      "@id": "pid:BallValve-4",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve"
+    },
+    {
+      "@id": "pid:PipeTee-4",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee"
+    },
+    {
+      "@id": "pid:PipeTee-5",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipeTee"
+    },
+    {
+      "@id": "pid:BallValve-5",
+      "@type": "pid:BallValve",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "BallValve"
+    },
+    {
+      "@id": "pid:BlindFlange-2",
+      "@type": "pid:Component",
+      "name": "BLIND_COVER_SHAPE",
+      "dexpiClass": "BlindFlange"
+    },
+    {
+      "@id": "pid:GlobeValve-1",
+      "@type": "pid:Component",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "GlobeValve"
+    },
+    {
+      "@id": "pid:GlobeValve-3",
+      "@type": "pid:Component",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "GlobeValve"
+    },
+    {
+      "@id": "pid:PlateHeatExchanger-1",
+      "@type": "pid:Component",
+      "name": "PLATE_TYPE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "PlateHeatExchanger"
+    },
+    {
+      "@id": "pid:Chamber-1",
+      "@type": "pid:Component",
+      "name": "Chamber-1",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-2",
+      "@type": "pid:Component",
+      "name": "Chamber-2",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TubularHeatExchanger-1",
+      "@type": "pid:Component",
+      "name": "FLOATING_HEAD_TUBE_BUNDLE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "TubularHeatExchanger"
+    },
+    {
+      "@id": "pid:Chamber-3",
+      "@type": "pid:Component",
+      "name": "Chamber-3",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-4",
+      "@type": "pid:Component",
+      "name": "Chamber-4",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TubeBundle-1",
+      "@type": "pid:Component",
+      "name": "TubeBundle-1",
+      "dexpiClass": "TubeBundle"
+    },
+    {
+      "@id": "pid:CentrifugalPump-1",
+      "@type": "pid:Component",
+      "name": "CENTRIFUGAL_PUMP_SHAPE",
+      "dexpiClass": "CentrifugalPump"
+    },
+    {
+      "@id": "pid:Chamber-5",
+      "@type": "pid:Component",
+      "name": "Chamber-5",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Impeller-1",
+      "@type": "pid:Component",
+      "name": "Impeller-1",
+      "dexpiClass": "Impeller"
+    },
+    {
+      "@id": "pid:ReciprocatingPump-1",
+      "@type": "pid:Component",
+      "name": "RECIPROCATING_PUMP_SHAPE",
+      "dexpiClass": "ReciprocatingPump"
+    },
+    {
+      "@id": "pid:Chamber-6",
+      "@type": "pid:Component",
+      "name": "Chamber-6",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Displacer-1",
+      "@type": "pid:Component",
+      "name": "Displacer-1",
+      "dexpiClass": "Displacer"
+    },
+    {
+      "@id": "pid:Tank-1",
+      "@type": "pid:Tank",
+      "name": "VESSEL_WITH_DISHED_HEADS_SHAPE",
+      "dexpiClass": "Tank"
+    },
+    {
+      "@id": "pid:Chamber-7",
+      "@type": "pid:Component",
+      "name": "Chamber-7",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-8",
+      "@type": "pid:Component",
+      "name": "Chamber-8",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-1",
+      "@type": "pid:Component",
+      "name": "CENTRIFUGAL_PUMP_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-2",
+      "@type": "pid:Component",
+      "name": "RECIPROCATING_PUMP_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-3",
+      "@type": "pid:Component",
+      "name": "VESSEL_WITH_DISHED_HEADS_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-4",
+      "@type": "pid:Component",
+      "name": "PLATE_TYPE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:TaggedPlantItemShape-5",
+      "@type": "pid:Component",
+      "name": "FLOATING_HEAD_TUBE_BUNDLE_HEAT_EXCHANGER_SHAPE",
+      "dexpiClass": "Equipment"
+    },
+    {
+      "@id": "pid:PipingComponentShape-1",
+      "@type": "pid:Component",
+      "name": "BALL_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-2",
+      "@type": "pid:Component",
+      "name": "GLOBE_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-3",
+      "@type": "pid:Component",
+      "name": "SWING_CHECK_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-4",
+      "@type": "pid:Component",
+      "name": "BUTTERFLY_VALVE_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-5",
+      "@type": "pid:Component",
+      "name": "ANGLE_SAFETY_VALVE_SPRING_LOADED_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-6",
+      "@type": "pid:Component",
+      "name": "BLIND_COVER_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-7",
+      "@type": "pid:Component",
+      "name": "REDUCER_GENERAL_SHAPE",
+      "dexpiClass": "PipingComponent"
+    },
+    {
+      "@id": "pid:PipingComponentShape-8",
+      "@type": "pid:Component",
+      "name": "T_TYPE_CONNECTION_SHAPE",
+      "dexpiClass": "PipingComponent"
+    }
+  ]
+}

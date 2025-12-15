@@ -1,0 +1,342 @@
+{
+  "components": [
+    {
+      "label": "MAK",
+      "id": "MAK-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt and corn, heated with steam to 48°C",
+      "x": 89.0,
+      "y": 55.0
+    },
+    {
+      "label": "MAT",
+      "id": "MAT-1",
+      "category": "vessel",
+      "description": "Mashing vessel for malt with water at 15°C, heated to 48°C",
+      "x": 89.0,
+      "y": 135.0
+    },
+    {
+      "label": "Mixer",
+      "id": "MIX-1",
+      "category": "mixer",
+      "description": "Mixer combining MAT and MAK streams at 102°C to 65°C",
+      "x": 225.0,
+      "y": 55.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-1",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger with steam heating to 80°C",
+      "x": 290.0,
+      "y": 165.0
+    },
+    {
+      "label": "Maische",
+      "id": "MAISCHE-1",
+      "category": "vessel",
+      "description": "Mashing tank at 75°C with steam heating",
+      "x": 340.0,
+      "y": 55.0
+    },
+    {
+      "label": "Filter",
+      "id": "FILTER-1",
+      "category": "filter",
+      "description": "Filter separating wort from dreche",
+      "x": 410.0,
+      "y": 55.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-2",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger at 78°C",
+      "x": 455.0,
+      "y": 55.0
+    },
+    {
+      "label": "Hot water tank",
+      "id": "HWT-1",
+      "category": "tank",
+      "description": "Hot water tank with CIP connection",
+      "x": 239.0,
+      "y": 215.0
+    },
+    {
+      "label": "WOK",
+      "id": "WOK-1",
+      "category": "vessel",
+      "description": "Wort kettle receiving gas at 102°C",
+      "x": 470.0,
+      "y": 220.0
+    },
+    {
+      "label": "Centrifuge",
+      "id": "CENT-1",
+      "category": "centrifuge",
+      "description": "Centrifuge for trub separation",
+      "x": 341.0,
+      "y": 350.0
+    },
+    {
+      "label": "Wort treatment",
+      "id": "WT-1",
+      "category": "vessel",
+      "description": "Wort treatment tank cooled with glycol to 10°C",
+      "x": 170.0,
+      "y": 330.0
+    },
+    {
+      "label": "Heat Exchanger",
+      "id": "HX-3",
+      "category": "heat_exchanger",
+      "description": "Heat exchanger with water at 15°C and glycol cooling",
+      "x": 100.0,
+      "y": 265.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-1",
+      "category": "pump",
+      "description": "Pump for MAT discharge",
+      "x": 150.0,
+      "y": 165.0
+    },
+    {
+      "label": "Pump",
+      "id": "P-2",
+      "category": "pump",
+      "description": "Pump after mixer",
+      "x": 260.0,
+      "y": 165.0
+    },
+    {
+      "label": "Valve",
+      "id": "V-1",
+      "category": "valve",
+      "description": "Control valve on main process line",
+      "x": 380.0,
+      "y": 165.0
+    }
+  ],
+  "pipes": [
+    {
+      "label": "Malt-Corn",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Malt and corn feed to MAK vessel",
+      "x": 30.0,
+      "y": 50.0
+    },
+    {
+      "label": "Water,15°C",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Water at 15°C feed to MAK",
+      "x": 34.0,
+      "y": 70.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "MAK-1",
+      "description": "Steam heating for MAK vessel",
+      "x": 151.0,
+      "y": 18.0
+    },
+    {
+      "label": "Malt",
+      "source": "inlet",
+      "target": "MAT-1",
+      "description": "Malt feed to MAT vessel",
+      "x": 30.0,
+      "y": 110.0
+    },
+    {
+      "label": "Water,15°C",
+      "source": "inlet",
+      "target": "MAT-1",
+      "description": "Water at 15°C feed to MAT",
+      "x": 27.0,
+      "y": 135.0
+    },
+    {
+      "label": "48°C",
+      "source": "MAK-1",
+      "target": "MIX-1",
+      "description": "MAK discharge at 48°C to mixer",
+      "x": 150.0,
+      "y": 55.0
+    },
+    {
+      "label": "48°C",
+      "source": "MAT-1",
+      "target": "MIX-1",
+      "description": "MAT discharge at 48°C to mixer",
+      "x": 170.0,
+      "y": 98.0
+    },
+    {
+      "label": "MAT+MAK",
+      "source": "MIX-1",
+      "target": "MAISCHE-1",
+      "description": "Combined stream from mixer at 102°C to 65°C",
+      "x": 224.0,
+      "y": 13.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "MIX-1",
+      "description": "Steam to mixer for heating to 102°C",
+      "x": 307.0,
+      "y": 18.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "MAISCHE-1",
+      "description": "Steam heating for Maische tank",
+      "x": 340.0,
+      "y": 18.0
+    },
+    {
+      "label": "65°C",
+      "source": "MIX-1",
+      "target": "MAISCHE-1",
+      "description": "Process stream at 65°C",
+      "x": 280.0,
+      "y": 55.0
+    },
+    {
+      "label": "75°C",
+      "source": "MAISCHE-1",
+      "target": "FILTER-1",
+      "description": "Maische at 75°C to filter",
+      "x": 375.0,
+      "y": 55.0
+    },
+    {
+      "label": "Dreche",
+      "source": "FILTER-1",
+      "target": "outlet",
+      "description": "Spent grain discharge from filter",
+      "x": 391.0,
+      "y": 95.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "HX-2",
+      "description": "Steam heating at 78°C heat exchanger",
+      "x": 455.0,
+      "y": 18.0
+    },
+    {
+      "label": "102°C",
+      "source": "HX-2",
+      "target": "WOK-1",
+      "description": "Wort at 102°C to wort kettle",
+      "x": 475.0,
+      "y": 150.0
+    },
+    {
+      "label": "Water,15°C",
+      "source": "inlet",
+      "target": "P-1",
+      "description": "Water at 15°C to pump",
+      "x": 169.0,
+      "y": 136.0
+    },
+    {
+      "label": "Steam",
+      "source": "inlet",
+      "target": "HX-1",
+      "description": "Steam heating for process stream",
+      "x": 291.0,
+      "y": 128.0
+    },
+    {
+      "label": "80°C",
+      "source": "HX-1",
+      "target": "HWT-1",
+      "description": "Hot water at 80°C",
+      "x": 323.0,
+      "y": 171.0
+    },
+    {
+      "label": "CIP",
+      "source": "HWT-1",
+      "target": "outlet",
+      "description": "CIP (Clean-in-Place) connection",
+      "x": 264.0,
+      "y": 240.0
+    },
+    {
+      "label": "Gas",
+      "source": "inlet",
+      "target": "WOK-1",
+      "description": "Gas feed to wort kettle",
+      "x": 407.0,
+      "y": 231.0
+    },
+    {
+      "label": "Liquid,102°C",
+      "source": "WOK-1",
+      "target": "CENT-1",
+      "description": "Liquid from WOK at 102°C to centrifuge",
+      "x": 470.0,
+      "y": 302.0
+    },
+    {
+      "label": "Trub",
+      "source": "CENT-1",
+      "target": "outlet",
+      "description": "Trub discharge from centrifuge",
+      "x": 341.0,
+      "y": 285.0
+    },
+    {
+      "label": "99.8°C",
+      "source": "CENT-1",
+      "target": "WT-1",
+      "description": "Wort at 99.8°C to wort treatment",
+      "x": 290.0,
+      "y": 329.0
+    },
+    {
+      "label": "Glycol",
+      "source": "inlet",
+      "target": "HX-3",
+      "description": "Glycol cooling medium",
+      "x": 99.0,
+      "y": 262.0
+    },
+    {
+      "label": "Water,15°C",
+      "source": "inlet",
+      "target": "HX-3",
+      "description": "Water at 15°C to heat exchanger",
+      "x": 34.0,
+      "y": 275.0
+    },
+    {
+      "label": "Water,80°C",
+      "source": "HX-3",
+      "target": "HWT-1",
+      "description": "Heated water at 80°C to hot water tank",
+      "x": 189.0,
+      "y": 266.0
+    },
+    {
+      "label": "10°C",
+      "source": "WT-1",
+      "target": "outlet",
+      "description": "Cooled wort at 10°C from wort treatment",
+      "x": 200.0,
+      "y": 330.0
+    }
+  ]
+}

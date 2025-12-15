@@ -1,0 +1,52 @@
+=== STRUCTURAL ANALYSIS ===
+
+Image Size: 511×369 pixels
+
+## DETECTED LINES (Pipes/Connections):
+Total: 117 line segments
+- Horizontal: 95 segments
+- Vertical: 19 segments
+- Diagonal: 3 segments
+Average Segment Length: 83.9 pixels
+
+## PIPE ROUTES (Connected Segments):
+Total: 11 continuous pipe routes
+
+Major Routes (length > 100px): 8
+  Route 1: 2 segments, 329px total, vertical, endpoints: [1, 244] → [1, 2]
+  Route 2: 89 segments, 6800px total, horizontal, endpoints: [2, 242] → [214, 242]
+  Route 3: 2 segments, 411px total, vertical, endpoints: [475, 253] → [475, 47]
+  Route 4: 9 segments, 953px total, horizontal, endpoints: [171, 326] → [423, 326]
+  Route 5: 2 segments, 339px total, vertical, endpoints: [379, 329] → [379, 160]
+  ... and 3 more major routes
+
+Route Statistics:
+  Single-segment routes: 3
+  Multi-segment routes: 8
+  Average segments per route: 10.6
+
+Sample Horizontal Lines:
+  • [2,242] → [214,242] (length: 212px)
+  • [171,326] → [423,326] (length: 252px)
+  • [101,47] → [228,47] (length: 127px)
+  • [253,37] → [464,37] (length: 211px)
+  • [207,329] → [449,329] (length: 242px)
+  ... and 90 more
+
+Sample Vertical Lines:
+  • [1,244] → [1,2] (length: 242px)
+  • [475,253] → [475,47] (length: 206px)
+  • [477,253] → [477,48] (length: 205px)
+  • [379,329] → [379,160] (length: 169px)
+  • [377,329] → [377,159] (length: 170px)
+  ... and 14 more
+
+## DETECTED CONTOURS (Vessels/Equipment):
+Total: 3 shapes
+
+Polygons: 3
+  • Position: (172,364), Size: 74×9px, Area: 405px²
+  • Position: (223,11), Size: 23×10px, Area: 169px²
+  • Position: (255,184), Size: 511×369px, Area: 130759px²
+
+=== END STRUCTURAL ANALYSIS ===

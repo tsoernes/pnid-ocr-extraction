@@ -1,0 +1,4323 @@
+{
+  "image_size": [
+    511,
+    369
+  ],
+  "lines": [
+    {
+      "start": [
+        1,
+        244
+      ],
+      "end": [
+        1,
+        2
+      ],
+      "center": [
+        1,
+        123
+      ],
+      "length": 242.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        2,
+        242
+      ],
+      "end": [
+        214,
+        242
+      ],
+      "center": [
+        108,
+        242
+      ],
+      "length": 212.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        475,
+        253
+      ],
+      "end": [
+        475,
+        47
+      ],
+      "center": [
+        475,
+        150
+      ],
+      "length": 206.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        477,
+        253
+      ],
+      "end": [
+        477,
+        48
+      ],
+      "center": [
+        477,
+        150
+      ],
+      "length": 205.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        171,
+        326
+      ],
+      "end": [
+        423,
+        326
+      ],
+      "center": [
+        297,
+        326
+      ],
+      "length": 252.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        101,
+        47
+      ],
+      "end": [
+        228,
+        47
+      ],
+      "center": [
+        164,
+        47
+      ],
+      "length": 127.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        379,
+        329
+      ],
+      "end": [
+        379,
+        160
+      ],
+      "center": [
+        379,
+        244
+      ],
+      "length": 169.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        377,
+        329
+      ],
+      "end": [
+        377,
+        159
+      ],
+      "center": [
+        377,
+        244
+      ],
+      "length": 170.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        253,
+        37
+      ],
+      "end": [
+        464,
+        37
+      ],
+      "center": [
+        358,
+        37
+      ],
+      "length": 211.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        207,
+        329
+      ],
+      "end": [
+        449,
+        329
+      ],
+      "center": [
+        328,
+        329
+      ],
+      "length": 242.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        17,
+        38
+      ],
+      "end": [
+        203,
+        44
+      ],
+      "center": [
+        110,
+        41
+      ],
+      "length": 186.09674903124989,
+      "angle": 1.8476102659945959,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        0,
+        244
+      ],
+      "end": [
+        214,
+        244
+      ],
+      "center": [
+        107,
+        244
+      ],
+      "length": 214.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        101,
+        105
+      ],
+      "end": [
+        242,
+        105
+      ],
+      "center": [
+        171,
+        105
+      ],
+      "length": 141.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        101,
+        50
+      ],
+      "end": [
+        163,
+        50
+      ],
+      "center": [
+        132,
+        50
+      ],
+      "length": 62.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        101,
+        108
+      ],
+      "end": [
+        240,
+        108
+      ],
+      "center": [
+        170,
+        108
+      ],
+      "length": 139.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        356,
+        49
+      ],
+      "end": [
+        465,
+        49
+      ],
+      "center": [
+        410,
+        49
+      ],
+      "length": 109.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        45,
+        293
+      ],
+      "end": [
+        158,
+        292
+      ],
+      "center": [
+        101,
+        292
+      ],
+      "length": 113.00442469213318,
+      "angle": -0.5070290609147756,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        253,
+        42
+      ],
+      "end": [
+        315,
+        45
+      ],
+      "center": [
+        284,
+        43
+      ],
+      "length": 62.07253821135398,
+      "angle": 2.770215797200193,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        254,
+        46
+      ],
+      "end": [
+        423,
+        55
+      ],
+      "center": [
+        338,
+        50
+      ],
+      "length": 169.23947530053383,
+      "angle": 3.0483749402982987,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        287,
+        46
+      ],
+      "end": [
+        356,
+        48
+      ],
+      "center": [
+        321,
+        47
+      ],
+      "length": 69.02897942168927,
+      "angle": 1.6602823689828055,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        253,
+        40
+      ],
+      "end": [
+        394,
+        42
+      ],
+      "center": [
+        323,
+        41
+      ],
+      "length": 141.01418368376991,
+      "angle": 0.8126515942537368,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        17,
+        36
+      ],
+      "end": [
+        125,
+        40
+      ],
+      "center": [
+        71,
+        38
+      ],
+      "length": 108.07404868885037,
+      "angle": 2.1210963966614536,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        78,
+        295
+      ],
+      "end": [
+        227,
+        295
+      ],
+      "center": [
+        152,
+        295
+      ],
+      "length": 149.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        391,
+        50
+      ],
+      "end": [
+        510,
+        56
+      ],
+      "center": [
+        450,
+        53
+      ],
+      "length": 119.15116449284078,
+      "angle": 2.88641854386461,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        237,
+        161
+      ],
+      "end": [
+        376,
+        161
+      ],
+      "center": [
+        306,
+        161
+      ],
+      "length": 139.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        333,
+        174
+      ],
+      "end": [
+        333,
+        23
+      ],
+      "center": [
+        333,
+        98
+      ],
+      "length": 151.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        13,
+        296
+      ],
+      "end": [
+        108,
+        296
+      ],
+      "center": [
+        60,
+        296
+      ],
+      "length": 95.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        362,
+        41
+      ],
+      "end": [
+        465,
+        42
+      ],
+      "center": [
+        413,
+        41
+      ],
+      "length": 103.00485425454472,
+      "angle": 0.5562522270806725,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        46,
+        46
+      ],
+      "end": [
+        76,
+        45
+      ],
+      "center": [
+        61,
+        45
+      ],
+      "length": 30.01666203960727,
+      "angle": -1.9091524329963763,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        335,
+        158
+      ],
+      "end": [
+        335,
+        26
+      ],
+      "center": [
+        335,
+        92
+      ],
+      "length": 132.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        254,
+        51
+      ],
+      "end": [
+        331,
+        48
+      ],
+      "center": [
+        292,
+        49
+      ],
+      "length": 77.05841939723393,
+      "angle": -2.2311746080312513,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        78,
+        58
+      ],
+      "end": [
+        99,
+        58
+      ],
+      "center": [
+        88,
+        58
+      ],
+      "length": 21.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        20,
+        27
+      ],
+      "end": [
+        76,
+        30
+      ],
+      "center": [
+        48,
+        28
+      ],
+      "length": 56.08029957123981,
+      "angle": 3.0664855011258934,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        68,
+        35
+      ],
+      "end": [
+        159,
+        36
+      ],
+      "center": [
+        113,
+        35
+      ],
+      "length": 91.00549433962765,
+      "angle": 0.6295986084102669,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        176,
+        40
+      ],
+      "end": [
+        204,
+        41
+      ],
+      "center": [
+        190,
+        40
+      ],
+      "length": 28.0178514522438,
+      "angle": 2.0454084888872277,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        364,
+        34
+      ],
+      "end": [
+        464,
+        34
+      ],
+      "center": [
+        414,
+        34
+      ],
+      "length": 100.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        74,
+        43
+      ],
+      "end": [
+        103,
+        45
+      ],
+      "center": [
+        88,
+        44
+      ],
+      "length": 29.068883707497267,
+      "angle": 3.945186229037563,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        270,
+        159
+      ],
+      "end": [
+        378,
+        159
+      ],
+      "center": [
+        324,
+        159
+      ],
+      "length": 108.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        21,
+        23
+      ],
+      "end": [
+        76,
+        27
+      ],
+      "center": [
+        48,
+        25
+      ],
+      "length": 55.14526271584895,
+      "angle": 4.159642293712642,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        450,
+        328
+      ],
+      "end": [
+        450,
+        232
+      ],
+      "center": [
+        450,
+        280
+      ],
+      "length": 96.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        253,
+        44
+      ],
+      "end": [
+        299,
+        45
+      ],
+      "center": [
+        276,
+        44
+      ],
+      "length": 46.010868281309364,
+      "angle": 1.2453642667683475,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        33,
+        59
+      ],
+      "end": [
+        61,
+        59
+      ],
+      "center": [
+        47,
+        59
+      ],
+      "length": 28.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        2,
+        1
+      ],
+      "end": [
+        89,
+        1
+      ],
+      "center": [
+        45,
+        1
+      ],
+      "length": 87.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        362,
+        65
+      ],
+      "end": [
+        423,
+        63
+      ],
+      "center": [
+        392,
+        64
+      ],
+      "length": 61.032778078668514,
+      "angle": -1.8778774472853594,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        482,
+        57
+      ],
+      "end": [
+        506,
+        57
+      ],
+      "center": [
+        494,
+        57
+      ],
+      "length": 24.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        135,
+        21
+      ],
+      "end": [
+        165,
+        21
+      ],
+      "center": [
+        150,
+        21
+      ],
+      "length": 30.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        362,
+        70
+      ],
+      "end": [
+        406,
+        70
+      ],
+      "center": [
+        384,
+        70
+      ],
+      "length": 44.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        175,
+        37
+      ],
+      "end": [
+        204,
+        38
+      ],
+      "center": [
+        189,
+        37
+      ],
+      "length": 29.017236257093817,
+      "angle": 1.9749340108819768,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        176,
+        36
+      ],
+      "end": [
+        203,
+        35
+      ],
+      "center": [
+        189,
+        35
+      ],
+      "length": 27.018512172212592,
+      "angle": -2.1210963966614536,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        288,
+        52
+      ],
+      "end": [
+        316,
+        53
+      ],
+      "center": [
+        302,
+        52
+      ],
+      "length": 28.0178514522438,
+      "angle": 2.0454084888872277,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        228,
+        57
+      ],
+      "end": [
+        255,
+        57
+      ],
+      "center": [
+        241,
+        57
+      ],
+      "length": 27.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        185,
+        130
+      ],
+      "end": [
+        234,
+        130
+      ],
+      "center": [
+        209,
+        130
+      ],
+      "length": 49.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        212,
+        15
+      ],
+      "end": [
+        270,
+        15
+      ],
+      "center": [
+        241,
+        15
+      ],
+      "length": 58.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        187,
+        49
+      ],
+      "end": [
+        229,
+        48
+      ],
+      "center": [
+        208,
+        48
+      ],
+      "length": 42.01190307520001,
+      "angle": -1.3639275316029187,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        412,
+        227
+      ],
+      "end": [
+        474,
+        253
+      ],
+      "center": [
+        443,
+        240
+      ],
+      "length": 67.23094525588644,
+      "angle": 22.750976342787634,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        6,
+        61
+      ],
+      "end": [
+        60,
+        61
+      ],
+      "center": [
+        33,
+        61
+      ],
+      "length": 54.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        130,
+        37
+      ],
+      "end": [
+        205,
+        39
+      ],
+      "center": [
+        167,
+        38
+      ],
+      "length": 75.02666192761077,
+      "angle": 1.5275254422129272,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        10,
+        75
+      ],
+      "end": [
+        38,
+        75
+      ],
+      "center": [
+        24,
+        75
+      ],
+      "length": 28.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        221,
+        338
+      ],
+      "end": [
+        224,
+        302
+      ],
+      "center": [
+        222,
+        320
+      ],
+      "length": 36.124783736376884,
+      "angle": -85.23635830927383,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        338,
+        58
+      ],
+      "end": [
+        394,
+        58
+      ],
+      "center": [
+        366,
+        58
+      ],
+      "length": 56.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        239,
+        170
+      ],
+      "end": [
+        239,
+        142
+      ],
+      "center": [
+        239,
+        156
+      ],
+      "length": 28.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        423,
+        51
+      ],
+      "end": [
+        474,
+        50
+      ],
+      "center": [
+        448,
+        50
+      ],
+      "length": 51.0098029794274,
+      "angle": -1.123302714075429,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        2,
+        77
+      ],
+      "end": [
+        89,
+        77
+      ],
+      "center": [
+        45,
+        77
+      ],
+      "length": 87.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        212,
+        172
+      ],
+      "end": [
+        213,
+        123
+      ],
+      "center": [
+        212,
+        147
+      ],
+      "length": 49.01020301937138,
+      "angle": -88.8308606720926,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        227,
+        294
+      ],
+      "end": [
+        227,
+        256
+      ],
+      "center": [
+        227,
+        275
+      ],
+      "length": 38.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        482,
+        54
+      ],
+      "end": [
+        505,
+        54
+      ],
+      "center": [
+        493,
+        54
+      ],
+      "length": 23.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        447,
+        326
+      ],
+      "end": [
+        447,
+        232
+      ],
+      "center": [
+        447,
+        279
+      ],
+      "length": 94.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        291,
+        14
+      ],
+      "end": [
+        321,
+        14
+      ],
+      "center": [
+        306,
+        14
+      ],
+      "length": 30.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        379,
+        26
+      ],
+      "end": [
+        403,
+        25
+      ],
+      "center": [
+        391,
+        25
+      ],
+      "length": 24.020824298928627,
+      "angle": -2.3859440303888126,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        10,
+        117
+      ],
+      "end": [
+        76,
+        123
+      ],
+      "center": [
+        43,
+        120
+      ],
+      "length": 66.27216610312357,
+      "angle": 5.194428907734806,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        288,
+        45
+      ],
+      "end": [
+        462,
+        48
+      ],
+      "center": [
+        375,
+        46
+      ],
+      "length": 174.0258601472781,
+      "angle": 0.98776039963981,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        210,
+        335
+      ],
+      "end": [
+        211,
+        293
+      ],
+      "center": [
+        210,
+        314
+      ],
+      "length": 42.01190307520001,
+      "angle": -88.63607246839709,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        253,
+        38
+      ],
+      "end": [
+        371,
+        38
+      ],
+      "center": [
+        312,
+        38
+      ],
+      "length": 118.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        230,
+        59
+      ],
+      "end": [
+        253,
+        59
+      ],
+      "center": [
+        241,
+        59
+      ],
+      "length": 23.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        483,
+        62
+      ],
+      "end": [
+        510,
+        62
+      ],
+      "center": [
+        496,
+        62
+      ],
+      "length": 27.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        227,
+        208
+      ],
+      "end": [
+        261,
+        242
+      ],
+      "center": [
+        244,
+        225
+      ],
+      "length": 48.08326112068523,
+      "angle": 45.0,
+      "orientation": "diagonal"
+    },
+    {
+      "start": [
+        188,
+        292
+      ],
+      "end": [
+        224,
+        293
+      ],
+      "center": [
+        206,
+        292
+      ],
+      "length": 36.013886210738214,
+      "angle": 1.5911402711945875,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        379,
+        31
+      ],
+      "end": [
+        402,
+        31
+      ],
+      "center": [
+        390,
+        31
+      ],
+      "length": 23.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        160,
+        265
+      ],
+      "end": [
+        234,
+        257
+      ],
+      "center": [
+        197,
+        261
+      ],
+      "length": 74.43117626371358,
+      "angle": -6.1701750950296095,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        156,
+        130
+      ],
+      "end": [
+        203,
+        141
+      ],
+      "center": [
+        179,
+        135
+      ],
+      "length": 48.27007354458868,
+      "angle": 13.172553423326894,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        137,
+        52
+      ],
+      "end": [
+        161,
+        53
+      ],
+      "center": [
+        149,
+        52
+      ],
+      "length": 24.020824298928627,
+      "angle": 2.3859440303888126,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        20,
+        279
+      ],
+      "end": [
+        104,
+        286
+      ],
+      "center": [
+        62,
+        282
+      ],
+      "length": 84.29116205154607,
+      "angle": 4.763641690726178,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        253,
+        41
+      ],
+      "end": [
+        284,
+        41
+      ],
+      "center": [
+        268,
+        41
+      ],
+      "length": 31.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        212,
+        337
+      ],
+      "end": [
+        213,
+        293
+      ],
+      "center": [
+        212,
+        315
+      ],
+      "length": 44.01136216933077,
+      "angle": -88.69804732742112,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        157,
+        42
+      ],
+      "end": [
+        205,
+        43
+      ],
+      "center": [
+        181,
+        42
+      ],
+      "length": 48.010415536631214,
+      "angle": 1.193489423982035,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        446,
+        56
+      ],
+      "end": [
+        496,
+        56
+      ],
+      "center": [
+        471,
+        56
+      ],
+      "length": 50.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        236,
+        173
+      ],
+      "end": [
+        238,
+        138
+      ],
+      "center": [
+        237,
+        155
+      ],
+      "length": 35.05709628591621,
+      "angle": -86.72951207681643,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        403,
+        53
+      ],
+      "end": [
+        423,
+        53
+      ],
+      "center": [
+        413,
+        53
+      ],
+      "length": 20.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        253,
+        33
+      ],
+      "end": [
+        258,
+        7
+      ],
+      "center": [
+        255,
+        20
+      ],
+      "length": 26.476404589747453,
+      "angle": -79.11447294534128,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        18,
+        104
+      ],
+      "end": [
+        76,
+        103
+      ],
+      "center": [
+        47,
+        103
+      ],
+      "length": 58.008620049092706,
+      "angle": -0.98776039963981,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        59,
+        287
+      ],
+      "end": [
+        104,
+        281
+      ],
+      "center": [
+        81,
+        284
+      ],
+      "length": 45.39823785126467,
+      "angle": -7.594643368591445,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        321,
+        338
+      ],
+      "end": [
+        362,
+        339
+      ],
+      "center": [
+        341,
+        338
+      ],
+      "length": 41.012193308819754,
+      "angle": 1.3971810272963767,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        135,
+        362
+      ],
+      "end": [
+        208,
+        362
+      ],
+      "center": [
+        171,
+        362
+      ],
+      "length": 73.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        24,
+        26
+      ],
+      "end": [
+        101,
+        103
+      ],
+      "center": [
+        62,
+        64
+      ],
+      "length": 108.89444430272832,
+      "angle": 45.0,
+      "orientation": "diagonal"
+    },
+    {
+      "start": [
+        395,
+        67
+      ],
+      "end": [
+        423,
+        67
+      ],
+      "center": [
+        409,
+        67
+      ],
+      "length": 28.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        43,
+        49
+      ],
+      "end": [
+        76,
+        50
+      ],
+      "center": [
+        59,
+        49
+      ],
+      "length": 33.015148038438355,
+      "angle": 1.735704588928389,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        67,
+        36
+      ],
+      "end": [
+        103,
+        36
+      ],
+      "center": [
+        85,
+        36
+      ],
+      "length": 36.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        321,
+        342
+      ],
+      "end": [
+        362,
+        343
+      ],
+      "center": [
+        341,
+        342
+      ],
+      "length": 41.012193308819754,
+      "angle": 1.3971810272963767,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        4,
+        57
+      ],
+      "end": [
+        60,
+        57
+      ],
+      "center": [
+        32,
+        57
+      ],
+      "length": 56.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        432,
+        274
+      ],
+      "end": [
+        473,
+        314
+      ],
+      "center": [
+        452,
+        294
+      ],
+      "length": 57.28001396647874,
+      "angle": 44.292680631455745,
+      "orientation": "diagonal"
+    },
+    {
+      "start": [
+        11,
+        123
+      ],
+      "end": [
+        41,
+        126
+      ],
+      "center": [
+        26,
+        124
+      ],
+      "length": 30.14962686336267,
+      "angle": 5.710593137499642,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        268,
+        36
+      ],
+      "end": [
+        356,
+        31
+      ],
+      "center": [
+        312,
+        33
+      ],
+      "length": 88.14193099768123,
+      "angle": -3.251945600363879,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        200,
+        229
+      ],
+      "end": [
+        200,
+        133
+      ],
+      "center": [
+        200,
+        181
+      ],
+      "length": 96.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        121,
+        39
+      ],
+      "end": [
+        180,
+        39
+      ],
+      "center": [
+        150,
+        39
+      ],
+      "length": 59.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        197,
+        215
+      ],
+      "end": [
+        199,
+        133
+      ],
+      "center": [
+        198,
+        174
+      ],
+      "length": 82.02438661763951,
+      "angle": -88.60281897270363,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        297,
+        26
+      ],
+      "end": [
+        356,
+        26
+      ],
+      "center": [
+        326,
+        26
+      ],
+      "length": 59.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        88,
+        43
+      ],
+      "end": [
+        145,
+        43
+      ],
+      "center": [
+        116,
+        43
+      ],
+      "length": 57.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        291,
+        21
+      ],
+      "end": [
+        322,
+        21
+      ],
+      "center": [
+        306,
+        21
+      ],
+      "length": 31.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        224,
+        337
+      ],
+      "end": [
+        224,
+        256
+      ],
+      "center": [
+        224,
+        296
+      ],
+      "length": 81.0,
+      "angle": -90.0,
+      "orientation": "vertical"
+    },
+    {
+      "start": [
+        316,
+        363
+      ],
+      "end": [
+        365,
+        362
+      ],
+      "center": [
+        340,
+        362
+      ],
+      "length": 49.01020301937138,
+      "angle": -1.169139327907419,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        161,
+        268
+      ],
+      "end": [
+        228,
+        261
+      ],
+      "center": [
+        194,
+        264
+      ],
+      "length": 67.36467917239716,
+      "angle": -5.96448710125312,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        186,
+        266
+      ],
+      "end": [
+        229,
+        261
+      ],
+      "center": [
+        207,
+        263
+      ],
+      "length": 43.289721643826724,
+      "angle": -6.632514615138463,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        355,
+        60
+      ],
+      "end": [
+        423,
+        60
+      ],
+      "center": [
+        389,
+        60
+      ],
+      "length": 68.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        20,
+        125
+      ],
+      "end": [
+        103,
+        114
+      ],
+      "center": [
+        61,
+        119
+      ],
+      "length": 83.72574275573791,
+      "angle": -7.549421768263272,
+      "orientation": "horizontal"
+    },
+    {
+      "start": [
+        337,
+        297
+      ],
+      "end": [
+        368,
+        328
+      ],
+      "center": [
+        352,
+        312
+      ],
+      "length": 43.840620433565945,
+      "angle": 45.0,
+      "orientation": "diagonal"
+    },
+    {
+      "start": [
+        274,
+        131
+      ],
+      "end": [
+        304,
+        131
+      ],
+      "center": [
+        289,
+        131
+      ],
+      "length": 30.0,
+      "angle": 0.0,
+      "orientation": "horizontal"
+    }
+  ],
+  "pipe_routes": [
+    {
+      "segments": [
+        {
+          "start": [
+            1,
+            244
+          ],
+          "end": [
+            1,
+            2
+          ],
+          "center": [
+            1,
+            123
+          ],
+          "length": 242.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            2,
+            1
+          ],
+          "end": [
+            89,
+            1
+          ],
+          "center": [
+            45,
+            1
+          ],
+          "length": 87.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 2,
+      "total_length": 329.0,
+      "endpoints": [
+        [
+          1,
+          244
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            2,
+            242
+          ],
+          "end": [
+            214,
+            242
+          ],
+          "center": [
+            108,
+            242
+          ],
+          "length": 212.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            186,
+            266
+          ],
+          "end": [
+            229,
+            261
+          ],
+          "center": [
+            207,
+            263
+          ],
+          "length": 43.289721643826724,
+          "angle": -6.632514615138463,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            161,
+            268
+          ],
+          "end": [
+            228,
+            261
+          ],
+          "center": [
+            194,
+            264
+          ],
+          "length": 67.36467917239716,
+          "angle": -5.96448710125312,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            160,
+            265
+          ],
+          "end": [
+            234,
+            257
+          ],
+          "center": [
+            197,
+            261
+          ],
+          "length": 74.43117626371358,
+          "angle": -6.1701750950296095,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            0,
+            244
+          ],
+          "end": [
+            214,
+            244
+          ],
+          "center": [
+            107,
+            244
+          ],
+          "length": 214.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            45,
+            293
+          ],
+          "end": [
+            158,
+            292
+          ],
+          "center": [
+            101,
+            292
+          ],
+          "length": 113.00442469213318,
+          "angle": -0.5070290609147756,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            59,
+            287
+          ],
+          "end": [
+            104,
+            281
+          ],
+          "center": [
+            81,
+            284
+          ],
+          "length": 45.39823785126467,
+          "angle": -7.594643368591445,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            20,
+            279
+          ],
+          "end": [
+            104,
+            286
+          ],
+          "center": [
+            62,
+            282
+          ],
+          "length": 84.29116205154607,
+          "angle": 4.763641690726178,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            13,
+            296
+          ],
+          "end": [
+            108,
+            296
+          ],
+          "center": [
+            60,
+            296
+          ],
+          "length": 95.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            78,
+            295
+          ],
+          "end": [
+            227,
+            295
+          ],
+          "center": [
+            152,
+            295
+          ],
+          "length": 149.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            188,
+            292
+          ],
+          "end": [
+            224,
+            293
+          ],
+          "center": [
+            206,
+            292
+          ],
+          "length": 36.013886210738214,
+          "angle": 1.5911402711945875,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 11,
+      "total_length": 1133.7932878856195,
+      "endpoints": [
+        [
+          2,
+          242
+        ],
+        [
+          214,
+          242
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            475,
+            253
+          ],
+          "end": [
+            475,
+            47
+          ],
+          "center": [
+            475,
+            150
+          ],
+          "length": 206.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            477,
+            253
+          ],
+          "end": [
+            477,
+            48
+          ],
+          "center": [
+            477,
+            150
+          ],
+          "length": 205.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        }
+      ],
+      "segment_count": 2,
+      "total_length": 411.0,
+      "endpoints": [
+        [
+          475,
+          253
+        ],
+        [
+          475,
+          47
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "vertical"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            171,
+            326
+          ],
+          "end": [
+            423,
+            326
+          ],
+          "center": [
+            297,
+            326
+          ],
+          "length": 252.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            447,
+            326
+          ],
+          "end": [
+            447,
+            232
+          ],
+          "center": [
+            447,
+            279
+          ],
+          "length": 94.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            450,
+            328
+          ],
+          "end": [
+            450,
+            232
+          ],
+          "center": [
+            450,
+            280
+          ],
+          "length": 96.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            207,
+            329
+          ],
+          "end": [
+            449,
+            329
+          ],
+          "center": [
+            328,
+            329
+          ],
+          "length": 242.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 4,
+      "total_length": 684.0,
+      "endpoints": [
+        [
+          171,
+          326
+        ],
+        [
+          423,
+          326
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            101,
+            47
+          ],
+          "end": [
+            228,
+            47
+          ],
+          "center": [
+            164,
+            47
+          ],
+          "length": 127.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            88,
+            43
+          ],
+          "end": [
+            145,
+            43
+          ],
+          "center": [
+            116,
+            43
+          ],
+          "length": 57.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            121,
+            39
+          ],
+          "end": [
+            180,
+            39
+          ],
+          "center": [
+            150,
+            39
+          ],
+          "length": 59.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            67,
+            36
+          ],
+          "end": [
+            103,
+            36
+          ],
+          "center": [
+            85,
+            36
+          ],
+          "length": 36.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            4,
+            57
+          ],
+          "end": [
+            60,
+            57
+          ],
+          "center": [
+            32,
+            57
+          ],
+          "length": 56.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            43,
+            49
+          ],
+          "end": [
+            76,
+            50
+          ],
+          "center": [
+            59,
+            49
+          ],
+          "length": 33.015148038438355,
+          "angle": 1.735704588928389,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            6,
+            61
+          ],
+          "end": [
+            60,
+            61
+          ],
+          "center": [
+            33,
+            61
+          ],
+          "length": 54.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            2,
+            77
+          ],
+          "end": [
+            89,
+            77
+          ],
+          "center": [
+            45,
+            77
+          ],
+          "length": 87.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            10,
+            75
+          ],
+          "end": [
+            38,
+            75
+          ],
+          "center": [
+            24,
+            75
+          ],
+          "length": 28.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            33,
+            59
+          ],
+          "end": [
+            61,
+            59
+          ],
+          "center": [
+            47,
+            59
+          ],
+          "length": 28.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            74,
+            43
+          ],
+          "end": [
+            103,
+            45
+          ],
+          "center": [
+            88,
+            44
+          ],
+          "length": 29.068883707497267,
+          "angle": 3.945186229037563,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            21,
+            23
+          ],
+          "end": [
+            76,
+            27
+          ],
+          "center": [
+            48,
+            25
+          ],
+          "length": 55.14526271584895,
+          "angle": 4.159642293712642,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            68,
+            35
+          ],
+          "end": [
+            159,
+            36
+          ],
+          "center": [
+            113,
+            35
+          ],
+          "length": 91.00549433962765,
+          "angle": 0.6295986084102669,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            157,
+            42
+          ],
+          "end": [
+            205,
+            43
+          ],
+          "center": [
+            181,
+            42
+          ],
+          "length": 48.010415536631214,
+          "angle": 1.193489423982035,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            137,
+            52
+          ],
+          "end": [
+            161,
+            53
+          ],
+          "center": [
+            149,
+            52
+          ],
+          "length": 24.020824298928627,
+          "angle": 2.3859440303888126,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            130,
+            37
+          ],
+          "end": [
+            205,
+            39
+          ],
+          "center": [
+            167,
+            38
+          ],
+          "length": 75.02666192761077,
+          "angle": 1.5275254422129272,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            187,
+            49
+          ],
+          "end": [
+            229,
+            48
+          ],
+          "center": [
+            208,
+            48
+          ],
+          "length": 42.01190307520001,
+          "angle": -1.3639275316029187,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            253,
+            41
+          ],
+          "end": [
+            284,
+            41
+          ],
+          "center": [
+            268,
+            41
+          ],
+          "length": 31.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            291,
+            21
+          ],
+          "end": [
+            322,
+            21
+          ],
+          "center": [
+            306,
+            21
+          ],
+          "length": 31.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            297,
+            26
+          ],
+          "end": [
+            356,
+            26
+          ],
+          "center": [
+            326,
+            26
+          ],
+          "length": 59.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            268,
+            36
+          ],
+          "end": [
+            356,
+            31
+          ],
+          "center": [
+            312,
+            33
+          ],
+          "length": 88.14193099768123,
+          "angle": -3.251945600363879,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            379,
+            31
+          ],
+          "end": [
+            402,
+            31
+          ],
+          "center": [
+            390,
+            31
+          ],
+          "length": 23.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            403,
+            53
+          ],
+          "end": [
+            423,
+            53
+          ],
+          "center": [
+            413,
+            53
+          ],
+          "length": 20.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            355,
+            60
+          ],
+          "end": [
+            423,
+            60
+          ],
+          "center": [
+            389,
+            60
+          ],
+          "length": 68.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            395,
+            67
+          ],
+          "end": [
+            423,
+            67
+          ],
+          "center": [
+            409,
+            67
+          ],
+          "length": 28.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            423,
+            51
+          ],
+          "end": [
+            474,
+            50
+          ],
+          "center": [
+            448,
+            50
+          ],
+          "length": 51.0098029794274,
+          "angle": -1.123302714075429,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            446,
+            56
+          ],
+          "end": [
+            496,
+            56
+          ],
+          "center": [
+            471,
+            56
+          ],
+          "length": 50.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            483,
+            62
+          ],
+          "end": [
+            510,
+            62
+          ],
+          "center": [
+            496,
+            62
+          ],
+          "length": 27.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            482,
+            54
+          ],
+          "end": [
+            505,
+            54
+          ],
+          "center": [
+            493,
+            54
+          ],
+          "length": 23.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            288,
+            45
+          ],
+          "end": [
+            462,
+            48
+          ],
+          "center": [
+            375,
+            46
+          ],
+          "length": 174.0258601472781,
+          "angle": 0.98776039963981,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            288,
+            52
+          ],
+          "end": [
+            316,
+            53
+          ],
+          "center": [
+            302,
+            52
+          ],
+          "length": 28.0178514522438,
+          "angle": 2.0454084888872277,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            338,
+            58
+          ],
+          "end": [
+            394,
+            58
+          ],
+          "center": [
+            366,
+            58
+          ],
+          "length": 56.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            362,
+            70
+          ],
+          "end": [
+            406,
+            70
+          ],
+          "center": [
+            384,
+            70
+          ],
+          "length": 44.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            362,
+            65
+          ],
+          "end": [
+            423,
+            63
+          ],
+          "center": [
+            392,
+            64
+          ],
+          "length": 61.032778078668514,
+          "angle": -1.8778774472853594,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            362,
+            41
+          ],
+          "end": [
+            465,
+            42
+          ],
+          "center": [
+            413,
+            41
+          ],
+          "length": 103.00485425454472,
+          "angle": 0.5562522270806725,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            253,
+            38
+          ],
+          "end": [
+            371,
+            38
+          ],
+          "center": [
+            312,
+            38
+          ],
+          "length": 118.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            230,
+            59
+          ],
+          "end": [
+            253,
+            59
+          ],
+          "center": [
+            241,
+            59
+          ],
+          "length": 23.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            228,
+            57
+          ],
+          "end": [
+            255,
+            57
+          ],
+          "center": [
+            241,
+            57
+          ],
+          "length": 27.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            253,
+            44
+          ],
+          "end": [
+            299,
+            45
+          ],
+          "center": [
+            276,
+            44
+          ],
+          "length": 46.010868281309364,
+          "angle": 1.2453642667683475,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            254,
+            51
+          ],
+          "end": [
+            331,
+            48
+          ],
+          "center": [
+            292,
+            49
+          ],
+          "length": 77.05841939723393,
+          "angle": -2.2311746080312513,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            335,
+            158
+          ],
+          "end": [
+            335,
+            26
+          ],
+          "center": [
+            335,
+            92
+          ],
+          "length": 132.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            333,
+            174
+          ],
+          "end": [
+            333,
+            23
+          ],
+          "center": [
+            333,
+            98
+          ],
+          "length": 151.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            253,
+            40
+          ],
+          "end": [
+            394,
+            42
+          ],
+          "center": [
+            323,
+            41
+          ],
+          "length": 141.01418368376991,
+          "angle": 0.8126515942537368,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            379,
+            26
+          ],
+          "end": [
+            403,
+            25
+          ],
+          "center": [
+            391,
+            25
+          ],
+          "length": 24.020824298928627,
+          "angle": -2.3859440303888126,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            364,
+            34
+          ],
+          "end": [
+            464,
+            34
+          ],
+          "center": [
+            414,
+            34
+          ],
+          "length": 100.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            287,
+            46
+          ],
+          "end": [
+            356,
+            48
+          ],
+          "center": [
+            321,
+            47
+          ],
+          "length": 69.02897942168927,
+          "angle": 1.6602823689828055,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            356,
+            49
+          ],
+          "end": [
+            465,
+            49
+          ],
+          "center": [
+            410,
+            49
+          ],
+          "length": 109.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            482,
+            57
+          ],
+          "end": [
+            506,
+            57
+          ],
+          "center": [
+            494,
+            57
+          ],
+          "length": 24.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            391,
+            50
+          ],
+          "end": [
+            510,
+            56
+          ],
+          "center": [
+            450,
+            53
+          ],
+          "length": 119.15116449284078,
+          "angle": 2.88641854386461,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            253,
+            37
+          ],
+          "end": [
+            464,
+            37
+          ],
+          "center": [
+            358,
+            37
+          ],
+          "length": 211.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            254,
+            46
+          ],
+          "end": [
+            423,
+            55
+          ],
+          "center": [
+            338,
+            50
+          ],
+          "length": 169.23947530053383,
+          "angle": 3.0483749402982987,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            253,
+            42
+          ],
+          "end": [
+            315,
+            45
+          ],
+          "center": [
+            284,
+            43
+          ],
+          "length": 62.07253821135398,
+          "angle": 2.770215797200193,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            212,
+            15
+          ],
+          "end": [
+            270,
+            15
+          ],
+          "center": [
+            241,
+            15
+          ],
+          "length": 58.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            291,
+            14
+          ],
+          "end": [
+            321,
+            14
+          ],
+          "center": [
+            306,
+            14
+          ],
+          "length": 30.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            176,
+            36
+          ],
+          "end": [
+            203,
+            35
+          ],
+          "center": [
+            189,
+            35
+          ],
+          "length": 27.018512172212592,
+          "angle": -2.1210963966614536,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            175,
+            37
+          ],
+          "end": [
+            204,
+            38
+          ],
+          "center": [
+            189,
+            37
+          ],
+          "length": 29.017236257093817,
+          "angle": 1.9749340108819768,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            135,
+            21
+          ],
+          "end": [
+            165,
+            21
+          ],
+          "center": [
+            150,
+            21
+          ],
+          "length": 30.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            176,
+            40
+          ],
+          "end": [
+            204,
+            41
+          ],
+          "center": [
+            190,
+            40
+          ],
+          "length": 28.0178514522438,
+          "angle": 2.0454084888872277,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            101,
+            50
+          ],
+          "end": [
+            163,
+            50
+          ],
+          "center": [
+            132,
+            50
+          ],
+          "length": 62.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            78,
+            58
+          ],
+          "end": [
+            99,
+            58
+          ],
+          "center": [
+            88,
+            58
+          ],
+          "length": 21.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            46,
+            46
+          ],
+          "end": [
+            76,
+            45
+          ],
+          "center": [
+            61,
+            45
+          ],
+          "length": 30.01666203960727,
+          "angle": -1.9091524329963763,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            20,
+            27
+          ],
+          "end": [
+            76,
+            30
+          ],
+          "center": [
+            48,
+            28
+          ],
+          "length": 56.08029957123981,
+          "angle": 3.0664855011258934,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            17,
+            36
+          ],
+          "end": [
+            125,
+            40
+          ],
+          "center": [
+            71,
+            38
+          ],
+          "length": 108.07404868885037,
+          "angle": 2.1210963966614536,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            17,
+            38
+          ],
+          "end": [
+            203,
+            44
+          ],
+          "center": [
+            110,
+            41
+          ],
+          "length": 186.09674903124989,
+          "angle": 1.8476102659945959,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 64,
+      "total_length": 4162.455483849784,
+      "endpoints": [
+        [
+          101,
+          47
+        ],
+        [
+          228,
+          47
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            379,
+            329
+          ],
+          "end": [
+            379,
+            160
+          ],
+          "center": [
+            379,
+            244
+          ],
+          "length": 169.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            377,
+            329
+          ],
+          "end": [
+            377,
+            159
+          ],
+          "center": [
+            377,
+            244
+          ],
+          "length": 170.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        }
+      ],
+      "segment_count": 2,
+      "total_length": 339.0,
+      "endpoints": [
+        [
+          379,
+          329
+        ],
+        [
+          379,
+          160
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "vertical"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            101,
+            105
+          ],
+          "end": [
+            242,
+            105
+          ],
+          "center": [
+            171,
+            105
+          ],
+          "length": 141.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            20,
+            125
+          ],
+          "end": [
+            103,
+            114
+          ],
+          "center": [
+            61,
+            119
+          ],
+          "length": 83.72574275573791,
+          "angle": -7.549421768263272,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            11,
+            123
+          ],
+          "end": [
+            41,
+            126
+          ],
+          "center": [
+            26,
+            124
+          ],
+          "length": 30.14962686336267,
+          "angle": 5.710593137499642,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            18,
+            104
+          ],
+          "end": [
+            76,
+            103
+          ],
+          "center": [
+            47,
+            103
+          ],
+          "length": 58.008620049092706,
+          "angle": -0.98776039963981,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            24,
+            26
+          ],
+          "end": [
+            101,
+            103
+          ],
+          "center": [
+            62,
+            64
+          ],
+          "length": 108.89444430272832,
+          "angle": 45.0,
+          "orientation": "diagonal"
+        },
+        {
+          "start": [
+            10,
+            117
+          ],
+          "end": [
+            76,
+            123
+          ],
+          "center": [
+            43,
+            120
+          ],
+          "length": 66.27216610312357,
+          "angle": 5.194428907734806,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            101,
+            108
+          ],
+          "end": [
+            240,
+            108
+          ],
+          "center": [
+            170,
+            108
+          ],
+          "length": 139.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            185,
+            130
+          ],
+          "end": [
+            234,
+            130
+          ],
+          "center": [
+            209,
+            130
+          ],
+          "length": 49.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            236,
+            173
+          ],
+          "end": [
+            238,
+            138
+          ],
+          "center": [
+            237,
+            155
+          ],
+          "length": 35.05709628591621,
+          "angle": -86.72951207681643,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            212,
+            172
+          ],
+          "end": [
+            213,
+            123
+          ],
+          "center": [
+            212,
+            147
+          ],
+          "length": 49.01020301937138,
+          "angle": -88.8308606720926,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            197,
+            215
+          ],
+          "end": [
+            199,
+            133
+          ],
+          "center": [
+            198,
+            174
+          ],
+          "length": 82.02438661763951,
+          "angle": -88.60281897270363,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            200,
+            229
+          ],
+          "end": [
+            200,
+            133
+          ],
+          "center": [
+            200,
+            181
+          ],
+          "length": 96.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            156,
+            130
+          ],
+          "end": [
+            203,
+            141
+          ],
+          "center": [
+            179,
+            135
+          ],
+          "length": 48.27007354458868,
+          "angle": 13.172553423326894,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            239,
+            170
+          ],
+          "end": [
+            239,
+            142
+          ],
+          "center": [
+            239,
+            156
+          ],
+          "length": 28.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        }
+      ],
+      "segment_count": 14,
+      "total_length": 1014.4123595415609,
+      "endpoints": [
+        [
+          101,
+          105
+        ],
+        [
+          242,
+          105
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            237,
+            161
+          ],
+          "end": [
+            376,
+            161
+          ],
+          "center": [
+            306,
+            161
+          ],
+          "length": 139.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            270,
+            159
+          ],
+          "end": [
+            378,
+            159
+          ],
+          "center": [
+            324,
+            159
+          ],
+          "length": 108.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 2,
+      "total_length": 247.0,
+      "endpoints": [
+        [
+          237,
+          161
+        ],
+        [
+          376,
+          161
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            412,
+            227
+          ],
+          "end": [
+            474,
+            253
+          ],
+          "center": [
+            443,
+            240
+          ],
+          "length": 67.23094525588644,
+          "angle": 22.750976342787634,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 67.23094525588644,
+      "endpoints": [
+        [
+          412,
+          227
+        ],
+        [
+          474,
+          253
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            221,
+            338
+          ],
+          "end": [
+            224,
+            302
+          ],
+          "center": [
+            222,
+            320
+          ],
+          "length": 36.124783736376884,
+          "angle": -85.23635830927383,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            224,
+            337
+          ],
+          "end": [
+            224,
+            256
+          ],
+          "center": [
+            224,
+            296
+          ],
+          "length": 81.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            212,
+            337
+          ],
+          "end": [
+            213,
+            293
+          ],
+          "center": [
+            212,
+            315
+          ],
+          "length": 44.01136216933077,
+          "angle": -88.69804732742112,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            210,
+            335
+          ],
+          "end": [
+            211,
+            293
+          ],
+          "center": [
+            210,
+            314
+          ],
+          "length": 42.01190307520001,
+          "angle": -88.63607246839709,
+          "orientation": "vertical"
+        },
+        {
+          "start": [
+            227,
+            294
+          ],
+          "end": [
+            227,
+            256
+          ],
+          "center": [
+            227,
+            275
+          ],
+          "length": 38.0,
+          "angle": -90.0,
+          "orientation": "vertical"
+        }
+      ],
+      "segment_count": 5,
+      "total_length": 241.14804898090767,
+      "endpoints": [
+        [
+          221,
+          338
+        ],
+        [
+          224,
+          302
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "vertical"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            227,
+            208
+          ],
+          "end": [
+            261,
+            242
+          ],
+          "center": [
+            244,
+            225
+          ],
+          "length": 48.08326112068523,
+          "angle": 45.0,
+          "orientation": "diagonal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 48.08326112068523,
+      "endpoints": [
+        [
+          227,
+          208
+        ],
+        [
+          261,
+          242
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "diagonal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            253,
+            33
+          ],
+          "end": [
+            258,
+            7
+          ],
+          "center": [
+            255,
+            20
+          ],
+          "length": 26.476404589747453,
+          "angle": -79.11447294534128,
+          "orientation": "vertical"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 26.476404589747453,
+      "endpoints": [
+        [
+          253,
+          33
+        ],
+        [
+          258,
+          7
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "vertical"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            321,
+            338
+          ],
+          "end": [
+            362,
+            339
+          ],
+          "center": [
+            341,
+            338
+          ],
+          "length": 41.012193308819754,
+          "angle": 1.3971810272963767,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            316,
+            363
+          ],
+          "end": [
+            365,
+            362
+          ],
+          "center": [
+            340,
+            362
+          ],
+          "length": 49.01020301937138,
+          "angle": -1.169139327907419,
+          "orientation": "horizontal"
+        },
+        {
+          "start": [
+            321,
+            342
+          ],
+          "end": [
+            362,
+            343
+          ],
+          "center": [
+            341,
+            342
+          ],
+          "length": 41.012193308819754,
+          "angle": 1.3971810272963767,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 3,
+      "total_length": 131.0345896370109,
+      "endpoints": [
+        [
+          321,
+          338
+        ],
+        [
+          362,
+          339
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            135,
+            362
+          ],
+          "end": [
+            208,
+            362
+          ],
+          "center": [
+            171,
+            362
+          ],
+          "length": 73.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 73.0,
+      "endpoints": [
+        [
+          135,
+          362
+        ],
+        [
+          208,
+          362
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            432,
+            274
+          ],
+          "end": [
+            473,
+            314
+          ],
+          "center": [
+            452,
+            294
+          ],
+          "length": 57.28001396647874,
+          "angle": 44.292680631455745,
+          "orientation": "diagonal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 57.28001396647874,
+      "endpoints": [
+        [
+          432,
+          274
+        ],
+        [
+          473,
+          314
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "diagonal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            337,
+            297
+          ],
+          "end": [
+            368,
+            328
+          ],
+          "center": [
+            352,
+            312
+          ],
+          "length": 43.840620433565945,
+          "angle": 45.0,
+          "orientation": "diagonal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 43.840620433565945,
+      "endpoints": [
+        [
+          337,
+          297
+        ],
+        [
+          368,
+          328
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "diagonal"
+    },
+    {
+      "segments": [
+        {
+          "start": [
+            274,
+            131
+          ],
+          "end": [
+            304,
+            131
+          ],
+          "center": [
+            289,
+            131
+          ],
+          "length": 30.0,
+          "angle": 0.0,
+          "orientation": "horizontal"
+        }
+      ],
+      "segment_count": 1,
+      "total_length": 30.0,
+      "endpoints": [
+        [
+          274,
+          131
+        ],
+        [
+          304,
+          131
+        ]
+      ],
+      "num_junctions": 0,
+      "dominant_orientation": "horizontal"
+    }
+  ],
+  "contours": [
+    {
+      "bbox": [
+        135,
+        360,
+        74,
+        9
+      ],
+      "center": [
+        172,
+        364
+      ],
+      "area": 405.0,
+      "perimeter": 173.79898953437805,
+      "circularity": 0.16848855006414318,
+      "vertices": 6,
+      "shape_type": "polygon"
+    },
+    {
+      "bbox": [
+        212,
+        6,
+        23,
+        10
+      ],
+      "center": [
+        223,
+        11
+      ],
+      "area": 169.0,
+      "perimeter": 59.65685415267944,
+      "circularity": 0.5967272519907385,
+      "vertices": 5,
+      "shape_type": "polygon"
+    },
+    {
+      "bbox": [
+        0,
+        0,
+        511,
+        369
+      ],
+      "center": [
+        255,
+        184
+      ],
+      "area": 130759.0,
+      "perimeter": 3381.862040877342,
+      "circularity": 0.14367118718290678,
+      "vertices": 6,
+      "shape_type": "polygon"
+    }
+  ],
+  "statistics": {
+    "total_lines": 116,
+    "horizontal_lines": 92,
+    "vertical_lines": 20,
+    "diagonal_lines": 4,
+    "total_line_length": 9038.755015261248,
+    "average_line_length": 77.92030185570042,
+    "total_contours": 3,
+    "total_contour_area": 131333.0
+  }
+}

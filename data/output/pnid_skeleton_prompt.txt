@@ -1,0 +1,33 @@
+You are given a P&ID diagram analysis with deterministic geometric connectivity.
+Do NOT change topology. Your task is to assign labels and descriptions to the listed pipes.
+
+COMPONENTS (id, label, x, y):
+- MAK-1: "MAK" at (89.0,55.0)
+- MAT-1: "MAT" at (89.0,140.0)
+- Mixer-1: "Mixer" at (225.0,55.0)
+- Maische-1: "Maische" at (338.0,55.0)
+- Filter-1: "Filter" at (420.0,55.0)
+- HWT-1: "Hot water tank" at (239.0,210.0)
+- Mixer-2: "Mixer" at (280.0,165.0)
+- WOK-1: "WOK" at (470.0,220.0)
+- Centrifuge-1: "Centrifuge" at (341.0,360.0)
+- WT-1: "Wort treatment" at (170.0,320.0)
+- HX-1: "Heat Exchanger" at (145.0,55.0)
+- HX-2: "Heat Exchanger" at (455.0,55.0)
+- P-1: "Pump" at (280.0,55.0)
+- P-2: "Pump" at (240.0,165.0)
+- P-3: "Pump" at (210.0,290.0)
+- V-1: "Valve" at (130.0,265.0)
+
+DETERMINISTIC PIPES (source → target, length px, suggested label if any):
+1. Mixer-1 → Maische-1, length=187 px, midpoint=(268,47), label="MAK"
+2. Maische-1 → P-1, length=138 px, midpoint=(315,54), label="75PC / Maische"
+3. Mixer-1 → P-1, length=113 px, midpoint=(252,23), label="MAK / MAT"
+
+INSTRUCTIONS:
+1) For each deterministic pipe above, propose a concise label (<= 6 words).
+2) If OCR labels exist near a pipe, prefer them. Otherwise suggest a label from likely stream.
+3) Provide a one-line description for each pipe with probable temperature/contents if available.
+4) Do NOT invent new pipes or remove the listed ones; only annotate.
+
+Answer with a JSON array of objects: [{"source":"...","target":"...","label":"...","description":"..."}, ...]

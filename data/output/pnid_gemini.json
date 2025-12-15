@@ -1,0 +1,347 @@
+{
+    "output": {
+        "components": [
+            {
+                "label": "MAK",
+                "id": "MAK1",
+                "category": "Reactor",
+                "description": "Reactor for Malt, Corn, and Water",
+                "x": 172.0,
+                "y": 111.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger1",
+                "category": "Heat Exchanger",
+                "description": "Heats stream with Steam",
+                "x": 271.0,
+                "y": 111.0
+            },
+            {
+                "label": "MAT + MAK",
+                "id": "MATMAK1",
+                "category": "Reactor",
+                "description": "Combined reactor for MAT and MAK products",
+                "x": 433.0,
+                "y": 111.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger2",
+                "category": "Heat Exchanger",
+                "description": "Heats stream with Steam",
+                "x": 550.0,
+                "y": 111.0
+            },
+            {
+                "label": "Filter",
+                "id": "Filter1",
+                "category": "Filter",
+                "description": "Filters Maische, separating Dreche",
+                "x": 692.0,
+                "y": 112.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger3",
+                "category": "Heat Exchanger",
+                "description": "Heats stream with Steam",
+                "x": 808.0,
+                "y": 112.0
+            },
+            {
+                "label": "MAT",
+                "id": "MAT1",
+                "category": "Reactor",
+                "description": "Reactor for Malt and Water",
+                "x": 172.0,
+                "y": 284.0
+            },
+            {
+                "label": "Mixer",
+                "id": "Mixer1",
+                "category": "Mixer",
+                "description": "Mixes water",
+                "x": 550.0,
+                "y": 341.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger4",
+                "category": "Heat Exchanger",
+                "description": "Heats stream with Steam",
+                "x": 669.0,
+                "y": 341.0
+            },
+            {
+                "label": "Hot water tank",
+                "id": "HotWaterTank1",
+                "category": "Tank",
+                "description": "Hot water storage with CIP",
+                "x": 550.0,
+                "y": 474.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger5",
+                "category": "Heat Exchanger",
+                "description": "Cools water with Glycol",
+                "x": 271.0,
+                "y": 569.0
+            },
+            {
+                "label": "Heat Exchanger",
+                "id": "HeatExchanger6",
+                "category": "Heat Exchanger",
+                "description": "Heats process stream",
+                "x": 431.0,
+                "y": 569.0
+            },
+            {
+                "label": "Centrifuge",
+                "id": "Centrifuge1",
+                "category": "Separator",
+                "description": "Separates Trub from liquid",
+                "x": 692.0,
+                "y": 569.0
+            },
+            {
+                "label": "WOK",
+                "id": "WOK1",
+                "category": "Separator",
+                "description": "Separates Gas from Liquid",
+                "x": 808.0,
+                "y": 474.0
+            }
+        ],
+        "pipes": [
+            {
+                "label": "Feed",
+                "source": "External - Malt, Corn, Water",
+                "target": "MAK1",
+                "description": "Malt, Corn, Water at 15°C",
+                "x": 93.0,
+                "y": 73.0
+            },
+            {
+                "label": "Process stream",
+                "source": "MAK1",
+                "target": "HeatExchanger1",
+                "description": "Stream from MAK at 48°C",
+                "x": 221.0,
+                "y": 111.0
+            },
+            {
+                "label": "Steam",
+                "source": "External - Steam Supply",
+                "target": "HeatExchanger1",
+                "description": "Steam supply to HeatExchanger1",
+                "x": 301.0,
+                "y": 73.0
+            },
+            {
+                "label": "Process stream",
+                "source": "HeatExchanger1",
+                "target": "MATMAK1",
+                "description": "Stream from HeatExchanger1 at 102°C",
+                "x": 352.0,
+                "y": 111.0
+            },
+            {
+                "label": "Process stream",
+                "source": "MATMAK1",
+                "target": "HeatExchanger2",
+                "description": "Stream from MAT+MAK at 65°C",
+                "x": 492.0,
+                "y": 111.0
+            },
+            {
+                "label": "Steam",
+                "source": "External - Steam Supply",
+                "target": "HeatExchanger2",
+                "description": "Steam supply to HeatExchanger2",
+                "x": 580.0,
+                "y": 73.0
+            },
+            {
+                "label": "Maische",
+                "source": "HeatExchanger2",
+                "target": "Filter1",
+                "description": "Maische stream at 75°C",
+                "x": 610.0,
+                "y": 111.0
+            },
+            {
+                "label": "Process stream",
+                "source": "Filter1",
+                "target": "HeatExchanger3",
+                "description": "Filtered stream at 78°C",
+                "x": 750.0,
+                "y": 111.0
+            },
+            {
+                "label": "Dreche",
+                "source": "Filter1",
+                "target": "External - Dreche Disposal",
+                "description": "Dreche output from Filter1",
+                "x": 692.0,
+                "y": 153.0
+            },
+            {
+                "label": "Steam",
+                "source": "External - Steam Supply",
+                "target": "HeatExchanger3",
+                "description": "Steam supply to HeatExchanger3",
+                "x": 838.0,
+                "y": 73.0
+            },
+            {
+                "label": "Process stream",
+                "source": "HeatExchanger3",
+                "target": "WOK1",
+                "description": "Stream from HeatExchanger3 at 102°C",
+                "x": 859.0,
+                "y": 292.0
+            },
+            {
+                "label": "Feed",
+                "source": "External - Malt, Water",
+                "target": "MAT1",
+                "description": "Malt, Water at 15°C",
+                "x": 93.0,
+                "y": 250.0
+            },
+            {
+                "label": "Process stream",
+                "source": "MAT1",
+                "target": "MATMAK1",
+                "description": "Stream from MAT at 48°C",
+                "x": 301.0,
+                "y": 284.0
+            },
+            {
+                "label": "Feed",
+                "source": "External - Water",
+                "target": "Mixer1",
+                "description": "Water at 15°C",
+                "x": 479.0,
+                "y": 341.0
+            },
+            {
+                "label": "Process stream",
+                "source": "Mixer1",
+                "target": "HeatExchanger4",
+                "description": "Mixed water stream",
+                "x": 610.0,
+                "y": 341.0
+            },
+            {
+                "label": "Steam",
+                "source": "External - Steam Supply",
+                "target": "HeatExchanger4",
+                "description": "Steam supply to HeatExchanger4",
+                "x": 699.0,
+                "y": 301.0
+            },
+            {
+                "label": "Process stream",
+                "source": "HeatExchanger4",
+                "target": "Centrifuge1",
+                "description": "Stream from HeatExchanger4 at 80°C",
+                "x": 730.0,
+                "y": 396.0
+            },
+            {
+                "label": "Recycle",
+                "source": "Mixer1",
+                "target": "HotWaterTank1",
+                "description": "Recycle stream from Mixer1 to HotWaterTank1",
+                "x": 550.0,
+                "y": 407.0
+            },
+            {
+                "label": "Hot water",
+                "source": "HotWaterTank1",
+                "target": "HeatExchanger6",
+                "description": "Hot water at 80°C from HotWaterTank1",
+                "x": 494.0,
+                "y": 520.0
+            },
+            {
+                "label": "Feed",
+                "source": "External - Water",
+                "target": "HeatExchanger5",
+                "description": "Water at 15°C",
+                "x": 180.0,
+                "y": 569.0
+            },
+            {
+                "label": "Glycol",
+                "source": "External - Glycol Supply",
+                "target": "HeatExchanger5",
+                "description": "Glycol supply to HeatExchanger5",
+                "x": 230.0,
+                "y": 529.0
+            },
+            {
+                "label": "Process stream",
+                "source": "HeatExchanger5",
+                "target": "HeatExchanger6",
+                "description": "Stream from HeatExchanger5 at 10°C",
+                "x": 350.0,
+                "y": 569.0
+            },
+            {
+                "label": "Wort treatment",
+                "source": "HeatExchanger6",
+                "target": "External - Wort Treatment",
+                "description": "Stream for wort treatment",
+                "x": 350.0,
+                "y": 640.0
+            },
+            {
+                "label": "Process stream",
+                "source": "HeatExchanger6",
+                "target": "Centrifuge1",
+                "description": "Stream from HeatExchanger6 at 99.8°C",
+                "x": 561.0,
+                "y": 569.0
+            },
+            {
+                "label": "Trub",
+                "source": "Centrifuge1",
+                "target": "External - Trub Disposal",
+                "description": "Trub output from Centrifuge1",
+                "x": 692.0,
+                "y": 504.0
+            },
+            {
+                "label": "Liquid",
+                "source": "Centrifuge1",
+                "target": "WOK1",
+                "description": "Liquid from Centrifuge1 at 102°C",
+                "x": 750.0,
+                "y": 504.0
+            },
+            {
+                "label": "Gas",
+                "source": "WOK1",
+                "target": "External - Gas Outlet",
+                "description": "Gas output from WOK1 at 102°C",
+                "x": 808.0,
+                "y": 393.0
+            },
+            {
+                "label": "Liquid recycle",
+                "source": "WOK1",
+                "target": "Centrifuge1",
+                "description": "Liquid recycle from WOK1 to Centrifuge1 at 102°C",
+                "x": 808.0,
+                "y": 620.0
+            }
+        ]
+    },
+    "provider": "google",
+    "model": "gemini-2.5-flash",
+    "image_path": "data/input/brewery.jpg"
+}

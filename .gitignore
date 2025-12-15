@@ -24,8 +24,9 @@ wheels/
 venv/
 ENV/
 env/
+.venv
 
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
@@ -38,9 +39,15 @@ Thumbs.db
 
 # Project specific
 .env
-data/output/*
-!data/output/.gitkeep
-data/intermediate/*
+*.log
+data/intermediate/
+data/output/*.html
+data/output/*.png
+data/output/*.jpg
+data/output/*.svg
+
+# External tools
+tools/
 !data/intermediate/.gitkeep
 
 # Ollama

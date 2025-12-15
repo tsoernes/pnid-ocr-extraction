@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "pid": "https://example.com/pid#",
+    "schema": "https://schema.org/",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "dexpiClass": "pid:dexpiClass",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:Tank-1",
+      "@type": "pid:Tank",
+      "name": "Tank-1",
+      "dexpiClass": "Tank"
+    },
+    {
+      "@id": "pid:Chamber-1",
+      "@type": "pid:Component",
+      "name": "Chamber-1",
+      "dexpiClass": "Chamber"
+    },
+    {
+      "@id": "pid:Chamber-2",
+      "@type": "pid:Component",
+      "name": "Chamber-2",
+      "dexpiClass": "Chamber"
+    }
+  ]
+}

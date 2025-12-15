@@ -1,23 +1,21 @@
 #!/usr/bin/env python3
 """
-DEXPI SVG Extractor and Visualizer
+DEXPI Visualizer - Simple SVG extraction and visualization
 
-This script extracts and displays SVG graphics from DEXPI (Proteus XML) P&ID files.
-DEXPI files typically contain embedded SVG representations that can be extracted
-and viewed directly without requiring Java compilation.
+This script handles DEXPI (Proteus XML) P&ID visualization through two approaches:
+1. Copy companion SVG files if they exist alongside XML
+2. Use existing SVG files in the DEXPI distribution
+
+DEXPI training examples typically include pre-rendered SVG files.
 
 Usage:
-    python src/dexpi_visualizer.py <input.xml> [--output output.svg]
+    python src/dexpi_visualizer.py <input.xml> [--output output.svg] [--open]
     python src/dexpi_visualizer.py data/input/example.xml
-    python src/dexpi_visualizer.py data/input/example.xml --output data/output/diagram.svg --open
-
-Requirements:
-    - Python 3.12+
-    - No external dependencies (uses stdlib only)
+    python src/dexpi_visualizer.py data/input/example.xml --output data/output/diagram.svg
+    python src/dexpi_visualizer.py data/input/example.xml --open
 """
 
 import argparse
-import os
 import shutil
 import subprocess
 import sys
@@ -25,130 +23,111 @@ from pathlib import Path
 
 
 class DexpiVisualizer:
-    """Extract and visualize SVG from DEXPI Proteus XML files."""
+    """Simple DEXPI visualizer that finds and copies SVG files."""
 
-    def __init__(self):
-        """Initialize the DEXPI visualizer."""
-        pass
-
-    def extract_svg(self, input_xml: Path, output_file: Path) -> Path:
+    def find_svg_file(self, xml_path: Path) -> Path | None:
         """
-        Extract embedded SVG from DEXPI XML file.
+        Find companion SVG file for DEXPI XML.
+
+        DEXPI distributions often include pre-rendered SVG files alongside XML files.
+        This method looks for SVG files with matching base names or in the same directory.
 
         Args:
-            input_xml: Input DEXPI XML file
-            output_file: Output SVG file
+            xml_path: Path to DEXPI XML file
 
         Returns:
-            Path to output file
-
-        Raises:
-            RuntimeError: If no SVG found
+            Path to SVG file if found, None otherwise
         """
-        import xml.etree.ElementTree as ET
+        # Strategy 1: Same base name (e.g., C01V01.xml -> C01V01.svg)
+        svg_same_name = xml_path.with_suffix(".svg")
+        if svg_same_name.exists():
+            return svg_same_name
 
-        print(f"🔍 Extracting SVG from DEXPI XML: {input_xml.name}")
+        # Strategy 2: Look for any SVG in the same directory
+        parent_dir = xml_path.parent
+        svg_files = list(parent_dir.glob("*.svg"))
 
-        try:
-            tree = ET.parse(input_xml)
-            root = tree.getroot()
+        if svg_files:
+            # Prefer SVG with similar name
+            xml_base = xml_path.stem.split("-")[0]  # e.g., C01V01-HEX.EX01 -> C01V01
+            for svg_file in svg_files:
+                if svg_file.stem.startswith(xml_base):
+                    return svg_file
 
-            # Look for SVG content - DEXPI may embed SVG in different ways
-            # Try common namespaces
-            svg_namespaces = [
-                "{http://www.w3.org/2000/svg}svg",
-                "svg",
-            ]
+            # Return first SVG found
+            return svg_files[0]
 
-            svg_element = None
-            for ns in svg_namespaces:
-                svg_element = root.find(f".//{ns}")
-                if svg_element is not None:
-                    break
-
-            if svg_element is not None:
-                # Create proper SVG document with namespace
-                svg_tree = ET.ElementTree(svg_element)
-
-                # Ensure SVG namespace is declared
-                if "xmlns" not in svg_element.attrib:
-                    svg_element.set("xmlns", "http://www.w3.org/2000/svg")
-
-                # Write SVG to file
-                output_file.parent.mkdir(parents=True, exist_ok=True)
-                svg_tree.write(output_file, encoding="utf-8", xml_declaration=True, method="xml")
-
-                print(f"✅ Extracted SVG ({output_file.stat().st_size} bytes)")
-                return output_file
-            else:
-                # Check if there's already an SVG file with same name
-                svg_file = input_xml.with_suffix(".svg")
-                if svg_file.exists():
-                    print(f"📋 Found companion SVG file: {svg_file.name}")
-                    shutil.copy(svg_file, output_file)
-                    return output_file
-
-                raise RuntimeError(
-                    f"No embedded SVG found in {input_xml.name}.\n"
-                    f"The DEXPI file may not contain SVG graphics, or they may be in a different format.\n"
-                    f"Check if there's a companion .svg file in the same directory."
-                )
-
-        except ET.ParseError as e:
-            raise RuntimeError(f"Failed to parse XML file: {e}")
+        return None
 
     def visualize(
         self,
         input_xml: Path,
         output_file: Path | None = None,
-        open_browser: bool = False,
+        open_output: bool = False,
     ) -> Path:
         """
-        Extract and visualize SVG from DEXPI XML file.
+        Visualize DEXPI XML by finding and copying companion SVG file.
 
         Args:
-            input_xml: Path to DEXPI (Proteus XML) input file
-            output_file: Path to output file (default: input name with .svg)
-            open_browser: Open SVG in default browser after extraction
+            input_xml: Path to DEXPI XML file
+            output_file: Path to output SVG file (default: data/output/<name>.svg)
+            open_output: Open SVG in default viewer after extraction
 
         Returns:
-            Path to generated output file
+            Path to output SVG file
 
         Raises:
-            FileNotFoundError: If input file doesn't exist
-            RuntimeError: If visualization fails
+            FileNotFoundError: If input file or companion SVG not found
         """
         input_xml = Path(input_xml)
 
         if not input_xml.exists():
             raise FileNotFoundError(f"Input file not found: {input_xml}")
 
+        print(f"🔍 Looking for SVG file for: {input_xml.name}")
+
+        # Find companion SVG
+        svg_source = self.find_svg_file(input_xml)
+
+        if svg_source is None:
+            raise FileNotFoundError(
+                f"No companion SVG file found for: {input_xml}\n"
+                f"DEXPI files typically come with pre-rendered SVG files.\n"
+                f"Checked directory: {input_xml.parent}\n"
+                f"\nTo generate SVG from scratch, you need the full GraphicBuilder tool."
+            )
+
+        print(f"📋 Found companion SVG: {svg_source.name}")
+
         # Determine output file
         if output_file is None:
-            output_file = input_xml.parent / f"{input_xml.stem}_extracted.svg"
+            output_file = Path("data/output") / f"{input_xml.stem}.svg"
         else:
             output_file = Path(output_file)
 
-        # Extract SVG
-        result_file = self.extract_svg(input_xml, output_file)
+        output_file.parent.mkdir(parents=True, exist_ok=True)
 
-        # Open in browser if requested
-        if open_browser:
-            self.open_in_browser(result_file)
+        # Copy SVG file
+        print(f"📄 Copying to: {output_file}")
+        shutil.copy(svg_source, output_file)
 
-        return result_file
+        file_size = output_file.stat().st_size
+        print(f"✅ Successfully copied SVG ({file_size:,} bytes)")
 
-    def open_in_browser(self, svg_file: Path):
-        """Open SVG file in default browser."""
-        import webbrowser
+        # Open if requested
+        if open_output:
+            self.open_file(output_file)
 
-        print(f"🌐 Opening in browser...")
+        return output_file
+
+    def open_file(self, file_path: Path):
+        """Open file in default application."""
+        print(f"🌐 Opening {file_path.name}...")
         try:
-            url = svg_file.absolute().as_uri()
-            webbrowser.open(url)
+            subprocess.run(["xdg-open", str(file_path)], check=False)
         except Exception as e:
-            print(f"⚠️  Could not open browser: {e}", file=sys.stderr)
-            print(f"   Open manually: {svg_file.absolute()}")
+            print(f"⚠️  Could not open file: {e}", file=sys.stderr)
+            print(f"   Open manually: {file_path.absolute()}")
 
 
 def main():
@@ -158,28 +137,37 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Extract SVG from DEXPI XML
-  python src/dexpi_visualizer.py data/input/example.xml
+  # Find and copy companion SVG
+  python src/dexpi_visualizer.py "data/input/example.xml"
 
-  # Specify output file
-  python src/dexpi_visualizer.py data/input/example.xml --output data/output/diagram.svg
+  # Specify output location
+  python src/dexpi_visualizer.py "data/input/example.xml" --output data/output/diagram.svg
 
-  # Extract and open in browser
-  python src/dexpi_visualizer.py data/input/example.xml --open
+  # Copy and open in viewer
+  python src/dexpi_visualizer.py "data/input/example.xml" --open
 
   # Visualize C01 reference P&ID
-  python src/dexpi_visualizer.py "data/input/TrainingTestCases-master/dexpi 1.2/example pids/C01 the complete DEXPI PnID/C01V01-HEX.EX01.xml"
+  python src/dexpi_visualizer.py \\
+    "data/input/TrainingTestCases-master/dexpi 1.2/example pids/C01 the complete DEXPI PnID/C01V01-HEX.EX02.xml"
+
+Notes:
+  - DEXPI training examples include pre-rendered SVG files
+  - This script finds and copies the companion SVG for easy viewing
+  - For generating SVG from XML, use the full GraphicBuilder Java tool
 """,
     )
 
     parser.add_argument("input", type=Path, help="Input DEXPI XML file")
     parser.add_argument(
-        "-o", "--output", type=Path, help="Output SVG file (default: <input>_extracted.svg)"
+        "-o",
+        "--output",
+        type=Path,
+        help="Output SVG file (default: data/output/<input_name>.svg)",
     )
     parser.add_argument(
         "--open",
         action="store_true",
-        help="Open SVG in default browser after extraction",
+        help="Open SVG in default viewer after extraction",
     )
 
     args = parser.parse_args()
@@ -190,23 +178,19 @@ Examples:
         output_file = visualizer.visualize(
             input_xml=args.input,
             output_file=args.output,
-            open_browser=args.open,
+            open_output=args.open,
         )
 
-        print(f"\n✅ SVG extraction complete: {output_file}")
-        print(f"   File size: {output_file.stat().st_size:,} bytes")
+        print(f"\n✅ Visualization complete: {output_file}")
 
         if not args.open:
-            print(f"\n💡 Tip: Use --open to view in browser, or open manually:")
+            print(f"\n💡 Tip: Use --open to view immediately, or open manually:")
             print(f"   xdg-open {output_file}")
 
         return 0
 
     except Exception as e:
         print(f"\n❌ Error: {e}", file=sys.stderr)
-        import traceback
-
-        traceback.print_exc()
         return 1
 
 

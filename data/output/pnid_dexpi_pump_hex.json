@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "pid": "https://example.com/pid#",
+    "schema": "https://schema.org/",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "dexpiClass": "pid:dexpiClass",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:CentrifugalPump-1",
+      "@type": "pid:Component",
+      "name": "CentrifugalPump-1",
+      "dexpiClass": "CentrifugalPump"
+    },
+    {
+      "@id": "pid:PlateHeatExchanger-1",
+      "@type": "pid:Component",
+      "name": "PlateHeatExchanger-1",
+      "dexpiClass": "PlateHeatExchanger"
+    }
+  ]
+}

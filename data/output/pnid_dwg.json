@@ -1,0 +1,18 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "pid": "https://example.com/pid#",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "lineNumber": "pid:lineNumber",
+    "layer": "pid:layer",
+    "blockName": "pid:blockName",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": []
+}

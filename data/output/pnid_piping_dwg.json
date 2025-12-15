@@ -1,0 +1,725 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "pid": "https://example.com/pid#",
+    "connectedTo": {
+      "@id": "pid:connectedTo",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "tag": "pid:tag",
+    "lineNumber": "pid:lineNumber",
+    "layer": "pid:layer",
+    "blockName": "pid:blockName",
+    "x": "pid:x",
+    "y": "pid:y"
+  },
+  "@graph": [
+    {
+      "@id": "pid:METER_1",
+      "@type": "pid:FlowMeter",
+      "name": "METER",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "METER",
+      "x": 5407.962560940138,
+      "y": 3792.097927952857
+    },
+    {
+      "@id": "pid:INSUL_2",
+      "@type": "pid:Component",
+      "name": "INSUL",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "TEXT_10",
+      "blockName": "INSUL",
+      "x": 5238.31262714665,
+      "y": 3830.481974114707
+    },
+    {
+      "@id": "pid:INSUL_3",
+      "@type": "pid:Component",
+      "name": "INSUL",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "TEXT_10",
+      "blockName": "INSUL",
+      "x": 5238.31262714665,
+      "y": 3840.421998621106
+    },
+    {
+      "@id": "pid:SP_PTUBE_4",
+      "@type": "pid:Component",
+      "name": "SP_PTUBE",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "SP_PTUBE",
+      "x": 5536.359228364629,
+      "y": 3863.366056247309
+    },
+    {
+      "@id": "pid:SP_5",
+      "@type": "pid:Component",
+      "name": "SP",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "cloud-r",
+      "blockName": "SP",
+      "x": 5796.509801339347,
+      "y": 3811.02606762338
+    },
+    {
+      "@id": "pid:*X18_6",
+      "@type": "pid:Component",
+      "name": "*X18",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "*X18",
+      "x": 5169.287625058985,
+      "y": 3616.18904308302
+    },
+    {
+      "@id": "pid:ARROW2_7",
+      "@type": "pid:Component",
+      "name": "ARROW2",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "ARROW2",
+      "x": 5213.961532059756,
+      "y": 3885.518935697343
+    },
+    {
+      "@id": "pid:ARROW2_8",
+      "@type": "pid:Component",
+      "name": "ARROW2",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "ARROW2",
+      "x": 5252.563030157898,
+      "y": 3905.40693351771
+    },
+    {
+      "@id": "pid:TMETER_9",
+      "@type": "pid:Component",
+      "name": "TMETER",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "TMETER",
+      "x": 5407.962560940138,
+      "y": 3763.503802965713
+    },
+    {
+      "@id": "pid:ARROW2_10",
+      "@type": "pid:Component",
+      "name": "ARROW2",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "ARROW2",
+      "x": 5320.800957677351,
+      "y": 3886.548241919311
+    },
+    {
+      "@id": "pid:ARROW2_11",
+      "@type": "pid:Component",
+      "name": "ARROW2",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "ARROW2",
+      "x": 5282.199459579208,
+      "y": 3905.40693351771
+    },
+    {
+      "@id": "pid:TMETER_12",
+      "@type": "pid:Component",
+      "name": "TMETER",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "TMETER",
+      "x": 5536.237160815015,
+      "y": 3909.250368750253
+    },
+    {
+      "@id": "pid:FIXEDR_13",
+      "@type": "pid:Component",
+      "name": "FIXEDR",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "FIXEDR",
+      "x": 5536.359228364629,
+      "y": 3936.186206202719
+    },
+    {
+      "@id": "pid:STVANE_14",
+      "@type": "pid:Component",
+      "name": "STVANE",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "STVANE",
+      "x": 5536.359228364629,
+      "y": 3922.550776521244
+    },
+    {
+      "@id": "pid:VORTEX_15",
+      "@type": "pid:Component",
+      "name": "VORTEX",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "VORTEX",
+      "x": 5536.359228364629,
+      "y": 3974.140940556025
+    },
+    {
+      "@id": "pid:RUPTURE_16",
+      "@type": "pid:Component",
+      "name": "RUPTURE",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "RUPTURE",
+      "x": 5536.359228364629,
+      "y": 3949.499417132586
+    },
+    {
+      "@id": "pid:SRMETER_17",
+      "@type": "pid:Component",
+      "name": "SRMETER",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "SRMETER",
+      "x": 5536.359228364629,
+      "y": 3988.518557737498
+    },
+    {
+      "@id": "pid:*X17_18",
+      "@type": "pid:Component",
+      "name": "*X17",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "*X17",
+      "x": 5412.622021695626,
+      "y": 3590.643274304937
+    },
+    {
+      "@id": "pid:VENTURI_19",
+      "@type": "pid:Component",
+      "name": "VENTURI",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "VENTURI",
+      "x": 5407.962560940138,
+      "y": 3777.720310771383
+    },
+    {
+      "@id": "pid:TAG_LS_20",
+      "@type": "pid:Component",
+      "name": "TAG_LS",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "TAG_LS",
+      "x": 5407.863893731163,
+      "y": 3821.37443130856
+    },
+    {
+      "@id": "pid:TAG_LS_21",
+      "@type": "pid:Component",
+      "name": "TAG_LS",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "TAG_LS",
+      "x": 5407.817093049885,
+      "y": 3835.618081894499
+    },
+    {
+      "@id": "pid:TAG_CON_22",
+      "@type": "pid:Component",
+      "name": "TAG_CON",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "TAG_CON",
+      "x": 5406.365340678348,
+      "y": 3945.540402726062
+    },
+    {
+      "@id": "pid:FLAG_23",
+      "@type": "pid:Component",
+      "name": "FLAG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "FLAG",
+      "x": 5406.791007989088,
+      "y": 3904.342859772621
+    },
+    {
+      "@id": "pid:*X16_24",
+      "@type": "pid:Component",
+      "name": "*X16",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "*X16",
+      "x": 5006.612323466468,
+      "y": 3917.857042962663
+    },
+    {
+      "@id": "pid:FLAG_25",
+      "@type": "pid:Component",
+      "name": "FLAG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "FLAG",
+      "x": 5406.791007989088,
+      "y": 3919.663821491371
+    },
+    {
+      "@id": "pid:FLAG_26",
+      "@type": "pid:Component",
+      "name": "FLAG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "FLAG",
+      "x": 5406.791007989088,
+      "y": 3933.90747207731
+    },
+    {
+      "@id": "pid:K4_27",
+      "@type": "pid:Component",
+      "name": "K4",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "SYMBOLS",
+      "blockName": "K4",
+      "x": 5406.385853006435,
+      "y": 3991.823609828493
+    },
+    {
+      "@id": "pid:FLG_28",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5839.091467941773,
+      "y": 4186.402965387797
+    },
+    {
+      "@id": "pid:FLG_29",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5840.341467941773,
+      "y": 4186.402965387797
+    },
+    {
+      "@id": "pid:FLG_30",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5855.341467941773,
+      "y": 4201.402965387797
+    },
+    {
+      "@id": "pid:FLG_31",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5855.341467941773,
+      "y": 4200.152965387797
+    },
+    {
+      "@id": "pid:FLG_32",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5797.841467941775,
+      "y": 4491.402965387797
+    },
+    {
+      "@id": "pid:FLG_33",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5797.841467941775,
+      "y": 4490.152965387797
+    },
+    {
+      "@id": "pid:FLG_34",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5595.248687162582,
+      "y": 4293.902965387797
+    },
+    {
+      "@id": "pid:FLG_35",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5596.498687162582,
+      "y": 4293.902965387797
+    },
+    {
+      "@id": "pid:FLG_36",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5613.998687162582,
+      "y": 4293.902965387797
+    },
+    {
+      "@id": "pid:FLG_37",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5615.248687162582,
+      "y": 4293.902965387797
+    },
+    {
+      "@id": "pid:FLG_38",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5591.498687162583,
+      "y": 4376.402965387795
+    },
+    {
+      "@id": "pid:FLG_39",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5592.748687162583,
+      "y": 4376.402965387795
+    },
+    {
+      "@id": "pid:FLG_40",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5617.748687162582,
+      "y": 4376.402965387795
+    },
+    {
+      "@id": "pid:FLG_41",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5618.998687162582,
+      "y": 4376.402965387795
+    },
+    {
+      "@id": "pid:FLG_42",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5690.248687162581,
+      "y": 4296.402965387797
+    },
+    {
+      "@id": "pid:FLG_43",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5691.498687162581,
+      "y": 4296.402965387797
+    },
+    {
+      "@id": "pid:FLG_44",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5774.091467941773,
+      "y": 4283.902965387795
+    },
+    {
+      "@id": "pid:FLG_45",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5774.091467941773,
+      "y": 4282.652965387795
+    },
+    {
+      "@id": "pid:FLG_46",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5774.091467941773,
+      "y": 4310.152965387797
+    },
+    {
+      "@id": "pid:FLG_47",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5774.091467941773,
+      "y": 4308.902965387797
+    },
+    {
+      "@id": "pid:FLG_48",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5685.248687162581,
+      "y": 4370.152965387797
+    },
+    {
+      "@id": "pid:FLG_49",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5685.248687162581,
+      "y": 4371.402965387797
+    },
+    {
+      "@id": "pid:FLG_50",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5685.248687162581,
+      "y": 4410.152965387797
+    },
+    {
+      "@id": "pid:FLG_51",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5685.248687162581,
+      "y": 4408.902965387797
+    },
+    {
+      "@id": "pid:MOTOR_52",
+      "@type": "pid:Component",
+      "name": "MOTOR",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "EQUIP",
+      "blockName": "MOTOR",
+      "x": 5772.841467941775,
+      "y": 4396.402965387797
+    },
+    {
+      "@id": "pid:FLG_53",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5588.998687162582,
+      "y": 4471.402965387797
+    },
+    {
+      "@id": "pid:FLG_54",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5590.248687162582,
+      "y": 4471.402965387797
+    },
+    {
+      "@id": "pid:FLG_55",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5597.748687162582,
+      "y": 4488.902965387797
+    },
+    {
+      "@id": "pid:FLG_56",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5597.748687162582,
+      "y": 4487.652965387797
+    },
+    {
+      "@id": "pid:FLG_57",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5701.498687162582,
+      "y": 4481.402965387797
+    },
+    {
+      "@id": "pid:FLG_58",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5702.748687162582,
+      "y": 4481.402965387797
+    },
+    {
+      "@id": "pid:FLG_59",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5695.248687162581,
+      "y": 4487.652965387795
+    },
+    {
+      "@id": "pid:FLG_60",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5695.248687162581,
+      "y": 4488.902965387795
+    },
+    {
+      "@id": "pid:FLG_61",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5772.528967941773,
+      "y": 4075.152965387797
+    },
+    {
+      "@id": "pid:FLG_62",
+      "@type": "pid:Component",
+      "name": "FLG",
+      "tag": null,
+      "lineNumber": null,
+      "layer": "PID",
+      "blockName": "FLG",
+      "x": 5773.778967941773,
+      "y": 4075.152965387797
+    },
+    {
+      "@id": "pid:INSUL_2--pid:INSUL_3",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:INSUL_2",
+        "pid:INSUL_3"
+      ]
+    },
+    {
+      "@id": "pid:TMETER_12--pid:STVANE_14",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:TMETER_12",
+        "pid:STVANE_14"
+      ]
+    },
+    {
+      "@id": "pid:FLAG_23--pid:FLAG_25",
+      "@type": "pid:Connection",
+      "connectedTo": [
+        "pid:FLAG_23",
+        "pid:FLAG_25"
+      ]
+    }
+  ]
+}
